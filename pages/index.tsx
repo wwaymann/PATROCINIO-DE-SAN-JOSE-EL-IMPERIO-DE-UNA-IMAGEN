@@ -268,7 +268,7 @@ export default function Home(){
         </div>
       </footer>
 
-      <script dangerouslySetInnerHTML={{__html:`window.CONFIG = { DATE: '[Fecha por definir]', TIME: '[Hora por definir]', VENUE: '[Lugar / institución]', ADDRESS: '[Dirección]', CITY: 'Santiago, Chile', MAP_URL: 'https://maps.google.com', TICKETS_URL: '#', IOS_URL: '#', ANDROID_URL: '#', FORM_ENDPOINT: '' };`}} />
+      <script dangerouslySetInnerHTML={{__html:`window.CONFIG = { DATE: '22 Noviembre', TIME: '19:00', VENUE: 'MUSEO NACIONAL DE BELLAS ARTES', ADDRESS: '[Dirección]', CITY: 'Santiago, Chile', MAP_URL: 'https://maps.app.goo.gl/p7KBKzmZYeMUxXPE6', TICKETS_URL: '#', IOS_URL: '#', ANDROID_URL: '#', FORM_ENDPOINT: '' };`}} />
     </>
   )
 }
