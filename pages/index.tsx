@@ -766,17 +766,6 @@ END:VCALENDAR`
           </div>
         </section>
 
-        <section className="section" aria-label="Paleta">
-          <h2>Paleta cromática</h2>
-          <div className="palette">
-            <div className="swatch" title="#1b1615" style={{ background: '#1b1615' }} />
-            <div className="swatch" title="#ddac79" style={{ background: '#ddac79' }} />
-            <div className="swatch" title="#e04310" style={{ background: '#e04310' }} />
-            <div className="swatch" title="#b96b3a" style={{ background: '#b96b3a' }} />
-            <div className="swatch" title="#742f12" style={{ background: '#742f12' }} />
-            <div className="swatch" title="#af4a1d" style={{ background: '#af4a1d' }} />
-          </div>
-        </section>
       </main>
 
       <footer>
