@@ -484,7 +484,7 @@ END:VCALENDAR`
         <section id="resena" className="section">
           <div className="grid cols-2">
             <div>
-              <h2>Reseña breve</h2>
+              <h2>Reseña</h2>
               <p className="lede">
                 Este libro propone una lectura crítica y a la vez sensible de la imagen de San José
                 como figura tutelar y política. A partir de pinturas, grabados, estampas y
