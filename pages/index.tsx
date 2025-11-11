@@ -605,8 +605,7 @@ END:VCALENDAR`
             <div>
               <h2>Registro al lanzamiento</h2>
               <p className="lede">
-                Déjanos tus datos para enviarte la invitación y un capítulo de muestra cuando esté
-                disponible.
+                Déjanos tus datos para enviarte la invitación.
               </p>
               <form id="rsvpForm" noValidate onSubmit={handleSubmit}>
                 <div className="form-row">
