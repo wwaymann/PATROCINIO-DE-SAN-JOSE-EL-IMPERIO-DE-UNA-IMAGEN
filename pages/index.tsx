@@ -77,7 +77,7 @@ END:VCALENDAR`
         <title>Patrocinio de San José — El imperio de una imagen</title>
         <meta
           name="description"
-          content="Lanzamiento del libro Patrocinio de San José — El imperio de una imagen. Reseña, fecha y lugar, formulario de registro y descargas del eBook."
+          content="Lanzamiento libro Patrocinio de San José — El imperio de una imagen. Reseña, fecha y lugar, formulario de registro y descargas del eBook."
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
