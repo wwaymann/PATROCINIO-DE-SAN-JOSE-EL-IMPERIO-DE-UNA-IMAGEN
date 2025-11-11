@@ -618,7 +618,7 @@ END:VCALENDAR`
       <!-- AQUÍ VA EL GOOGLE FORM -->
       <div class="card" style="padding:0; overflow:hidden;">
         <iframe
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSchxaUg9AjWHibY7OniBQ5eQugSJNRz6Y1fm6sJWUUjzjyYig/viewform?embedded=true" width="640" height="764" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+          src="https://docs.google.com/forms/d/e/1FAIpQLSchxaUg9AjWHibY7OniBQ5eQugSJNRz6Y1fm6sJWUUjzjyYig/viewform?embedded=true" width="640" height="764" frameborder="0" marginheight="0" marginwidth="0"
           width="100%"
           height="800"
           frameborder="0"
