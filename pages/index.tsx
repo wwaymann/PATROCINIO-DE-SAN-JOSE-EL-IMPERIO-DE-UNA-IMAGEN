@@ -225,16 +225,8 @@ END:VCALENDAR`
           letter-spacing: 0.1em;
           text-transform: uppercase;
         }
-        h1 {
-          font-family: 'Matona', 'Cinzel', serif;
-          font-size: clamp(40px, 6vw, 68px);
-          line-height: 1.06;
-          margin: 10px 0 4px;
-          color: var(--accent);
-          font-weight: 400;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-        }
+           h1{font-family:"Matona","Cinzel", serif;font-size:clamp(38px,6.5vw,72px);line-height:1.02;margin:10px 0;color:var(--accent);text-transform:uppercase;letter-spacing:.18em;}
+
         h1 span {
           display: block;
           margin-top: 18px;
