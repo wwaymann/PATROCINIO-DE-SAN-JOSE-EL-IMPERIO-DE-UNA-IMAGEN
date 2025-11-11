@@ -524,46 +524,7 @@ END:VCALENDAR`
           </div>
         </section>
 
-        {/* DESCARGAS */}
-        <section id="descargas" className="section">
-          <h2>Descargar eBook</h2>
-          <div className="download">
-            <a
-              href={CONFIG.IOS_URL || '#'}
-              aria-label="Descargar eBook para iOS (Apple Books)"
-            >
-              <img
-                alt="Banner iOS"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: 12,
-                  border: '1px solid var(--ring)'
-                }}
-                src="/ebook_ios_banner.png"
-              />
-            </a>
-            <a
-              href={CONFIG.ANDROID_URL || '#'}
-              aria-label="Descargar eBook para Android (Google Play o EPUB)"
-            >
-              <img
-                alt="Banner Android"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: 12,
-                  border: '1px solid var(--ring)'
-                }}
-                src="/ebook_android_banner.png"
-              />
-            </a>
-            <p className="note">
-              Reemplaza los enlaces de arriba con las URLs finales de Apple Books y Google Play o tu
-              tienda preferida.
-            </p>
-          </div>
-        </section>
+    
 
         {/* REGISTRO CON GOOGLE FORM */}
         <section id="registro" className="section">
@@ -657,18 +618,6 @@ END:VCALENDAR`
           </div>
         </section>
 
-        {/* PALETA */}
-        <section className="section" aria-label="Paleta">
-          <h2>Paleta cromática</h2>
-          <div className="palette">
-            <div className="swatch" title="#1b1615" style={{ background: '#1b1615' }} />
-            <div className="swatch" title="#ddac79" style={{ background: '#ddac79' }} />
-            <div className="swatch" title="#e04310" style={{ background: '#e04310' }} />
-            <div className="swatch" title="#b96b3a" style={{ background: '#b96b3a' }} />
-            <div className="swatch" title="#742f12" style={{ background: '#742f12' }} />
-            <div className="swatch" title="#af4a1d" style={{ background: '#af4a1d' }} />
-          </div>
-        </section>
       </main>
 
       <footer>
