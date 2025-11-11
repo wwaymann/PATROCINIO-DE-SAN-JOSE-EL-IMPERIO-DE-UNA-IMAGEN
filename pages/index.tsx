@@ -182,18 +182,7 @@ export default function Home(){
           </div>
         </section>
 
-        <section id="descargas" className="section">
-          <h2>Descargar eBook</h2>
-          <div className="download">
-            <a id="linkIos" href="#" aria-label="Descargar eBook para iOS (Apple Books)">
-              <img alt="Banner iOS" style={{width:'100%', height:'auto', borderRadius:12, border:'1px solid var(--ring)'}} src="/ebook_ios_banner.png" />
-            </a>
-            <a id="linkAndroid" href="#" aria-label="Descargar eBook para Android (Google Play o EPUB)">
-              <img alt="Banner Android" style={{width:'100%', height:'auto', borderRadius:12, border:'1px solid var(--ring)'}} src="/ebook_android_banner.png" />
-            </a>
-            <p className="note">Reemplaza los enlaces de arriba con las URLs finales de Apple Books y Google Play o tu tienda preferida.</p>
-          </div>
-        </section>
+       
 
         <section id="registro" className="section">
           <div className="grid cols-2">
