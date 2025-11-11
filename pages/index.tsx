@@ -142,7 +142,7 @@ export default function Home(){
       <main className="container">
         <section className="hero" aria-label="Presentación">
           <div>
-            <div className="kicker">Lanzamiento del libro</div>
+            <div className="kicker">Lanzamiento libro</div>
             <h1>Patrocinio de San José<br/><span style={{color:'var(--text)', opacity:.9 as any}}>El imperio de una imagen</span></h1>
             <p className="subtitle">Una edición que recorre la expansión devocional y visual de San José en el mundo hispano, su iconografía, sus usos sociales y su potencia simbólica en el arte virreinal y republicano.</p>
             <div id="eventBar" className="event-bar" aria-live="polite"></div>
