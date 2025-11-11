@@ -607,46 +607,47 @@ END:VCALENDAR`
               <p className="lede">
                 Déjanos tus datos para enviarte la invitación.
               </p>
-              <form id="rsvpForm" noValidate onSubmit={handleSubmit}>
-                <div className="form-row">
-                  <div>
-                    <label htmlFor="nombre">Nombre</label>
-                    <input id="nombre" name="nombre" required placeholder="Nombre y apellidos" />
-                  </div>
-                  <div>
-                    <label htmlFor="email">Correo electrónico</label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="tucorreo@ejemplo.com"
-                    />
-                  </div>
-                </div>
-                <div className="form-row">
-                 
-                  <div>
-                    <label htmlFor="asistencia">Asistencia</label>
-                    <select id="asistencia" name="asistencia">
-                      <option>Confirmo asistencia</option>
-                      <option>Me interesa, avísenme</option>
-                    </select>
-                  </div>
-                </div>
-                <label className="hint">
-                  <input type="checkbox" id="capitulo" name="capitulo" defaultChecked /> Enviar
-                  capítulo de muestra cuando esté listo
-                </label>
-                <div className="actions">
-                  <button className="btn btn-primary" type="submit">
-                    Enviar registro
-                  </button>
-                  <button
-                    id="addCalendar"
-                    className="btn btn-ghost"
-                    type="button"
-                    onClick={handleAddCalendar}
+              <section id="registro" class="section">
+  <div class="grid cols-2">
+    <div>
+      <h2>Registro al lanzamiento</h2>
+      <p class="lede">
+        Completa el formulario para confirmar tu asistencia y recibir información del lanzamiento.
+      </p>
+
+      <!-- AQUÍ VA EL GOOGLE FORM -->
+      <div class="card" style="padding:0; overflow:hidden;">
+        <iframe
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSchxaUg9AjWHibY7OniBQ5eQugSJNRz6Y1fm6sJWUUjzjyYig/viewform?embedded=true" width="640" height="764" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+          width="100%"
+          height="800"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+        >
+          Cargando…
+        </iframe>
+      </div>
+
+      <!-- Botón para añadir al calendario puede quedar aparte si quieres -->
+      <div class="actions" style="margin-top:16px;">
+        <button id="addCalendar" class="btn btn-ghost" type="button">
+          Añadir al calendario
+        </button>
+      </div>
+    </div>
+
+    <aside class="card">
+      <h3 style="font-family:'Matona','Cinzel',serif;margin:0 0 8px;color:var(--accent)">¿Dónde será?</h3>
+      <ul style="margin:0;padding-left:18px;line-height:1.7" id="eventDetails"></ul>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+        <a id="mapLink" class="btn btn-ghost" target="_blank" rel="noopener">Ver mapa</a>
+        <a id="ticketsLink" class="btn btn-ghost" target="_blank" rel="noopener">Más información</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
                   >
                     Añadir al calendario
                   </button>
