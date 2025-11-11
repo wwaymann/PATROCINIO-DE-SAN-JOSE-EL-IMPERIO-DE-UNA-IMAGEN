@@ -1,19 +1,18 @@
 import Head from 'next/head'
-import { FormEvent, useEffect } from 'react'
+import { useEffect } from 'react'
 
 const CONFIG = {
   DATE: '22 Noviembre',
   TIME: '19:00 hrs',
   VENUE: 'Museo Nacional de Bellas Artes',
-  ADDRESS: 'José Miguel de la Barra 650, Santiago', // ← comillas bien cerradas
+  ADDRESS: 'José Miguel de la Barra 650, Santiago',
   CITY: 'Santiago, Chile',
   MAP_URL: 'https://maps.app.goo.gl/XEuH5wU11vUN1NhCA',
   TICKETS_URL: '#',
   IOS_URL: '#',
   ANDROID_URL: '#',
-  FORM_ENDPOINT: '' // aquí puedes poner Formspree o similar; vacío usa /api/registro
+  FORM_ENDPOINT: '' // ya no lo usamos, pero lo dejo por si algún día vuelves a un form propio
 }
-
 
 export default function Home() {
   // Tema claro/oscuro
@@ -36,38 +35,6 @@ export default function Home() {
       if (btn) btn.removeEventListener('click', onClick)
     }
   }, [])
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const form = e.currentTarget
-    const data = Object.fromEntries(new FormData(form).entries())
-
-    if (!data.nombre || !data.email) {
-      alert('Por favor completa nombre y correo.')
-      return
-    }
-
-    try {
-      if (CONFIG.FORM_ENDPOINT) {
-        const fd = new FormData(form)
-        const res = await fetch(CONFIG.FORM_ENDPOINT, { method: 'POST', body: fd })
-        if (!res.ok) throw new Error('Error de red')
-      } else {
-        const res = await fetch('/api/registro', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        })
-        if (!res.ok) throw new Error('Error en el servidor')
-      }
-      const success = document.getElementById('formSuccess')
-      if (success) success.style.display = 'inline'
-      form.reset()
-    } catch (err) {
-      console.error(err)
-      alert('No se pudo enviar el registro. Configura FORM_ENDPOINT o la ruta /api/registro.')
-    }
-  }
 
   const handleAddCalendar = () => {
     const title = 'Lanzamiento — Patrocinio de San José'
@@ -123,6 +90,7 @@ END:VCALENDAR`
         />
       </Head>
 
+      {/* ESTILOS GLOBALES */}
       <style jsx global>{`
         :root {
           --bg: #ffffff;
@@ -408,48 +376,6 @@ END:VCALENDAR`
           opacity: 0.8;
         }
 
-        form {
-          display: grid;
-          gap: 14px;
-          margin-top: 10px;
-        }
-        label {
-          font-weight: 700;
-          color: var(--muted);
-        }
-        input,
-        select,
-        textarea {
-          width: 100%;
-          padding: 12px 14px;
-          border-radius: 12px;
-          border: 1px solid var(--ring);
-          background: var(--card-2);
-          color: var(--text);
-        }
-        input[type='checkbox'] {
-          width: auto;
-        }
-        .form-row {
-          display: grid;
-          gap: 14px;
-          grid-template-columns: 1fr 1fr;
-        }
-        .actions {
-          display: flex;
-          gap: 10px;
-          align-items: center;
-        }
-        .hint {
-          opacity: 0.75;
-        }
-        .success {
-          display: none;
-          margin-top: 8px;
-          color: var(--accent);
-          font-weight: 700;
-        }
-
         .palette {
           display: flex;
           gap: 10px;
@@ -470,9 +396,6 @@ END:VCALENDAR`
 
         @media (max-width: 920px) {
           .hero {
-            grid-template-columns: 1fr;
-          }
-          .form-row {
             grid-template-columns: 1fr;
           }
         }
@@ -504,6 +427,7 @@ END:VCALENDAR`
       </header>
 
       <main className="container">
+        {/* HERO */}
         <section className="hero" aria-label="Presentación">
           <div>
             <div className="kicker">Lanzamiento del libro</div>
@@ -529,14 +453,17 @@ END:VCALENDAR`
             </div>
 
             <div className="hero-cta">
-              <a className="badge" href="#descargas" title="Descargar eBook para iOS" id="linkIos">
+              <a
+                className="badge"
+                href="#descargas"
+                title="Descargar eBook para iOS"
+              >
                 <img alt="Descargar eBook iOS" src="/ebook_ios_banner.png" />
               </a>
               <a
                 className="badge"
                 href="#descargas"
                 title="Descargar eBook para Android"
-                id="linkAndroid"
               >
                 <img alt="Descargar eBook Android" src="/ebook_android_banner.png" />
               </a>
@@ -553,6 +480,7 @@ END:VCALENDAR`
           </div>
         </section>
 
+        {/* RESEÑA */}
         <section id="resena" className="section">
           <div className="grid cols-2">
             <div>
@@ -590,75 +518,89 @@ END:VCALENDAR`
                 <li>Formato: tapa blanda y eBook</li>
                 <li>Idioma: español</li>
                 <li>Imágenes restauradas y comentadas</li>
-                <li>
-                  Diseño editorial con paleta inspirada en terracotas, oros y negros
-                </li>
+                <li>Diseño editorial con paleta inspirada en terracotas, oros y negros</li>
               </ul>
             </aside>
           </div>
         </section>
 
-   
+        {/* DESCARGAS */}
+        <section id="descargas" className="section">
+          <h2>Descargar eBook</h2>
+          <div className="download">
+            <a
+              href={CONFIG.IOS_URL || '#'}
+              aria-label="Descargar eBook para iOS (Apple Books)"
+            >
+              <img
+                alt="Banner iOS"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: 12,
+                  border: '1px solid var(--ring)'
+                }}
+                src="/ebook_ios_banner.png"
+              />
+            </a>
+            <a
+              href={CONFIG.ANDROID_URL || '#'}
+              aria-label="Descargar eBook para Android (Google Play o EPUB)"
+            >
+              <img
+                alt="Banner Android"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: 12,
+                  border: '1px solid var(--ring)'
+                }}
+                src="/ebook_android_banner.png"
+              />
+            </a>
+            <p className="note">
+              Reemplaza los enlaces de arriba con las URLs finales de Apple Books y Google Play o tu
+              tienda preferida.
+            </p>
+          </div>
+        </section>
 
+        {/* REGISTRO CON GOOGLE FORM */}
         <section id="registro" className="section">
           <div className="grid cols-2">
             <div>
               <h2>Registro al lanzamiento</h2>
               <p className="lede">
-                Déjanos tus datos para enviarte la invitación.
+                Completa el formulario para confirmar tu asistencia y recibir información del
+                lanzamiento.
               </p>
-              <form id="rsvpForm" noValidate onSubmit={handleSubmit}>
-                <div className="form-row">
-                  <div>
-                    <label htmlFor="nombre">Nombre</label>
-                    <input id="nombre" name="nombre" required placeholder="Nombre y apellidos" />
-                  </div>
-                  <div>
-                    <label htmlFor="email">Correo electrónico</label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="tucorreo@ejemplo.com"
-                    />
-                  </div>
-                </div>
-                <div className="form-row">
-                 
-                  <div>
-                    <label htmlFor="asistencia">Asistencia</label>
-                    <select id="asistencia" name="asistencia">
-                      <option>Confirmo asistencia</option>
-                      <option>Me interesa, avísenme</option>
-                    </select>
-                  </div>
-                </div>
-                <label className="hint">
-                  <input type="checkbox" id="capitulo" name="capitulo" defaultChecked /> Enviar
-                  capítulo de muestra cuando esté listo
-                </label>
-                <div className="actions">
-                  <button className="btn btn-primary" type="submit">
-                    Enviar registro
-                  </button>
-                  <button
-                    id="addCalendar"
-                    className="btn btn-ghost"
-                    type="button"
-                    onClick={handleAddCalendar}
-                  >
-                    Añadir al calendario
-                  </button>
-                  <span id="formSuccess" className="success">
-                    ¡Registro enviado! Revisa tu correo.
-                  </span>
-                </div>
-                <p className="hint">
-                 Cupos Limitados
-                </p>
-              </form>
+
+              <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+                <iframe
+                  src="https://docs.google.com/forms/d/e/1FAIpQLSchxaUg9AjWHibY7OniBQ5eQugSJNRz6Y1fm6sJWUUjzjyYig/viewform?embedded=true"
+                  width="100%"
+                  height={800}
+                  frameBorder={0}
+                  marginHeight={0}
+                  marginWidth={0}
+                >
+                  Cargando…
+                </iframe>
+              </div>
+
+              <div className="actions" style={{ marginTop: 16 }}>
+                <button
+                  className="btn btn-ghost"
+                  type="button"
+                  onClick={handleAddCalendar}
+                >
+                  Añadir al calendario
+                </button>
+              </div>
+
+              <p className="hint">Cupos limitados.</p>
             </div>
+
             <aside className="card">
               <h3
                 style={{
@@ -695,7 +637,6 @@ END:VCALENDAR`
                 }}
               >
                 <a
-                  id="mapLink"
                   className="btn btn-ghost"
                   target="_blank"
                   rel="noopener"
@@ -704,7 +645,6 @@ END:VCALENDAR`
                   Ver mapa
                 </a>
                 <a
-                  id="ticketsLink"
                   className="btn btn-ghost"
                   target="_blank"
                   rel="noopener"
@@ -717,6 +657,18 @@ END:VCALENDAR`
           </div>
         </section>
 
+        {/* PALETA */}
+        <section className="section" aria-label="Paleta">
+          <h2>Paleta cromática</h2>
+          <div className="palette">
+            <div className="swatch" title="#1b1615" style={{ background: '#1b1615' }} />
+            <div className="swatch" title="#ddac79" style={{ background: '#ddac79' }} />
+            <div className="swatch" title="#e04310" style={{ background: '#e04310' }} />
+            <div className="swatch" title="#b96b3a" style={{ background: '#b96b3a' }} />
+            <div className="swatch" title="#742f12" style={{ background: '#742f12' }} />
+            <div className="swatch" title="#af4a1d" style={{ background: '#af4a1d' }} />
+          </div>
+        </section>
       </main>
 
       <footer>
