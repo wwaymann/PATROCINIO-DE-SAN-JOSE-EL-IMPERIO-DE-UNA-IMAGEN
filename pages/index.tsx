@@ -3,9 +3,9 @@ import { FormEvent, useEffect } from 'react'
 
 const CONFIG = {
   DATE: '22 Noviembre',
-  TIME: '19:00 hras',
+  TIME: '19:00 hrs',
   VENUE: 'Museo Nacional de Bellas Artes',
-  ADDRESS: 'José Miguel de la Barra 650,
+  ADDRESS: 'José Miguel de la Barra 650, Santiago', // ← comillas bien cerradas
   CITY: 'Santiago, Chile',
   MAP_URL: 'https://maps.app.goo.gl/XEuH5wU11vUN1NhCA',
   TICKETS_URL: '#',
@@ -13,6 +13,7 @@ const CONFIG = {
   ANDROID_URL: '#',
   FORM_ENDPOINT: '' // aquí puedes poner Formspree o similar; vacío usa /api/registro
 }
+
 
 export default function Home() {
   // Tema claro/oscuro
