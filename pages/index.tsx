@@ -11,7 +11,8 @@ const CONFIG = {
   TICKETS_URL: '#',
   IOS_URL: '#',
   ANDROID_URL: '#',
-  FORM_ENDPOINT: '' // ya no lo usamos, pero lo dejo por si algún día vuelves a un form propio
+  // ya no usamos form propio, pero dejo la clave por si vuelves a usar /api/registro o un servicio externo
+  FORM_ENDPOINT: ''
 }
 
 export default function Home() {
@@ -232,6 +233,7 @@ END:VCALENDAR`
           color: var(--accent);
           font-weight: 400;
           letter-spacing: 0.08em;
+          text-transform: uppercase;
         }
         h1 span {
           display: block;
@@ -398,6 +400,10 @@ END:VCALENDAR`
           .hero {
             grid-template-columns: 1fr;
           }
+          /* ← NUEVO: todas las secciones con .grid cols-2 pasan a 1 columna en móvil */
+          .grid.cols-2 {
+            grid-template-columns: 1fr;
+          }
         }
       `}</style>
 
@@ -524,7 +530,43 @@ END:VCALENDAR`
           </div>
         </section>
 
-    
+        {/* ACERCA DE LA AUTORA */}
+        <section id="autora" className="section">
+          <div className="grid cols-2">
+            <div>
+              <h2>Acerca de la autora</h2>
+              <p className="lede">
+                Natalia Portugueis Coronel investiga la relación entre arte, devoción y espacio
+                público en el mundo hispano. Su trabajo se ha centrado en las imágenes de culto,
+                los relatos que las rodean y las formas en que comunidades diversas las han
+                resignificado a lo largo del tiempo.
+              </p>
+              <p>
+                En <em>Patrocinio de San José — El imperio de una imagen</em>, articula años de
+                investigación en archivos, museos y colecciones privadas, proponiendo una lectura
+                accesible pero rigurosa de la iconografía josefina. El libro combina la precisión
+                histórica con una mirada muy cercana a la experiencia contemporánea de mirar y
+                habitar estas imágenes.
+              </p>
+            </div>
+            <aside className="card">
+              <h3
+                style={{
+                  fontFamily: 'Matona, Cinzel, serif',
+                  margin: '0 0 8px',
+                  color: 'var(--accent)'
+                }}
+              >
+                Líneas de trabajo
+              </h3>
+              <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.7 }}>
+                <li>Historia del arte y cultura visual</li>
+                <li>Imágenes devocionales y política de la memoria</li>
+                <li>Relaciones entre iconografía, espacio urbano y comunidad</li>
+              </ul>
+            </aside>
+          </div>
+        </section>
 
         {/* REGISTRO CON GOOGLE FORM */}
         <section id="registro" className="section">
@@ -617,7 +659,6 @@ END:VCALENDAR`
             </aside>
           </div>
         </section>
-
       </main>
 
       <footer>
