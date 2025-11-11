@@ -2,12 +2,12 @@ import Head from 'next/head'
 import { FormEvent, useEffect } from 'react'
 
 const CONFIG = {
-  DATE: '[Fecha por definir]',
-  TIME: '[Hora por definir]',
-  VENUE: '[Lugar / institución]',
-  ADDRESS: '[Dirección]',
+  DATE: '22 Noviembre',
+  TIME: '19:00 hras',
+  VENUE: 'Museo Nacional de Bellas Artes',
+  ADDRESS: 'José Miguel de la Barra 650,
   CITY: 'Santiago, Chile',
-  MAP_URL: 'https://maps.google.com',
+  MAP_URL: 'https://maps.app.goo.gl/XEuH5wU11vUN1NhCA',
   TICKETS_URL: '#',
   IOS_URL: '#',
   ANDROID_URL: '#',
@@ -625,14 +625,7 @@ END:VCALENDAR`
                   </div>
                 </div>
                 <div className="form-row">
-                  <div>
-                    <label htmlFor="preferencia">Plataforma preferida</label>
-                    <select id="preferencia" name="preferencia">
-                      <option>iOS (Apple Books)</option>
-                      <option>Android (Google Play)</option>
-                      <option>Edición impresa</option>
-                    </select>
-                  </div>
+                 
                   <div>
                     <label htmlFor="asistencia">Asistencia</label>
                     <select id="asistencia" name="asistencia">
@@ -662,9 +655,7 @@ END:VCALENDAR`
                   </span>
                 </div>
                 <p className="hint">
-                  Nota: por defecto el formulario intenta usar <code>/api/registro</code>{' '}
-                  (Vercel/Next.js). También puedes configurar <code>FORM_ENDPOINT</code> a un
-                  servicio de formularios externo.
+                 Cupos Limitados
                 </p>
               </form>
             </div>
