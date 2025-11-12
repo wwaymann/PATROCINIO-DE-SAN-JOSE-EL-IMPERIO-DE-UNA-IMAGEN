@@ -15,6 +15,7 @@ const CONFIG = {
 }
 
 export default function Home() {
+  // Tema claro/oscuro
   useEffect(() => {
     const root = document.documentElement
     if (!root.getAttribute('data-theme')) {
@@ -288,7 +289,7 @@ END:VCALENDAR`
           position: absolute;
           left: 10%;
           right: 38%;
-          top: 4%;
+          top: 4%; /* más arriba para no pegarse al texto */
           height: 3px;
           background: var(--accent);
         }
@@ -375,16 +376,13 @@ END:VCALENDAR`
           opacity: 0.8;
         }
 
-        .palette {
+        .actions {
           display: flex;
           gap: 10px;
-          flex-wrap: wrap;
+          align-items: center;
         }
-        .swatch {
-          width: 46px;
-          height: 46px;
-          border-radius: 10px;
-          border: 1px solid rgba(255, 255, 255, 0.2);
+        .hint {
+          opacity: 0.75;
         }
 
         footer {
@@ -433,7 +431,6 @@ END:VCALENDAR`
         <section className="hero" aria-label="Presentación">
           <div>
             <div className="kicker">Lanzamiento del libro</div>
-
             <h1>
               Patrocinio de San José
               <br />
@@ -622,11 +619,7 @@ END:VCALENDAR`
               </div>
 
               <div className="actions" style={{ marginTop: 16 }}>
-                <button
-                  className="btn btn-ghost"
-                  type="button"
-                  onClick={handleAddCalendar}
-                >
+                <button className="btn btn-ghost" type="button" onClick={handleAddCalendar}>
                   Añadir al calendario
                 </button>
               </div>
@@ -637,7 +630,7 @@ END:VCALENDAR`
             <aside className="card">
               <h3
                 style={{
-                  fontFamily: 'Matona', 'Cinzel', 'serif',
+                  fontFamily: 'Matona, Cinzel, serif',
                   margin: '0 0 8px',
                   color: 'var(--accent)'
                 }}
