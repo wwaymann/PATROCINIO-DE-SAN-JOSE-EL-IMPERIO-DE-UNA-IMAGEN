@@ -534,65 +534,11 @@ END:VCALENDAR`
                 independientes y de gestión en divulgación y educación en Derechos Humanos.
               </p>
             </div>
-            <aside className="card">
-              <h3
-                style={{
-                  fontFamily: 'Matona, Cinzel, serif',
-                  margin: '0 0 8px',
-                  color: 'var(--accent)'
-                }}
-              >
-                Líneas de trabajo
-              </h3>
-              <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.7 }}>
-                <li>Historia del arte y cultura visual</li>
-                <li>Imágenes devocionales y política de la memoria</li>
-                <li>Relaciones entre iconografía, espacio urbano y comunidad</li>
-              </ul>
-            </aside>
+          
           </div>
         </section>
 
-        {/* DESCARGAS */}
-        <section id="descargas" className="section">
-          <h2>Descargar eBook</h2>
-          <div className="download">
-            <a
-              href={CONFIG.IOS_URL || '#'}
-              aria-label="Descargar eBook para iOS (Apple Books)"
-            >
-              <img
-                alt="Banner iOS"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: 12,
-                  border: '1px solid var(--ring)'
-                }}
-                src="/ebook_ios_banner.png"
-              />
-            </a>
-            <a
-              href={CONFIG.ANDROID_URL || '#'}
-              aria-label="Descargar eBook para Android"
-            >
-              <img
-                alt="Banner Android"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: 12,
-                  border: '1px solid var(--ring)'
-                }}
-                src="/ebook_android_banner.png"
-              />
-            </a>
-            <p className="note">
-              Reemplaza estos enlaces con las URLs finales de Apple Books, Google Play o la
-              plataforma que uses para la descarga.
-            </p>
-          </div>
-        </section>
+       
 
         {/* REGISTRO CON GOOGLE FORM */}
         <section id="registro" className="section">
