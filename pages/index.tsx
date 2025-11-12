@@ -76,7 +76,7 @@ END:VCALENDAR`
         <title>patrocinio de san josé — El imperio de una imagen</title>
         <meta
           name="description"
-          content="Lanzamiento del libro Patrocinio de San José — El imperio de una imagen. Reseña, fecha y lugar, registro y descargas del eBook."
+          content="Lanzamiento libro patrocinio de san josé — El imperio de una imagen. Reseña, fecha y lugar, registro y descargas del eBook."
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -405,7 +405,7 @@ END:VCALENDAR`
         <div className="container nav">
           <div className="brand">
             <div className="brand-logo" aria-hidden="true" />
-            <div className="brand-title">Patrocinio de San José</div>
+            <div className="brand-title">patrocinio de san josé</div>
           </div>
           <div className="cta-top">
             <button
@@ -432,7 +432,7 @@ END:VCALENDAR`
           <div>
             <div className="kicker">Lanzamiento del libro</div>
             <h1>
-              Patrocinio de San José
+              patrocinio de san josé
               <br />
               <span>El imperio de una imagen</span>
             </h1>
@@ -493,7 +493,7 @@ END:VCALENDAR`
               </p>
               <p>
                 Una invitación a mirar con atención los símbolos, los gestos y las materialidades
-                que han dado forma al patrocinio de San José a lo largo de los siglos.
+                que han dado forma al patrocinio de san josé a lo largo de los siglos.
               </p>
             </div>
             <aside className="card">
@@ -528,7 +528,7 @@ END:VCALENDAR`
                 resignificado a lo largo del tiempo.
               </p>
               <p>
-                En <em>Patrocinio de San José — El imperio de una imagen</em>, articula años de
+                En <em>patrocinio de san josé — El imperio de una imagen</em>, articula años de
                 investigación en archivos, museos y colecciones privadas, proponiendo una lectura
                 accesible pero rigurosa de la iconografía josefina. El libro combina la precisión
                 histórica con una mirada muy cercana a la experiencia contemporánea de mirar y
@@ -657,7 +657,7 @@ END:VCALENDAR`
           }}
         >
           <small>
-            &copy; <span>{year}</span> Patrocinio de San José — El imperio de una imagen.
+            &copy; <span>{year}</span> patrocinio de san josé — El imperio de una imagen.
           </small>
           <small>
             Diseño web inspirado en la estética del libro. Paleta: dorados, terracotas y negro.
