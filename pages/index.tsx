@@ -631,15 +631,16 @@ END:VCALENDAR`
             </div>
 
             <aside className="card">
-              <h3
-                style={{
-                  fontFamily: 'Matona', 'Cinzel', 'serif',
-                  margin: '0 0 8px',
-                  color: 'var(--accent)'
-                }}
-              >
-                ¿Dónde será?
-              </h3>
+             <h3
+  style={{
+    fontFamily: 'Matona, Cinzel, serif',
+    margin: '0 0 8px',
+    color: 'var(--accent)'
+  }}
+>
+  ¿Dónde será?
+</h3>
+
               <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.7 }}>
                 <li>
                   <strong>Fecha:</strong> {CONFIG.DATE}
