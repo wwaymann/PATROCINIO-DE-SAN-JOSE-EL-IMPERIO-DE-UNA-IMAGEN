@@ -463,11 +463,10 @@ END:VCALENDAR`
             <div>
               <h2>Reseña</h2>
               <p className="lede">
-                Este libro propone una lectura crítica y a la vez sensible de la imagen de San José
-                como figura tutelar y política. A partir de pinturas, grabados, estampas y
-                documentos, se indaga cómo su iconografía se convirtió en un verdadero “imperio de
-                la imagen”, articulando devoción doméstica, encargos institucionales y narrativas
-                públicas.
+               Patrocinio de san José. El imperio de una imagen, es una investigación sobre la vida de la pintura Patrocinio de san José, realizada por Gaspar Miguel de Berrío en 1744 en Potosí (Bolivia), desde que fue adquirida por el Museo Nacional de Bellas Artes en 1965.
+En el libro, la autora analiza la recepción y fortuna crítica de la pintura, tomando su caso como ejemplo para hacer un recorrido por medio siglo de escritura y exposiciones, que develan prácticas, omisiones y programas en la construcción de la narrativa de la historia del arte chileno. Junto con este estudio, Portugueis ofrece una completa identificación iconográfica de la pintura y un análisis iconológico con dos alternativas de lectura de sus posibles significados.
+La publicación en formato Ebook, posee un importante enfoque educativo y de divulgación que busca acercar a las y los lectores a la obra y a sus capas de significados, apoyándose con elementos animados e interactivos.
+
               </p>
               <p>
                 La edición combina investigación histórica con un ensayo visual cuidadosamente
@@ -507,10 +506,8 @@ END:VCALENDAR`
             <div>
               <h2>Acerca de la autora</h2>
               <p className="lede">
-                Natalia Portugueis Coronel investiga la relación entre arte, devoción y espacio
-                público en el mundo hispano. Su trabajo se ha centrado en las imágenes de culto,
-                los relatos que las rodean y las formas en que comunidades diversas las han
-                resignificado a lo largo del tiempo.
+               Natalia Portugueis es Licenciada en Arte con mención en Grabado y Magíster en Teoría e Historia del Arte por la Universidad de Chile. Durante las últimas dos décadas ha trabajado en el ámbito de la educación en museos, destacando la Coordinación del área de Mediación y Educación del Museo Nacional de Bellas Artes (2010-2017) y la Subdirección de Educación y Programas Públicos del Museo de Bomberos de Santiago (2018 a la fecha). En forma paralela al trabajo vinculado a los museos, desarrolla proyectos artísticos independientes, y de gestión en divulgación y educación en Derechos Humanos.
+
               </p>
               <p>
                 En <em>patrocinio de san josé — El imperio de una imagen</em>, articula años de
