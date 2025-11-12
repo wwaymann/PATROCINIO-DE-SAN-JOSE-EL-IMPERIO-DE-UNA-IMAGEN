@@ -490,7 +490,9 @@ END:VCALENDAR`
                 una completa identificación iconográfica de la pintura y un análisis iconológico con
                 dos alternativas de lectura de sus posibles significados.
               </p>
-              <p>
+              <div>
+              <h2>Reseña</h2>
+              <p className="lede">
                 La publicación en formato eBook posee un importante enfoque educativo y de
                 divulgación que busca acercar a las y los lectores a la obra y a sus capas de
                 significados, apoyándose con elementos animados e interactivos.
@@ -553,46 +555,7 @@ END:VCALENDAR`
           </div>
         </section>
 
-        {/* DESCARGAS */}
-        <section id="descargas" className="section">
-          <h2>Descargar eBook</h2>
-          <div className="download">
-            <a
-              href={CONFIG.IOS_URL || '#'}
-              aria-label="Descargar eBook para iOS (Apple Books)"
-            >
-              <img
-                alt="Banner iOS"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: 12,
-                  border: '1px solid var(--ring)'
-                }}
-                src="/ebook_ios_banner.png"
-              />
-            </a>
-            <a
-              href={CONFIG.ANDROID_URL || '#'}
-              aria-label="Descargar eBook para Android"
-            >
-              <img
-                alt="Banner Android"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  borderRadius: 12,
-                  border: '1px solid var(--ring)'
-                }}
-                src="/ebook_android_banner.png"
-              />
-            </a>
-            <p className="note">
-              Reemplaza estos enlaces con las URLs finales de Apple Books, Google Play o la
-              plataforma que uses para la descarga.
-            </p>
-          </div>
-        </section>
+     
 
         {/* REGISTRO CON GOOGLE FORM */}
         <section id="registro" className="section">
