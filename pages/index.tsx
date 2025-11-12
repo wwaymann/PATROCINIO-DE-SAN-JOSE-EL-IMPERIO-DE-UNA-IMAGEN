@@ -2,8 +2,8 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 
 const CONFIG = {
-  DATE: '22 Noviembre',
-  TIME: '19:00 hrs',
+  DATE: '20 Noviembre',
+  TIME: '17:00 hrs',
   VENUE: 'Museo Nacional de Bellas Artes',
   ADDRESS: 'José Miguel de la Barra 650, Santiago',
   CITY: 'Santiago, Chile',
