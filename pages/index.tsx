@@ -15,18 +15,20 @@ const CONFIG = {
 }
 
 export default function Home() {
-  // Tema claro/oscuro
+  // Tema claro/oscuro (aunque ahora no hay botón, lo dejo preparado)
   useEffect(() => {
     const root = document.documentElement
     if (!root.getAttribute('data-theme')) {
       root.setAttribute('data-theme', 'light')
     }
-    const saved = typeof window !== 'undefined' ? localStorage.getItem('psj_theme') : null
+    const saved =
+      typeof window !== 'undefined' ? localStorage.getItem('psj_theme') : null
     if (saved) root.setAttribute('data-theme', saved)
 
     const btn = document.getElementById('themeToggle')
     const onClick = () => {
-      const current = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light'
+      const current =
+        root.getAttribute('data-theme') === 'light' ? 'dark' : 'light'
       root.setAttribute('data-theme', current)
       localStorage.setItem('psj_theme', current)
     }
@@ -37,14 +39,16 @@ export default function Home() {
   }, [])
 
   const handleAddCalendar = () => {
-    const title = 'Lanzamiento — patrocinio de san josé'
-    const desc = 'Presentación del libro: patrocinio de san josé — El imperio de una imagen'
+    const title = 'Lanzamiento — Patrocinio de San José'
+    const desc =
+      'Presentación del libro: Patrocinio de San José — El imperio de una imagen'
     const dt = new Date()
     const dtStart = dt.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
-    const dtEnd = new Date(dt.getTime() + 2 * 60 * 60 * 1000)
-      .toISOString()
-      .replace(/[-:]/g, '')
-      .split('.')[0] + 'Z'
+    const dtEnd =
+      new Date(dt.getTime() + 2 * 60 * 60 * 1000)
+        .toISOString()
+        .replace(/[-:]/g, '')
+        .split('.')[0] + 'Z'
 
     const ics = `BEGIN:VCALENDAR
 VERSION:2.0
@@ -73,10 +77,10 @@ END:VCALENDAR`
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>patrocinio de san josé — El imperio de una imagen</title>
+        <title>Patrocinio de San José — El imperio de una imagen</title>
         <meta
           name="description"
-          content="Lanzamiento libro patrocinio de san josé — El imperio de una imagen. Reseña, fecha y lugar, registro y descargas del eBook."
+          content="Lanzamiento libro Patrocinio de San José — El imperio de una imagen. Presentación, reseña, fecha y lugar, registro y descargas del eBook."
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -84,8 +88,9 @@ END:VCALENDAR`
           href="https://db.onlinewebfonts.com/c/3e50ef03ad2b5b310b83f47172d6dcd2?family=Matona"
           rel="stylesheet"
         />
+        {/* EB Garamond para texto, como en la maqueta */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
           rel="stylesheet"
         />
       </Head>
@@ -126,7 +131,7 @@ END:VCALENDAR`
           margin: 0;
           background: var(--bg);
           color: var(--text);
-          font-family: 'Crimson Text', serif;
+          font-family: 'EB Garamond', serif;
         }
         a {
           color: var(--accent);
@@ -176,37 +181,6 @@ END:VCALENDAR`
           font-weight: 500;
           color: var(--accent);
         }
-        .cta-top {
-          display: flex;
-          gap: 10px;
-          align-items: center;
-        }
-        .btn {
-          appearance: none;
-          border: none;
-          cursor: pointer;
-          border-radius: 999px;
-          padding: 10px 16px;
-          font-weight: 600;
-          letter-spacing: 0.02em;
-        }
-        .btn-primary {
-          background: var(--accent);
-          color: #1b1615;
-        }
-        .btn-ghost {
-          background: transparent;
-          color: var(--accent);
-          border: 1px solid var(--accent);
-        }
-        .toggle {
-          border: 1px solid var(--ring);
-          background: transparent;
-          color: var(--text);
-          border-radius: 999px;
-          padding: 8px 12px;
-          cursor: pointer;
-        }
 
         .hero {
           position: relative;
@@ -223,6 +197,7 @@ END:VCALENDAR`
           letter-spacing: 0.1em;
           text-transform: uppercase;
         }
+        /* h1 solo accesible (oculto), estilos casi irrelevantes visualmente */
         h1 {
           font-family: 'Matona', 'Cinzel', serif;
           font-size: clamp(38px, 6.5vw, 72px);
@@ -236,22 +211,18 @@ END:VCALENDAR`
         h1 span {
           display: block;
           margin-top: 18px;
-          font-family: 'Crimson Text', serif;
+          font-family: 'EB Garamond', serif;
           font-style: italic;
           font-size: 0.58em;
           letter-spacing: 0.02em;
           color: var(--text);
           text-transform: none;
         }
-        .subtitle {
-          font-size: clamp(18px, 3vw, 22px);
-          opacity: 0.9;
-        }
         .hero-author {
-          margin-top: 18px;
-          font-family: 'Crimson Text', serif;
-          font-size: 0.95rem;
-          letter-spacing: 0.02em;
+          margin-top: 24px;
+          font-family: 'EB Garamond', serif;
+          font-size: 1.05rem;
+          letter-spacing: 0.04em;
         }
         .hero-cta {
           display: flex;
@@ -289,7 +260,7 @@ END:VCALENDAR`
           position: absolute;
           left: 10%;
           right: 38%;
-          top: 4%; /* más arriba para no pegarse al texto */
+          top: 6%;
           height: 3px;
           background: var(--accent);
         }
@@ -391,6 +362,25 @@ END:VCALENDAR`
           opacity: 0.9;
         }
 
+        /* Imagen de título y h1 accesible oculto */
+        .title-banner {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin-top: 16px;
+        }
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+
         @media (max-width: 920px) {
           .hero {
             grid-template-columns: 1fr;
@@ -405,9 +395,8 @@ END:VCALENDAR`
         <div className="container nav">
           <div className="brand">
             <div className="brand-logo" aria-hidden="true" />
-            <div className="brand-title">patrocinio de san josé</div>
+            <div className="brand-title">Patrocinio de San José</div>
           </div>
-         
         </div>
       </header>
 
@@ -416,11 +405,19 @@ END:VCALENDAR`
         <section className="hero" aria-label="Presentación">
           <div>
             <div className="kicker">Lanzamiento libro</div>
-            <h1>
-              patrocinio de san josé
-              <br />
-              <span>El imperio de una imagen</span>
+
+            {/* H1 oculto solo para SEO/accesibilidad */}
+            <h1 className="sr-only">
+              Patrocinio de San José — El imperio de una imagen
             </h1>
+
+            {/* Imagen de título, como en tu portada */}
+            <img
+              className="title-banner"
+              src="/banner-patrocinio-san-jose-1.jpg"
+              alt="Patrocinio de San José. El imperio de una imagen. Autora: Natalia Portugueis Coronel."
+            />
+
             <p className="hero-author">Autora: Natalia Portugueis Coronel</p>
 
             <div className="event-bar" aria-live="polite">
@@ -446,6 +443,7 @@ END:VCALENDAR`
               </a>
             </div>
           </div>
+
           <div className="hero-media">
             <figure className="frame">
               <img
@@ -455,7 +453,23 @@ END:VCALENDAR`
               />
             </figure>
           </div>
- 
+        </section>
+
+        {/* PRESENTACIÓN – texto ancho, una sola columna */}
+        <section id="presentacion" className="section">
+          <div>
+            <h2>Presentación</h2>
+            <p className="lede">
+              El libro <em>Patrocinio de San José. El imperio de una imagen</em> es una
+              investigación de historia del arte que cuenta con una edición de 150 ejemplares y un
+              eBook, de distribución y descarga gratuita respectivamente, gracias al financiamiento
+              del Fondo del Patrimonio Cultural 2024 del Servicio Nacional del Patrimonio Cultural
+              de Chile. Será lanzado en el Museo Nacional de Bellas Artes, el jueves 20 de noviembre
+              de 2025 a las 17:00 horas, con un conversatorio con la autora, Natalia Portugueis, y
+              la Doctora en Historia del Arte Constanza Acuña.
+            </p>
+          </div>
+        </section>
 
         {/* RESEÑA */}
         <section id="resena" className="section">
@@ -463,15 +477,42 @@ END:VCALENDAR`
             <div>
               <h2>Reseña</h2>
               <p className="lede">
-               Patrocinio de san José. El imperio de una imagen, es una investigación sobre la vida de la pintura Patrocinio de san José, realizada por Gaspar Miguel de Berrío en 1744 en Potosí (Bolivia), desde que fue adquirida por el Museo Nacional de Bellas Artes en 1965.
-En el libro, la autora analiza la recepción y fortuna crítica de la pintura, tomando su caso como ejemplo para hacer un recorrido por medio siglo de escritura y exposiciones, que develan prácticas, omisiones y programas en la construcción de la narrativa de la historia del arte chileno. Junto con este estudio, Portugueis ofrece una completa identificación iconográfica de la pintura y un análisis iconológico con dos alternativas de lectura de sus posibles significados.
-                La publicación en formato Ebook, posee un importante enfoque educativo y de divulgación que busca acercar a las y los lectores a la obra y a sus capas de significados, apoyándose con elementos animados e interactivos.
-
-
+                <em>Patrocinio de San José. El imperio de una imagen</em> es una investigación
+                sobre la vida de la pintura <em>Patrocinio de San José</em>, realizada por Gaspar
+                Miguel de Berrío en 1744 en Potosí (Bolivia), desde que fue adquirida por el Museo
+                Nacional de Bellas Artes en 1965.
               </p>
-            
+              <p>
+                En el libro, la autora analiza la recepción y fortuna crítica de la pintura, tomando
+                su caso como ejemplo para hacer un recorrido por medio siglo de escritura y
+                exposiciones, que develan prácticas, omisiones y programas en la construcción de la
+                narrativa de la historia del arte chileno. Junto con este estudio, Portugueis ofrece
+                una completa identificación iconográfica de la pintura y un análisis iconológico con
+                dos alternativas de lectura de sus posibles significados.
+              </p>
+              <p>
+                La publicación en formato eBook posee un importante enfoque educativo y de
+                divulgación que busca acercar a las y los lectores a la obra y a sus capas de
+                significados, apoyándose con elementos animados e interactivos.
+              </p>
             </div>
-          
+            <aside className="card">
+              <h3
+                style={{
+                  fontFamily: 'Matona, Cinzel, serif',
+                  margin: '0 0 8px',
+                  color: 'var(--accent)'
+                }}
+              >
+                Detalles de la edición
+              </h3>
+              <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.7 }}>
+                <li>Formato: tapa blanda y eBook</li>
+                <li>Idioma: español</li>
+                <li>Imágenes restauradas y comentadas</li>
+                <li>Diseño editorial con paleta inspirada en terracotas, oros y negros</li>
+              </ul>
+            </aside>
           </div>
         </section>
 
@@ -481,8 +522,17 @@ En el libro, la autora analiza la recepción y fortuna crítica de la pintura, t
             <div>
               <h2>Acerca de la autora</h2>
               <p className="lede">
-Natalia Portugueis es Licenciada en Arte con mención en Grabado y Magíster en Teoría e Historia del Arte por la Universidad de Chile. Durante las últimas dos décadas ha trabajado en el ámbito de la educación en museos, destacando la Coordinación del área de Mediación y Educación del Museo Nacional de Bellas Artes (2010-2017) y la Subdirección de Educación y Programas Públicos del Museo de Bomberos de Santiago (2018 a la fecha). En forma paralela al trabajo vinculado a los museos, desarrolla proyectos artísticos independientes, y de gestión en divulgación y educación en Derechos Humanos.              </p>
-          
+                Natalia Portugueis es Licenciada en Arte con mención en Grabado y Magíster en
+                Teoría e Historia del Arte por la Universidad de Chile. Durante las últimas dos
+                décadas ha trabajado en el ámbito de la educación en museos, destacando la
+                Coordinación del área de Mediación y Educación del Museo Nacional de Bellas Artes
+                (2010–2017) y la Subdirección de Educación y Programas Públicos del Museo de
+                Bomberos de Santiago (2018 a la fecha).
+              </p>
+              <p>
+                En forma paralela al trabajo vinculado a los museos, desarrolla proyectos artísticos
+                independientes y de gestión en divulgación y educación en Derechos Humanos.
+              </p>
             </div>
             <aside className="card">
               <h3
@@ -503,7 +553,46 @@ Natalia Portugueis es Licenciada en Arte con mención en Grabado y Magíster en 
           </div>
         </section>
 
-     
+        {/* DESCARGAS */}
+        <section id="descargas" className="section">
+          <h2>Descargar eBook</h2>
+          <div className="download">
+            <a
+              href={CONFIG.IOS_URL || '#'}
+              aria-label="Descargar eBook para iOS (Apple Books)"
+            >
+              <img
+                alt="Banner iOS"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: 12,
+                  border: '1px solid var(--ring)'
+                }}
+                src="/ebook_ios_banner.png"
+              />
+            </a>
+            <a
+              href={CONFIG.ANDROID_URL || '#'}
+              aria-label="Descargar eBook para Android"
+            >
+              <img
+                alt="Banner Android"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: 12,
+                  border: '1px solid var(--ring)'
+                }}
+                src="/ebook_android_banner.png"
+              />
+            </a>
+            <p className="note">
+              Reemplaza estos enlaces con las URLs finales de Apple Books, Google Play o la
+              plataforma que uses para la descarga.
+            </p>
+          </div>
+        </section>
 
         {/* REGISTRO CON GOOGLE FORM */}
         <section id="registro" className="section">
@@ -529,7 +618,11 @@ Natalia Portugueis es Licenciada en Arte con mención en Grabado y Magíster en 
               </div>
 
               <div className="actions" style={{ marginTop: 16 }}>
-                <button className="btn btn-ghost" type="button" onClick={handleAddCalendar}>
+                <button
+                  className="btn btn-ghost"
+                  type="button"
+                  onClick={handleAddCalendar}
+                >
                   Añadir al calendario
                 </button>
               </div>
@@ -540,7 +633,7 @@ Natalia Portugueis es Licenciada en Arte con mención en Grabado y Magíster en 
             <aside className="card">
               <h3
                 style={{
-                  fontFamily: 'Matona, Cinzel, serif',
+                  fontFamily: 'Matona', 'Cinzel', 'serif',
                   margin: '0 0 8px',
                   color: 'var(--accent)'
                 }}
@@ -606,7 +699,7 @@ Natalia Portugueis es Licenciada en Arte con mención en Grabado y Magíster en 
           }}
         >
           <small>
-            &copy; <span>{year}</span> patrocinio de san josé — El imperio de una imagen.
+            &copy; <span>{year}</span> Patrocinio de San José — El imperio de una imagen.
           </small>
           <small>
             Diseño web inspirado en la estética del libro. Paleta: dorados, terracotas y negro.
