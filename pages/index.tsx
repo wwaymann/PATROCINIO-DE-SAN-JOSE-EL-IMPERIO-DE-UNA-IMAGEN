@@ -11,12 +11,10 @@ const CONFIG = {
   TICKETS_URL: '#',
   IOS_URL: '#',
   ANDROID_URL: '#',
-  // ya no usamos form propio, pero dejo la clave por si vuelves a usar /api/registro o un servicio externo
   FORM_ENDPOINT: ''
 }
 
 export default function Home() {
-  // Tema claro/oscuro
   useEffect(() => {
     const root = document.documentElement
     if (!root.getAttribute('data-theme')) {
@@ -77,7 +75,7 @@ END:VCALENDAR`
         <title>Patrocinio de San José — El imperio de una imagen</title>
         <meta
           name="description"
-          content="Lanzamiento libro Patrocinio de San José — El imperio de una imagen. Reseña, fecha y lugar, formulario de registro y descargas del eBook."
+          content="Lanzamiento del libro Patrocinio de San José — El imperio de una imagen. Reseña, fecha y lugar, registro y descargas del eBook."
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -91,7 +89,6 @@ END:VCALENDAR`
         />
       </Head>
 
-      {/* ESTILOS GLOBALES */}
       <style jsx global>{`
         :root {
           --bg: #ffffff;
@@ -225,17 +222,16 @@ END:VCALENDAR`
           letter-spacing: 0.1em;
           text-transform: uppercase;
         }
-           h1{font-family:"Matona","Cinzel", serif;font-size:clamp(38px,6.5vw,72px);line-height:1.02;margin:10px 0;color:var(--accent);text-transform:uppercase;letter-spacing:.18em;}    h1{
-      font-family:"Matona","Cinzel", serif;
-      font-size:clamp(38px,6.5vw,72px);
-      line-height:1.02;
-      margin:10px 0;
-      color:var(--accent);
-      font-weight:400;      /* más liviano, sin “negrita” agresiva */
-      text-transform:none;  /* respeta mayúsculas/minúsculas tal cual las escribas en el HTML */
-      letter-spacing:.08em; /* menos separación entre letras */
-    }
-
+        h1 {
+          font-family: 'Matona', 'Cinzel', serif;
+          font-size: clamp(38px, 6.5vw, 72px);
+          line-height: 1.02;
+          margin: 10px 0;
+          color: var(--accent);
+          font-weight: 400;
+          text-transform: none;
+          letter-spacing: 0.08em;
+        }
         h1 span {
           display: block;
           margin-top: 18px;
@@ -287,16 +283,15 @@ END:VCALENDAR`
           width: 6px;
           background: var(--accent);
         }
-          .hero::after{
-      content:"";
-      position:absolute;
-      left:10%;
-      right:38%;
-      top:4%;           /* <-- antes estaba en 10% */
-      height:3px;
-      background:var(--accent);
-    }
-
+        .hero::after {
+          content: '';
+          position: absolute;
+          left: 10%;
+          right: 38%;
+          top: 4%;
+          height: 3px;
+          background: var(--accent);
+        }
         .frame {
           position: relative;
           border-radius: 14px;
@@ -402,7 +397,6 @@ END:VCALENDAR`
           .hero {
             grid-template-columns: 1fr;
           }
-          /* ← NUEVO: todas las secciones con .grid cols-2 pasan a 1 columna en móvil */
           .grid.cols-2 {
             grid-template-columns: 1fr;
           }
@@ -438,7 +432,7 @@ END:VCALENDAR`
         {/* HERO */}
         <section className="hero" aria-label="Presentación">
           <div>
-            <div class="kicker">Lanzamiento libro</div>
+            <div className="kicker">Lanzamiento del libro</div>
 
             <h1>
               Patrocinio de San José
@@ -462,18 +456,10 @@ END:VCALENDAR`
             </div>
 
             <div className="hero-cta">
-              <a
-                className="badge"
-                href="#descargas"
-                title="Descargar eBook para iOS"
-              >
+              <a className="badge" href="#descargas" title="Descargar eBook para iOS">
                 <img alt="Descargar eBook iOS" src="/ebook_ios_banner.png" />
               </a>
-              <a
-                className="badge"
-                href="#descargas"
-                title="Descargar eBook para Android"
-              >
+              <a className="badge" href="#descargas" title="Descargar eBook para Android">
                 <img alt="Descargar eBook Android" src="/ebook_android_banner.png" />
               </a>
             </div>
@@ -571,6 +557,47 @@ END:VCALENDAR`
           </div>
         </section>
 
+        {/* DESCARGAS */}
+        <section id="descargas" className="section">
+          <h2>Descargar eBook</h2>
+          <div className="download">
+            <a
+              href={CONFIG.IOS_URL || '#'}
+              aria-label="Descargar eBook para iOS (Apple Books)"
+            >
+              <img
+                alt="Banner iOS"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: 12,
+                  border: '1px solid var(--ring)'
+                }}
+                src="/ebook_ios_banner.png"
+              />
+            </a>
+            <a
+              href={CONFIG.ANDROID_URL || '#'}
+              aria-label="Descargar eBook para Android (Google Play o EPUB)"
+            >
+              <img
+                alt="Banner Android"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  borderRadius: 12,
+                  border: '1px solid var(--ring)'
+                }}
+                src="/ebook_android_banner.png"
+              />
+            </a>
+            <p className="note">
+              Reemplaza los enlaces con las URLs finales de Apple Books, Google Play o tu tienda
+              preferida.
+            </p>
+          </div>
+        </section>
+
         {/* REGISTRO CON GOOGLE FORM */}
         <section id="registro" className="section">
           <div className="grid cols-2">
@@ -610,7 +637,7 @@ END:VCALENDAR`
             <aside className="card">
               <h3
                 style={{
-                  fontFamily: 'Matona, Cinzel, serif',
+                  fontFamily: 'Matona', 'Cinzel', 'serif',
                   margin: '0 0 8px',
                   color: 'var(--accent)'
                 }}
