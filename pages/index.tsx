@@ -73,7 +73,7 @@ END:VCALENDAR`
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Patrocinio de San José — El imperio de una imagen</title>
+        <title>patrocinio de san josé — El imperio de una imagen</title>
         <meta
           name="description"
           content="Lanzamiento del libro Patrocinio de San José — El imperio de una imagen. Reseña, fecha y lugar, registro y descargas del eBook."
