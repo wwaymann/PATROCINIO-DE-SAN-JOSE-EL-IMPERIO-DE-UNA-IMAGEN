@@ -37,8 +37,8 @@ export default function Home() {
   }, [])
 
   const handleAddCalendar = () => {
-    const title = 'Lanzamiento — Patrocinio de San José'
-    const desc = 'Presentación del libro: patrOciniO de san josé — El imperio de una imagen'
+    const title = 'Lanzamiento — patrocinio de san josé'
+    const desc = 'Presentación del libro: patrocinio de san josé — El imperio de una imagen'
     const dt = new Date()
     const dtStart = dt.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
     const dtEnd = new Date(dt.getTime() + 2 * 60 * 60 * 1000)
