@@ -428,7 +428,8 @@ END:VCALENDAR`
         {/* HERO */}
         <section className="hero" aria-label="Presentación">
           <div>
-            <div className="kicker">Lanzamiento del libro</div>
+            <div class="kicker">Lanzamiento libro</div>
+
             <h1>
               Patrocinio de San José
               <br />
