@@ -506,15 +506,11 @@ La publicación en formato Ebook, posee un importante enfoque educativo y de div
             <div>
               <h2>Acerca de la autora</h2>
               <p className="lede">
-               Natalia Portugueis es Licenciada en Arte con mención en Grabado y Magíster en Teoría e Historia del Arte por la Universidad de Chile. Durante las últimas dos décadas ha trabajado en el ámbito de la educación en museos, destacando la Coordinación del área de Mediación y Educación del Museo Nacional de Bellas Artes (2010-2017) y la Subdirección de Educación y Programas Públicos del Museo de Bomberos de Santiago (2018 a la fecha). En forma paralela al trabajo vinculado a los museos, desarrolla proyectos artísticos independientes, y de gestión en divulgación y educación en Derechos Humanos.
-
+Natalia Portugueis es Licenciada en Arte con mención en Grabado y Magíster en Teoría e Historia del Arte por la Universidad de Chile. Durante las últimas dos décadas ha trabajado en el ámbito de la educación en museos, destacando la Coordinación del área de Mediación y Educación del Museo Nacional de Bellas Artes (2010-2017) y la Subdirección de Educación y Programas Públicos del Museo de Bomberos de Santiago (2018 a la fecha).
               </p>
               <p>
-                En <em>patrocinio de san josé — El imperio de una imagen</em>, articula años de
-                investigación en archivos, museos y colecciones privadas, proponiendo una lectura
-                accesible pero rigurosa de la iconografía josefina. El libro combina la precisión
-                histórica con una mirada muy cercana a la experiencia contemporánea de mirar y
-                habitar estas imágenes.
+                En forma paralela al trabajo vinculado a los museos, desarrolla proyectos artísticos independientes, y de gestión en divulgación y educación en Derechos Humanos.
+
               </p>
             </div>
             <aside className="card">
