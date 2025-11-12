@@ -407,22 +407,7 @@ END:VCALENDAR`
             <div className="brand-logo" aria-hidden="true" />
             <div className="brand-title">patrocinio de san josé</div>
           </div>
-          <div className="cta-top">
-            <button
-              id="themeToggle"
-              className="toggle"
-              type="button"
-              title="Cambiar tema"
-            >
-              Tema claro/oscuro
-            </button>
-            <a href="#descargas" className="btn btn-ghost">
-              Descargas
-            </a>
-            <a href="#resena" className="btn btn-primary">
-              Leer reseña
-            </a>
-          </div>
+         
         </div>
       </header>
 
