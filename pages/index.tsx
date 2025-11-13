@@ -464,50 +464,46 @@ END:VCALENDAR`
           </div>
         </section>
 
-        {/* RESEÑA */}
-        <section id="resena" className="section">
-          <div className="grid cols-2">
-            <div>
-              <h2>reseña</h2>
-              <p className="lede">
-                <em>Patrocinio de San José. El imperio de una imagen</em> es una investigación
-                sobre la vida de la pintura Patrocinio de San José, realizada por Gaspar
-                Miguel de Berrío en 1744 en Potosí (Bolivia), desde que fue adquirida por el Museo
-                Nacional de Bellas Artes en 1965.
-                En el libro, la autora analiza la recepción y fortuna crítica de la pintura, tomando
-                su caso como ejemplo para hacer un recorrido por medio siglo de escritura y
-                exposiciones, que develan prácticas, omisiones y programas en la construcción de la
-                narrativa de la historia del arte chileno. Junto con este estudio, Portugueis ofrece
-                una completa identificación iconográfica de la pintura y un análisis iconológico con
-                dos alternativas de lectura de sus posibles significados.
-                La publicación en formato eBook posee un importante enfoque educativo y de
-                divulgación que busca acercar a las y los lectores a la obra y a sus capas de
-                significados, apoyándose con elementos animados e interactivos.
-              </p>
-            </div>
-          
-          </div>
-        </section>
+{/* RESEÑA + ACERCA DE LA AUTORA (2 columnas en desktop, 1 en móvil) */}
+<section id="resena-autora" className="section">
+  <div className="grid cols-2">
+    {/* Columna izquierda: Reseña */}
+    <div>
+      <h2>reseña</h2>
+      <p className="lede">
+        <em>Patrocinio de San José. El imperio de una imagen</em> es una investigación
+        sobre la vida de la pintura Patrocinio de San José, realizada por Gaspar
+        Miguel de Berrío en 1744 en Potosí (Bolivia), desde que fue adquirida por el Museo
+        Nacional de Bellas Artes en 1965.
+        En el libro, la autora analiza la recepción y fortuna crítica de la pintura, tomando
+        su caso como ejemplo para hacer un recorrido por medio siglo de escritura y
+        exposiciones, que develan prácticas, omisiones y programas en la construcción de la
+        narrativa de la historia del arte chileno. Junto con este estudio, Portugueis ofrece
+        una completa identificación iconográfica de la pintura y un análisis iconológico con
+        dos alternativas de lectura de sus posibles significados.
+        La publicación en formato eBook posee un importante enfoque educativo y de
+        divulgación que busca acercar a las y los lectores a la obra y a sus capas de
+        significados, apoyándose con elementos animados e interactivos.
+      </p>
+    </div>
 
-        {/* ACERCA DE LA AUTORA */}
-        <section id="autora" className="section">
-          <div className="grid cols-2">
-            <div>
-              <h2>acerca de la autora</h2>
-              <p className="lede">
-                Natalia Portugueis es Licenciada en Arte con mención en Grabado y Magíster en
-                Teoría e Historia del Arte por la Universidad de Chile. Durante las últimas dos
-                décadas ha trabajado en el ámbito de la educación en museos, destacando la
-                Coordinación del área de Mediación y Educación del Museo Nacional de Bellas Artes
-                (2010–2017) y la Subdirección de Educación y Programas Públicos del Museo de
-                Bomberos de Santiago (2018 a la fecha).
-                En forma paralela al trabajo vinculado a los museos, desarrolla proyectos artísticos
-                independientes y de gestión en divulgación y educación en Derechos Humanos.
-              </p>
-            </div>
-          
-          </div>
-        </section>
+    {/* Columna derecha: Autora */}
+    <aside className="card">
+      <h2>acerca de la autora</h2>
+      <p className="lede">
+        Natalia Portugueis es Licenciada en Arte con mención en Grabado y Magíster en
+        Teoría e Historia del Arte por la Universidad de Chile. Durante las últimas dos
+        décadas ha trabajado en el ámbito de la educación en museos, destacando la
+        Coordinación del área de Mediación y Educación del Museo Nacional de Bellas Artes
+        (2010–2017) y la Subdirección de Educación y Programas Públicos del Museo de
+        Bomberos de Santiago (2018 a la fecha).
+        En forma paralela al trabajo vinculado a los museos, desarrolla proyectos artísticos
+        independientes y de gestión en divulgación y educación en Derechos Humanos.
+      </p>
+    </aside>
+  </div>
+</section>
+
 
        
 
