@@ -445,7 +445,7 @@ END:VCALENDAR`
         {/* PRESENTACIÓN – texto ancho, una sola columna */}
         <section id="presentacion" className="section">
           <div>
-            <h2>Presentación</h2>
+            <h2>presentación</h2>
             <p className="lede">
               El libro <em>Patrocinio de San José. El imperio de una imagen</em> es una
               investigación de historia del arte que cuenta con una edición de 150 ejemplares y un
