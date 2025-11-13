@@ -601,25 +601,56 @@ END:VCALENDAR`
 </main>
 
 
-      <footer>
-        <div
-          className="container"
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            gap: 20,
-            flexWrap: 'wrap',
-            alignItems: 'center'
-          }}
-        >
-          <small>
-            &copy; <span>{year}</span> Patrocinio de San José. El imperio de una imagen.
-          </small>
-          <small>
-          
-          </small>
-        </div>
-      </footer>
+     <footer>
+  <div
+    className="container"
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      gap: 20,
+      flexWrap: 'wrap',
+      alignItems: 'center'
+    }}
+  >
+    {/* Logos (sube los archivos a /public/logos/ y ajusta los nombres) */}
+    <div
+      className="footer-logos"
+      style={{ display: 'flex', gap: 18, alignItems: 'center', flexWrap: 'wrap' }}
+      aria-label="Organizan y patrocinan"
+    >
+      <a href="https://www.patrimoniocultural.gob.cl/" target="_blank" rel="noopener">
+        <img
+          src="/logos/Serpat+FPC_CMYK-02.png"
+          alt="Logo 1"
+          style={{ height: 40, width: 'auto', display: 'block', opacity: 0.95 }}
+        />
+      </a>
+      <a href="#" target="_blank" rel="noopener">
+        <img
+          src="/logos/logo2.png"
+          alt="Logo 2"
+          style={{ height: 40, width: 'auto', display: 'block', opacity: 0.95 }}
+        />
+      </a>
+      <a href="#" target="_blank" rel="noopener">
+        <img
+          src="/logos/logo3.png"
+          alt="Logo 3"
+          style={{ height: 40, width: 'auto', display: 'block', opacity: 0.95 }}
+        />
+      </a>
+    </div>
+
+    <small>
+      &copy; <span>{year}</span> Patrocinio de San José. El imperio de una imagen.
+    </small>
+
+    <small>
+      {/* Texto opcional del footer, deja en blanco o agrega una nota breve */}
+    </small>
+  </div>
+</footer>
+
     </>
   )
 }
