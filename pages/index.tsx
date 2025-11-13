@@ -422,7 +422,7 @@ END:VCALENDAR`
             </div>
 
                     <p className="lede">
-            Descarga gratis el Ebook a partir del 20 de Noviembre.
+            Descarga gratis el Ebook a partir del 20 de Noviembre 2025.
             </p>
   
             <div className="hero-cta">
