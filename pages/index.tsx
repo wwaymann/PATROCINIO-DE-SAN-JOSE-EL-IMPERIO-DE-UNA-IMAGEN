@@ -501,8 +501,6 @@ END:VCALENDAR`
                 Coordinación del área de Mediación y Educación del Museo Nacional de Bellas Artes
                 (2010–2017) y la Subdirección de Educación y Programas Públicos del Museo de
                 Bomberos de Santiago (2018 a la fecha).
-              </p>
-              <p>
                 En forma paralela al trabajo vinculado a los museos, desarrolla proyectos artísticos
                 independientes y de gestión en divulgación y educación en Derechos Humanos.
               </p>
@@ -546,67 +544,67 @@ END:VCALENDAR`
                 </button>
               </div>
 
-              <p className="hint">Cupos limitados.</p>
-            </div>
+            <p className="hint">Cupos limitados.</p>
+</div>
 
-            <aside className="card">
-              <h3
-                style={{
-                  fontFamily: 'Matona, Cinzel, serif',
-                  margin: '0 0 8px',
-                  color: 'var(--accent)'
-                }}
-              >
-                ¿Dónde será?
-              </h3>
-              <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.7 }}>
-                <li>
-                  <strong>Lugar:</strong> {CONFIG.VENUE}
-                </li>
-                <li>
-                  <strong>Dirección:</strong> {CONFIG.ADDRESS}
-                </li>
-                <li>
-                  <strong>Ciudad:</strong> {CONFIG.CITY}
-                </li>
-                <li>
-                  <strong>Fecha:</strong> {CONFIG.DATE}
-                </li>
-                <li>
-                  <strong>Hora:</strong> {CONFIG.TIME}
-                </li>
-               
-               
-              </ul>
-              <div
-                style={{
-                  display: 'flex',
-                  gap: 10,
-                  flexWrap: 'wrap',
-                  marginTop: 10
-                }}
-              >
-                <a
-                  className="btn btn-ghost"
-                  target="_blank"
-                  rel="noopener"
-                  href={CONFIG.MAP_URL}
-                >
-                  Ver mapa
-                </a>
-                <a
-                  className="btn btn-ghost"
-                  target="_blank"
-                  rel="noopener"
-                  href={CONFIG.TICKETS_URL}
-                >
-                  Más información
-                </a>
-              </div>
-            </aside>
-          </div>
-        </section>
-      </main>
+<aside className="card">
+  <h3
+    style={{
+      fontFamily: 'Matona, Cinzel, serif',
+      margin: '0 0 8px',
+      color: 'var(--accent)'
+    }}
+  >
+    ¿dónde será?
+  </h3>
+  <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.7 }}>
+    <li>
+      <strong>Lugar:</strong> {CONFIG.VENUE}
+    </li>
+    <li>
+      <strong>Dirección:</strong> {CONFIG.ADDRESS}
+    </li>
+    <li>
+      <strong>Ciudad:</strong> {CONFIG.CITY}
+    </li>
+    <li>
+      <strong>Fecha:</strong> {CONFIG.DATE}
+    </li>
+    <li>
+      <strong>Hora:</strong> {CONFIG.TIME}
+    </li>
+  </ul>
+
+  <div
+    style={{
+      display: 'flex',
+      gap: 10,
+      flexWrap: 'wrap',
+      marginTop: 10
+    }}
+  >
+    <a
+      className="btn btn-ghost"
+      target="_blank"
+      rel="noopener"
+      href={CONFIG.MAP_URL}
+    >
+      Ver mapa
+    </a>
+    <a
+      className="btn btn-ghost"
+      target="_blank"
+      rel="noopener"
+      href={CONFIG.TICKETS_URL}
+    >
+      Más información
+    </a>
+  </div>
+</aside>
+</div>
+</section>
+</main>
+
 
       <footer>
         <div
