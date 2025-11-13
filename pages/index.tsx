@@ -418,7 +418,7 @@ END:VCALENDAR`
               alt="Patrocinio de San José. El imperio de una imagen. Autora: Natalia Portugueis Coronel."
             />
 
-            <p className="hero-author">Autora: Natalia Portugueis Coronel</p>
+            <p className="hero-author"></p>
 
             <div className="event-bar" aria-live="polite">
               {[
