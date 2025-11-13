@@ -422,7 +422,7 @@ END:VCALENDAR`
             </div>
 
                     <p className="lede">
-            Proximanete
+            Descargalo aquí gratis a partir del 20 de Noviembre
             </p>
   
             <div className="hero-cta">
@@ -435,10 +435,6 @@ END:VCALENDAR`
             </div>
           </div>
 
-
-
-
-          
           <div className="hero-media">
             <figure className="frame">
               <img
@@ -450,14 +446,7 @@ END:VCALENDAR`
           </div>
         </section>
 
-         {/* PRESENTACIÓN – texto ancho, una sola columna */}
-        <section id="presentacion" className="section">
-          <div>
-                    <p className="lede">
-            Proximanete
-            </p>
-          </div>
-        </section>
+      
 
         {/* PRESENTACIÓN – texto ancho, una sola columna */}
         <section id="presentacion" className="section">
