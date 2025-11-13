@@ -496,23 +496,7 @@ END:VCALENDAR`
                 significados, apoyándose con elementos animados e interactivos.
               </p>
             </div>
-            <aside className="card">
-              <h3
-                style={{
-                  fontFamily: 'Matona, Cinzel, serif',
-                  margin: '0 0 8px',
-                  color: 'var(--accent)'
-                }}
-              >
-                Detalles de la edición
-              </h3>
-              <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.7 }}>
-                <li>Formato: tapa blanda y eBook</li>
-                <li>Idioma: español</li>
-                <li>Imágenes restauradas y comentadas</li>
-                <li>Diseño editorial con paleta inspirada en terracotas, oros y negros</li>
-              </ul>
-            </aside>
+          
           </div>
         </section>
 
