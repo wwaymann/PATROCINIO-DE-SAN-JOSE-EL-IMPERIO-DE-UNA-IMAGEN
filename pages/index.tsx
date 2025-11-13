@@ -625,17 +625,17 @@ END:VCALENDAR`
           style={{ height: 80, width: 'auto', display: 'block', opacity: 0.95 }}
         />
       </a>
-      <a href="#" target="_blank" rel="noopener">
+      <a href="https://walterwaymann.wixsite.com/walter-waymann" target="_blank" rel="noopener">
         <img
           src="Logo_WalterWaymann.png"
           alt="Logo Walter Waymann"
           style={{ height: 80, width: 'auto', display: 'block', opacity: 0.95 }}
         />
       </a>
-      <a href="#" target="_blank" rel="noopener">
+      <a href="https://www.instagram.com/estudio_pagana/" target="_blank" rel="noopener">
         <img
-          src="/logos/logo3.png"
-          alt="Logo 3"
+          src="/Logo_pagana-01.png"
+          alt="Logo Pagana"
           style={{ height: 80, width: 'auto', display: 'block', opacity: 0.95 }}
         />
       </a>
