@@ -621,22 +621,22 @@ END:VCALENDAR`
       <a href="https://www.patrimoniocultural.gob.cl/" target="_blank" rel="noopener">
         <img
           src="/serpat.png"
-          alt="Logo 1"
-          style={{ height: 40, width: 'auto', display: 'block', opacity: 0.95 }}
+          alt="Serpat"
+          style={{ height: 80, width: 'auto', display: 'block', opacity: 0.95 }}
         />
       </a>
       <a href="#" target="_blank" rel="noopener">
         <img
-          src="/logos/logo2.png"
-          alt="Logo 2"
-          style={{ height: 40, width: 'auto', display: 'block', opacity: 0.95 }}
+          src="Logo_WalterWaymann.png"
+          alt="Logo Walter Waymann"
+          style={{ height: 80, width: 'auto', display: 'block', opacity: 0.95 }}
         />
       </a>
       <a href="#" target="_blank" rel="noopener">
         <img
           src="/logos/logo3.png"
           alt="Logo 3"
-          style={{ height: 40, width: 'auto', display: 'block', opacity: 0.95 }}
+          style={{ height: 80, width: 'auto', display: 'block', opacity: 0.95 }}
         />
       </a>
     </div>
