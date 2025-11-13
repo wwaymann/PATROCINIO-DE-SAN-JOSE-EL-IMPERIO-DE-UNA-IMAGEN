@@ -421,6 +421,10 @@ END:VCALENDAR`
               ))}
             </div>
 
+                    <p className="lede">
+            Proximanete
+            </p>
+  
             <div className="hero-cta">
               <a className="badge" href="#descargas" title="Descargar eBook para iOS">
                 <img alt="Descargar eBook iOS" src="/ebook_ios_banner.png" />
