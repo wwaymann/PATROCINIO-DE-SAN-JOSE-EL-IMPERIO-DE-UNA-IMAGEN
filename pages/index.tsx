@@ -384,12 +384,7 @@ END:VCALENDAR`
       `}</style>
 
       <header>
-        <div className="container nav">
-          <div className="brand">
-            <div className="brand-logo" aria-hidden="true" />
-            <div className="brand-title">Patrocinio de San José</div>
-          </div>
-        </div>
+       
       </header>
 
       <main className="container">
