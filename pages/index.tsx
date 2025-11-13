@@ -41,7 +41,7 @@ export default function Home() {
   const handleAddCalendar = () => {
     const title = 'Lanzamiento — Patrocinio de San José'
     const desc =
-      'Presentación del libro: Patrocinio de San José — El imperio de una imagen'
+      ' del libro: Patrocinio de San José — El imperio de una imagen'
     const dt = new Date()
     const dtStart = dt.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
     const dtEnd =
@@ -80,7 +80,7 @@ END:VCALENDAR`
         <title>Patrocinio de San José — El imperio de una imagen</title>
         <meta
           name="description"
-          content="Lanzamiento libro Patrocinio de San José — El imperio de una imagen. Presentación, reseña, fecha y lugar, registro y descargas del eBook."
+          content="Lanzamiento libro Patrocinio de San José — El imperio de una imagen. , reseña, fecha y lugar, registro y descargas del eBook."
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -389,7 +389,7 @@ END:VCALENDAR`
 
       <main className="container">
         {/* HERO */}
-        <section className="hero" aria-label="Presentación">
+        <section className="hero" aria-label="">
           <div>
             <div className="kicker">Lanzamiento libro</div>
 
@@ -431,6 +431,24 @@ END:VCALENDAR`
             </div>
           </div>
 
+ {/* PRESENTACIÓN – texto ancho, una sola columna */}
+        <section id="presentacion" className="section">
+          <div>
+         
+            <p className="lede">
+              El libro <em>Patrocinio de San José. El imperio de una imagen</em> es una
+              investigación de historia del arte que cuenta con una edición de 150 ejemplares y un
+              Ebook, de distribución y descarga gratuita respectivamente, gracias al financiamiento
+              del Fondo del Patrimonio Cultural 2024 del Servicio Nacional del Patrimonio Cultural
+              de Chile. Será lanzado en el Museo Nacional de Bellas Artes, el jueves 20 de noviembre
+              de 2025 a las 17:00 horas, con un conversatorio con la autora, Natalia Portugueis, y
+              la Doctora en Historia del Arte Constanza Acuña.
+            </p>
+          </div>
+        </section>
+
+
+          
           <div className="hero-media">
             <figure className="frame">
               <img
