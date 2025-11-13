@@ -255,15 +255,7 @@ END:VCALENDAR`
           width: 6px;
           background: var(--accent);
         }
-        .hero::after {
-          content: '';
-          position: absolute;
-          left: 10%;
-          right: 38%;
-          top: 6%;
-          height: 3px;
-          background: var(--accent);
-        }
+     
         .frame {
           position: relative;
           border-radius: 14px;
