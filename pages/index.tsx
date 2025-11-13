@@ -620,7 +620,7 @@ END:VCALENDAR`
     >
       <a href="https://www.patrimoniocultural.gob.cl/" target="_blank" rel="noopener">
         <img
-          src="/logos/Serpat+FPC_CMYK-02.png"
+          src="/logos/serpat.png"
           alt="Logo 1"
           style={{ height: 40, width: 'auto', display: 'block', opacity: 0.95 }}
         />
