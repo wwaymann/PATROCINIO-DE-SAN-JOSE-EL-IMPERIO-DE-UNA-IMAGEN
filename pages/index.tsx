@@ -629,14 +629,14 @@ END:VCALENDAR`
         <img
           src="Logo_WalterWaymann.png"
           alt="Logo Walter Waymann"
-          style={{ height: 80, width: 'auto', display: 'block', opacity: 0.95 }}
+          style={{ height: 60, width: 'auto', display: 'block', opacity: 0.95 }}
         />
       </a>
       <a href="https://www.instagram.com/estudio_pagana/" target="_blank" rel="noopener">
         <img
           src="/Logo_pagana-01.png"
           alt="Logo Pagana"
-          style={{ height: 80, width: 'auto', display: 'block', opacity: 0.95 }}
+          style={{ height: 50, width: 'auto', display: 'block', opacity: 0.95 }}
         />
       </a>
     </div>
