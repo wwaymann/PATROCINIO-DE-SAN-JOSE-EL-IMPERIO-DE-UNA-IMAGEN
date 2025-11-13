@@ -462,7 +462,7 @@ END:VCALENDAR`
         <section id="resena" className="section">
           <div className="grid cols-2">
             <div>
-              <h2>Reseña</h2>
+              <h2>reseña</h2>
               <p className="lede">
                 <em>Patrocinio de San José. El imperio de una imagen</em> es una investigación
                 sobre la vida de la pintura <em>Patrocinio de San José</em>, realizada por Gaspar
@@ -491,7 +491,7 @@ END:VCALENDAR`
         <section id="autora" className="section">
           <div className="grid cols-2">
             <div>
-              <h2>Acerca de la autora</h2>
+              <h2>acerca de la autora</h2>
               <p className="lede">
                 Natalia Portugueis es Licenciada en Arte con mención en Grabado y Magíster en
                 Teoría e Historia del Arte por la Universidad de Chile. Durante las últimas dos
@@ -515,7 +515,7 @@ END:VCALENDAR`
         <section id="registro" className="section">
           <div className="grid cols-2">
             <div>
-              <h2>Registro al lanzamiento</h2>
+              <h2>registro al lanzamiento</h2>
               <p className="lede">
                 Completa el formulario para confirmar tu asistencia y recibir información del
                 lanzamiento.
