@@ -2,11 +2,11 @@ import Head from 'next/head'
 import { useEffect } from 'react'
 
 const CONFIG = {
-  DATE: '20 Noviembre',
-  TIME: '17:00 hrs',
-  VENUE: 'Museo Nacional de Bellas Artes',
-  ADDRESS: 'José Miguel de la Barra 650, Santiago',
-  CITY: 'Santiago, Chile',
+  DATE: '20 Noviembre.',
+  TIME: '17:00 h.',
+  VENUE: 'Museo Nacional de Bellas Artes.',
+  ADDRESS: 'José Miguel de la Barra 650.',
+  CITY: 'Santiago, Chile.',
   MAP_URL: 'https://maps.app.goo.gl/XEuH5wU11vUN1NhCA',
   TICKETS_URL: '#',
   IOS_URL: '#',
@@ -465,7 +465,7 @@ END:VCALENDAR`
               <h2>reseña</h2>
               <p className="lede">
                 <em>Patrocinio de San José. El imperio de una imagen</em> es una investigación
-                sobre la vida de la pintura <em>Patrocinio de San José</em>, realizada por Gaspar
+                sobre la vida de la pintura Patrocinio de San José, realizada por Gaspar
                 Miguel de Berrío en 1744 en Potosí (Bolivia), desde que fue adquirida por el Museo
                 Nacional de Bellas Artes en 1965.
               </p>
@@ -559,12 +559,6 @@ END:VCALENDAR`
               </h3>
               <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.7 }}>
                 <li>
-                  <strong>Fecha:</strong> {CONFIG.DATE}
-                </li>
-                <li>
-                  <strong>Hora:</strong> {CONFIG.TIME}
-                </li>
-                <li>
                   <strong>Lugar:</strong> {CONFIG.VENUE}
                 </li>
                 <li>
@@ -573,6 +567,14 @@ END:VCALENDAR`
                 <li>
                   <strong>Ciudad:</strong> {CONFIG.CITY}
                 </li>
+                <li>
+                  <strong>Fecha:</strong> {CONFIG.DATE}
+                </li>
+                <li>
+                  <strong>Hora:</strong> {CONFIG.TIME}
+                </li>
+               
+               
               </ul>
               <div
                 style={{
