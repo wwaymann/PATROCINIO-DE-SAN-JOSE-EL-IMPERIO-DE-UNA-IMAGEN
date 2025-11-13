@@ -431,21 +431,7 @@ END:VCALENDAR`
             </div>
           </div>
 
- {/* PRESENTACIÓN – texto ancho, una sola columna */}
-        <section id="presentacion" className="section">
-          <div>
-         
-            <p className="lede">
-              El libro <em>Patrocinio de San José. El imperio de una imagen</em> es una
-              investigación de historia del arte que cuenta con una edición de 150 ejemplares y un
-              Ebook, de distribución y descarga gratuita respectivamente, gracias al financiamiento
-              del Fondo del Patrimonio Cultural 2024 del Servicio Nacional del Patrimonio Cultural
-              de Chile. Será lanzado en el Museo Nacional de Bellas Artes, el jueves 20 de noviembre
-              de 2025 a las 17:00 horas, con un conversatorio con la autora, Natalia Portugueis, y
-              la Doctora en Historia del Arte Constanza Acuña.
-            </p>
-          </div>
-        </section>
+
 
 
           
@@ -457,6 +443,15 @@ END:VCALENDAR`
                 src="/hero_patrocinio.jpg"
               />
             </figure>
+          </div>
+        </section>
+
+         {/* PRESENTACIÓN – texto ancho, una sola columna */}
+        <section id="presentacion" className="section">
+          <div>
+                    <p className="lede">
+            Proximanete
+            </p>
           </div>
         </section>
 
@@ -636,10 +631,10 @@ END:VCALENDAR`
           }}
         >
           <small>
-            &copy; <span>{year}</span> Patrocinio de San José — El imperio de una imagen.
+            &copy; <span>{year}</span> Patrocinio de San José. El imperio de una imagen.
           </small>
           <small>
-            Diseño web inspirado en la estética del libro. Paleta: dorados, terracotas y negro.
+          
           </small>
         </div>
       </footer>
