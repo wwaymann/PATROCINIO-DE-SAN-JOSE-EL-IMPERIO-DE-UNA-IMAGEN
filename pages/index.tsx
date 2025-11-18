@@ -446,6 +446,23 @@ END:VCALENDAR`
           </div>
         </section>
 
+       {/* VISTA PREVIA (FlipHTML5)  */}
+<section id="preview" className="section">
+  <h2>vista previa del eBook</h2>
+  <div style={{ position:'relative', paddingTop:'max(60%, 324px)', width:'100%', height:0 }}>
+    <iframe
+      style={{ position:'absolute', border:'none', width:'100%', height:'100%', left:0, top:0 }}
+      src="https://online.fliphtml5.com/ArenaDigital/jfgs/"
+      title="Vista previa del eBook — FlipHTML5"
+      loading="lazy"
+      scrolling="no"
+      frameBorder={0}
+      allowFullScreen
+    />
+  </div>
+</section>
+
+<section id="presentacion" className="section">
       
 
         {/* PRESENTACIÓN – texto ancho, una sola columna */}
@@ -464,24 +481,7 @@ END:VCALENDAR`
           </div>
         </section>
 
-        {/* VISTA PREVIA (FlipHTML5) */}
-<section id="preview" class="section">
-  <h2>Vista previa del eBook</h2>
-  <div 
-    style="position:relative;padding-top:max(60%,324px);width:100%;height:0;">
-    <iframe 
-      style="position:absolute;border:none;width:100%;height:100%;left:0;top:0;"
-      src="https://online.fliphtml5.com/ArenaDigital/jfgs/"
-      title="Vista previa del eBook — FlipHTML5"
-      loading="lazy"
-      seamless="seamless"
-      scrolling="no"
-      frameborder="0"
-      allowtransparency="true"
-      allowfullscreen="true">
-    </iframe>
-  </div>
-</section>
+     
 
         
 
