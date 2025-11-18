@@ -462,7 +462,7 @@ END:VCALENDAR`
   </div>
 </section>
 
-<section id="presentacion" className="section">
+
       
 
         {/* PRESENTACIÓN – texto ancho, una sola columna */}
