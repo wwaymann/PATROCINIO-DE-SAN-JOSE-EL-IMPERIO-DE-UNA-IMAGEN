@@ -462,15 +462,27 @@ END:VCALENDAR`
               la Doctora en Historia del Arte Constanza Acuña.
             </p>
           </div>
-
-          <div 
-              style="position:relative;padding-top:max(60%,324px);width:100%;height:0;"><iframe 
-              style="position:absolute;border:none;width:100%;height:100%;left:0;top:0;" 
-              src="https://online.fliphtml5.com/ArenaDigital/jfgs/"  seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" >
-              </iframe>
-            </div>
-          
         </section>
+
+        {/* VISTA PREVIA (FlipHTML5) */}
+<section id="preview" class="section">
+  <h2>Vista previa del eBook</h2>
+  <div 
+    style="position:relative;padding-top:max(60%,324px);width:100%;height:0;">
+    <iframe 
+      style="position:absolute;border:none;width:100%;height:100%;left:0;top:0;"
+      src="https://online.fliphtml5.com/ArenaDigital/jfgs/"
+      title="Vista previa del eBook — FlipHTML5"
+      loading="lazy"
+      seamless="seamless"
+      scrolling="no"
+      frameborder="0"
+      allowtransparency="true"
+      allowfullscreen="true">
+    </iframe>
+  </div>
+</section>
+
         
 
 {/* RESEÑA + ACERCA DE LA AUTORA (2 columnas en desktop, 1 en móvil) */}
