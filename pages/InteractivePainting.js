@@ -194,17 +194,13 @@ export default function InteractivePainting() {
     },
   
 {
-  id: "angel_manto_1",
-  nombre: "ángel portador del manto",
+  id: "angeles mantos",
+  nombre: "ángeles portadores del manto",
   descripcion:
     "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
   src: "/capas/angeles_capa_full.png"
 },
 
- // -----------------------------------------------------------------------
-    // SEGUNDO NIVEL Angeles
-    // -----------------------------------------------------------------------
-   
   
   // -----------------------------------------------------------------------
   // Cargar cada PNG en canvas para detección pixel-perfect
