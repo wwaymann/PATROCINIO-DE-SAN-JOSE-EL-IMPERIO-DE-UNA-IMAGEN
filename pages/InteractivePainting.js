@@ -69,7 +69,7 @@ export default function InteractivePainting() {
       fechas: "1182–1226",
       descripcion:
         "hábito café. estigmas visibles. porta un crucifijo.",
-      src: "/capas/francisco_full1.png"
+      src: "/capas/francisco_full.png"
     },
     {
       id: "jeronimo",
