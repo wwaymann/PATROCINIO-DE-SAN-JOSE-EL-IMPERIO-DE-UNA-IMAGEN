@@ -4,12 +4,15 @@ export default function InteractivePainting() {
   const [active, setActive] = useState(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
 
+  const [zooming, setZooming] = useState(false);
+  const [zoomPoint, setZoomPoint] = useState({ x: 0, y: 0 });
+
   const canvasRefs = useRef({});
   const imgRefs = useRef({});
   const containerRef = useRef(null);
 
   // -----------------------------------------------------------------------
-  // PRIMERA FILA – 12 santos – izquierda → derecha (nombres en minúscula)
+  // PRIMERA FILA – 12 santos (nombres en minúscula)
   // -----------------------------------------------------------------------
   const personajes = [
     {
@@ -17,7 +20,7 @@ export default function InteractivePainting() {
       nombre: "san ignacio de loyola",
       fechas: "1491–1556",
       descripcion:
-        "Jesuita. Hábito negro. Porta el emblema IHS rodeado de rayos y el libro de reglas con la divisa 'Ad Majorem Gloriam Dei'.",
+        "jesuita. hábito negro. porta el emblema ihs rodeado de rayos y el libro de reglas con la divisa 'ad majorem gloriam dei'.",
       src: "/capas/ignacio_full.png"
     },
     {
@@ -25,7 +28,7 @@ export default function InteractivePainting() {
       nombre: "san antonio de padua",
       fechas: "1195–1231",
       descripcion:
-        "Franciscano. Sostiene al Niño Jesús sobre un libro y un lirio blanco.",
+        "franciscano. sostiene al niño jesús sobre un libro y un lirio blanco.",
       src: "/capas/antonio_full.png"
     },
     {
@@ -33,7 +36,7 @@ export default function InteractivePainting() {
       nombre: "san nicolás de bari",
       fechas: "270–342",
       descripcion:
-        "Obispo. Porta mitra, capa magna, báculo y un libro con tres esferas alusivas a su caridad.",
+        "obispo. porta mitra, capa magna, báculo y un libro con tres esferas alusivas a su caridad.",
       src: "/capas/nicolas_full.png"
     },
     {
@@ -41,7 +44,7 @@ export default function InteractivePainting() {
       nombre: "san agustín de hipona",
       fechas: "354–430",
       descripcion:
-        "Obispo. Porta báculo, pluma y libro. Doctor de la Iglesia.",
+        "obispo. porta báculo, pluma y libro. doctor de la iglesia.",
       src: "/capas/agustin_full.png"
     },
     {
@@ -49,7 +52,7 @@ export default function InteractivePainting() {
       nombre: "san gregorio magno",
       fechas: "† 604",
       descripcion:
-        "Papa. Porta tiara, cruz triple, pluma en la derecha y libro en la izquierda.",
+        "papa. porta tiara, cruz triple, pluma en la derecha y libro en la izquierda.",
       src: "/capas/gregorio_full.png"
     },
     {
@@ -57,7 +60,7 @@ export default function InteractivePainting() {
       nombre: "santo domingo de guzmán",
       fechas: "1170–1221",
       descripcion:
-        "Dominico. Hábito bicolor. Porta rosario, lirios blancos y un libro.",
+        "dominico. hábito bicolor. porta rosario, lirios blancos y un libro.",
       src: "/capas/domingo_full.png"
     },
     {
@@ -65,8 +68,7 @@ export default function InteractivePainting() {
       nombre: "san francisco de asís",
       fechas: "1182–1226",
       descripcion:
-        "Hábito café. Estigmas visibles. Porta un crucifijo.",
-      // Ojo con el nombre del archivo: ajústalo si en el servidor se llama distinto.
+        "hábito café. estigmas visibles. porta un crucifijo.",
       src: "/capas/francisco_full1.png"
     },
     {
@@ -74,7 +76,7 @@ export default function InteractivePainting() {
       nombre: "san jerónimo",
       fechas: "347–420",
       descripcion:
-        "Cardenal. Porta pluma y libro. León a sus pies como símbolo tradicional.",
+        "cardenal. porta pluma y libro. león a sus pies como símbolo tradicional.",
       src: "/capas/jeronimo_full.png"
     },
     {
@@ -82,7 +84,7 @@ export default function InteractivePainting() {
       nombre: "san ambrosio de milán",
       fechas: "340–396",
       descripcion:
-        "Obispo. Porta báculo, libro y pluma. Doctor de la Iglesia.",
+        "obispo. porta báculo, libro y pluma. doctor de la iglesia.",
       src: "/capas/ambrosio_full.png"
     },
     {
@@ -90,7 +92,7 @@ export default function InteractivePainting() {
       nombre: "san bernardo de claraval",
       fechas: "1090–1153",
       descripcion:
-        "Cisterciense. Manto blanco, mitra, pluma, libro y báculo abacial.",
+        "cisterciense. manto blanco, mitra, pluma, libro y báculo abacial.",
       src: "/capas/bernardo_full.png"
     },
     {
@@ -98,7 +100,7 @@ export default function InteractivePainting() {
       nombre: "san juan de dios",
       fechas: "1495–1550",
       descripcion:
-        "Hábito gris. Porta un crucifijo y una granada. Fundador de la Orden Hospitalaria.",
+        "hábito gris. porta un crucifijo y una granada. fundador de la orden hospitalaria.",
       src: "/capas/juan_de_dios_full.png"
     },
     {
@@ -106,7 +108,7 @@ export default function InteractivePainting() {
       nombre: "san francisco javier",
       fechas: "1506–1552",
       descripcion:
-        "Jesuita. Porta un lirio blanco en la derecha y un crucifijo en la izquierda.",
+        "jesuita. porta un lirio blanco en la derecha y un crucifijo en la izquierda.",
       src: "/capas/francisco_javier_full.png"
     }
   ];
@@ -120,8 +122,8 @@ export default function InteractivePainting() {
       img.src = p.src;
       img.onload = () => {
         const canvas = document.createElement("canvas");
-        canvas.width = img.width;   // debe ser 1080
-        canvas.height = img.height; // debe ser 927
+        canvas.width = img.width;
+        canvas.height = img.height;
 
         const ctx = canvas.getContext("2d", { willReadFrequently: true });
         ctx.drawImage(img, 0, 0);
@@ -133,13 +135,12 @@ export default function InteractivePainting() {
   }, []);
 
   // -----------------------------------------------------------------------
-  // DETECCIÓN PIXEL PERFECT
+  // HANDLE PIXEL PERFECT
   // -----------------------------------------------------------------------
   const handleMove = (e) => {
     if (!containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
-
     const baseWidth = 1080;
     const baseHeight = 927;
 
@@ -178,35 +179,47 @@ export default function InteractivePainting() {
 
   const handleLeave = () => setActive(null);
 
-  const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
+  // -----------------------------------------------------------------------
+  // ZOOM CONTEXTUAL SUAVE
+  // -----------------------------------------------------------------------
+  const handleStartZoom = (e) => {
+    if (!containerRef.current) return;
+
+    const rect = containerRef.current.getBoundingClientRect();
+
+    const cx = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+    const cy = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+
+    setZoomPoint({ x: cx, y: cy });
+    setZooming(true);
+  };
+
+  const handleEndZoom = () => {
+    setZooming(false);
+  };
 
   // -----------------------------------------------------------------------
-  // CÁLCULO DE POSICIÓN DEL TOOLTIP (para no tapar al santo)
+  // TOOLTIP: no tapa al santo
   // -----------------------------------------------------------------------
+  const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
+
   let tooltipPosition = {};
   if (active && containerRef.current) {
     const w = containerRef.current.clientWidth;
     const h = containerRef.current.clientHeight;
 
+    const TW = 260;
+    const TH = 150;
     const margin = 20;
-    const tooltipW = 260; // estimado
-    const tooltipH = 140; // estimado
 
-    const isLeft = cursor.x < w / 2;
-    const isTop = cursor.y < h / 2;
+    const leftSide = cursor.x < w / 2;
+    const topSide = cursor.y < h / 2;
 
-    // Si el cursor está a la izquierda, ponemos el tooltip a la derecha, y viceversa.
-    let left = isLeft
-      ? cursor.x + margin
-      : cursor.x - margin - tooltipW;
+    let left = leftSide ? cursor.x + margin : cursor.x - TW - margin;
+    let top = topSide ? cursor.y + margin : cursor.y - TH - margin;
 
-    // Si el cursor está arriba, el tooltip va abajo, y viceversa.
-    let top = isTop
-      ? cursor.y + margin
-      : cursor.y - margin - tooltipH;
-
-    left = clamp(left, 10, w - tooltipW - 10);
-    top = clamp(top, 10, h - tooltipH - 10);
+    left = clamp(left, 10, w - TW - 10);
+    top = clamp(top, 10, h - TH - 10);
 
     tooltipPosition = { left, top };
   }
@@ -224,108 +237,135 @@ export default function InteractivePainting() {
         alignItems: "center"
       }}
     >
-      <h2 style={{ margin: 0 }}>primera fila – santos</h2>
+      {/* TÍTULO PRINCIPAL */}
+      <h2
+        style={{
+          margin: 0,
+          marginBottom: "2rem", // más separado de la imagen
+          color: "#c40000",
+          fontFamily: "Matona, serif",
+          fontSize: "1.6rem",
+          letterSpacing: "0.06em",
+          textTransform: "none"
+        }}
+      >
+        Patrocinio de san José Interactivo
+      </h2>
 
       <div
         ref={containerRef}
         onMouseMove={handleMove}
         onTouchMove={handleMove}
         onMouseLeave={handleLeave}
+        onMouseDown={handleStartZoom}
+        onMouseUp={handleEndZoom}
+        onTouchStart={handleStartZoom}
+        onTouchEnd={handleEndZoom}
         style={{
           position: "relative",
           width: "100%",
           maxWidth: "900px",
-          height: "auto",
-          overflow: "visible",
+          overflow: "hidden",
           cursor: "pointer"
         }}
       >
-        {/* FONDO: se pone blanco y negro con personaje activo */}
-        <img
-          src="/cuadro_base.jpg"
+        {/* WRAPPER QUE SE ESCALA */}
+        <div
           style={{
+            position: "relative",
             width: "100%",
-            height: "auto",
-            display: "block",
-            filter: active ? "grayscale(1) brightness(0.9)" : "none",
-            transition: "filter 0.25s ease-out"
+            height: "100%",
+            transformOrigin: `${zoomPoint.x}px ${zoomPoint.y}px`,
+            transform: zooming ? "scale(1.15)" : "scale(1)",
+            transition: "transform 0.2s ease-out"
           }}
-          alt=""
-        />
-
-        {/* CAPA RESALTADA CON GLOW DORADO SUAVE Y DESPLAZAMIENTO MÍNIMO */}
-        {active && (
+        >
+          {/* fondo */}
           <img
-            src={active.src}
+            src="/cuadro_base.jpg"
             style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
               width: "100%",
               height: "auto",
-              pointerEvents: "none",
-              transform: "translateY(-3px) scale(1.01)",
-              transformOrigin: "center",
-              transition: "transform 0.2s ease-out, filter 0.2s ease-out",
-              filter: `
-                drop-shadow(0 0 8px rgba(255, 210, 120, 0.55))
-                drop-shadow(0 0 14px rgba(255, 210, 120, 0.35))
-                drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35))
-              `
+              display: "block",
+              filter: active ? "grayscale(1) brightness(0.9)" : "none",
+              transition: "filter 0.25s ease-out"
             }}
             alt=""
           />
-        )}
 
-        {/* TOOLTIP – reposicionado para no tapar al santo */}
-        {active && containerRef.current && (
-          <div
-            style={{
-              position: "absolute",
-              ...tooltipPosition,
-              background: "rgba(255,255,255,0.90)",
-              padding: "10px 14px",
-              borderRadius: "8px",
-              maxWidth: "240px",
-              pointerEvents: "none",
-              boxShadow: "0 3px 10px rgba(0,0,0,0.25)"
-            }}
-          >
-            <h3
+          {/* santo resaltado */}
+          {active && (
+            <img
+              src={active.src}
               style={{
-                margin: "0 0 4px",
-                color: "#c40000",
-                fontFamily: "Matona, serif",
-                fontSize: "0.95rem",
-                textTransform: "none"
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "auto",
+                pointerEvents: "none",
+                transform: "translateY(-3px) scale(1.01)",
+                transformOrigin: "center",
+                transition: "transform 0.2s ease-out, filter 0.2s ease-out",
+                filter: `
+                  drop-shadow(0 0 8px rgba(255, 210, 120, 0.55))
+                  drop-shadow(0 0 14px rgba(255, 210, 120, 0.35))
+                  drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35))
+                `
               }}
-            >
-              {active.nombre}
-            </h3>
+              alt=""
+            />
+          )}
 
+          {/* tooltip */}
+          {active && (
             <div
               style={{
-                fontSize: "0.88rem",
-                fontWeight: "bold",
-                marginBottom: "4px",
-                fontFamily: "Garamond, 'Times New Roman', serif"
+                position: "absolute",
+                ...tooltipPosition,
+                background: "rgba(255,255,255,0.90)",
+                padding: "10px 14px",
+                borderRadius: "8px",
+                maxWidth: "240px",
+                pointerEvents: "none",
+                boxShadow: "0 3px 10px rgba(0,0,0,0.25)"
               }}
             >
-              {active.fechas}
-            </div>
+              <h3
+                style={{
+                  margin: "0 0 4px",
+                  color: "#c40000",
+                  fontFamily: "Matona, serif",
+                  fontSize: "0.95rem"
+                }}
+              >
+                {active.nombre}
+              </h3>
 
-            <p
-              style={{
-                margin: 0,
-                fontSize: "0.86rem",
-                lineHeight: 1.3,
-                fontFamily: "Garamond, 'Times New Roman', serif"
-              }}
-            >
-              {active.descripcion}
-            </p>
-          </div>
-        )}
+              <div
+                style={{
+                  fontSize: "0.88rem",
+                  fontWeight: "bold",
+                  marginBottom: "4px",
+                  fontFamily: "Garamond, serif"
+                }}
+              >
+                {active.fechas}
+              </div>
+
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "0.86rem",
+                  lineHeight: 1.3,
+                  fontFamily: "Garamond, serif"
+                }}
+              >
+                {active.descripcion}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
