@@ -193,20 +193,18 @@ export default function InteractivePainting() {
       src: "/capas/duns_scoto_full.png",
     },
   
-
+{
+  id: "angel_manto_1",
+  nombre: "ángel portador del manto",
+  descripcion:
+    "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
+  src: "/capas/angeles_capa_full.png"
+},
 
  // -----------------------------------------------------------------------
     // SEGUNDO NIVEL Angeles
     // -----------------------------------------------------------------------
-    {
-      id: "angeles que sostienen la capa de san josé",
-      nombre: "angeles de la capa",
-     descripcion:
-        "angeles que sostienen la capa de san josé.",
-      src: "/capas/angeles_capa_full.png",
-
-    },
-  ];       
+   
   
   // -----------------------------------------------------------------------
   // Cargar cada PNG en canvas para detección pixel-perfect
