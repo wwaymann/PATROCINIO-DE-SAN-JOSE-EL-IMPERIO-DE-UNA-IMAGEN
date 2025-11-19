@@ -192,7 +192,10 @@ export default function InteractivePainting() {
         "franciscano y doctor sutil. muceta doctoral, solideo, libro y báculo.",
       src: "/capas/duns_scoto_full.png",
     },
-
+    
+    // -----------------------------------------------------------------------
+    // SEGUNDA FILA (10 figuras)
+    // -----------------------------------------------------------------------
    
 {
   id: "angeles mantos1",
@@ -246,8 +249,29 @@ export default function InteractivePainting() {
   src: "/capas/querubines.png"
 },
   
-  
-  
+    {
+  id: "san jose",
+  nombre: "San josé",
+  descripcion:
+    "---.",
+  src: "/capas/san_jose.png"
+},
+
+        {
+  id: "texto1",
+  nombre: "Texto 1",
+  descripcion:
+    "---.",
+  src: "/capas/texto_vertical.png"
+},
+
+        {
+  id: "texto2",
+  nombre: "Texto 2",
+  descripcion:
+    "---.",
+  src: "/capas/texto_horizontal.png"
+},
   
   
   ];
