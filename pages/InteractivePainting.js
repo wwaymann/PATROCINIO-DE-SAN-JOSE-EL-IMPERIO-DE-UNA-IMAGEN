@@ -21,7 +21,7 @@ export default function InteractivePainting() {
       fechas: "1491–1556",
       descripcion:
         "jesuita. hábito negro. porta el emblema ihs rodeado de rayos y el libro de reglas con la divisa 'ad majorem gloriam dei'.",
-      src: "/capas/ignacio_full.png"
+      src: "/capas/ignacio_full.png",
     },
     {
       id: "antonio",
@@ -29,7 +29,7 @@ export default function InteractivePainting() {
       fechas: "1195–1231",
       descripcion:
         "franciscano. sostiene al niño jesús sobre un libro y un lirio blanco.",
-      src: "/capas/antonio_full.png"
+      src: "/capas/antonio_full.png",
     },
     {
       id: "nicolas",
@@ -37,7 +37,7 @@ export default function InteractivePainting() {
       fechas: "270–342",
       descripcion:
         "obispo. porta mitra, capa magna, báculo y un libro con tres esferas alusivas a su caridad.",
-      src: "/capas/nicolas_full.png"
+      src: "/capas/nicolas_full.png",
     },
     {
       id: "agustin",
@@ -45,7 +45,7 @@ export default function InteractivePainting() {
       fechas: "354–430",
       descripcion:
         "obispo. porta báculo, pluma y libro. doctor de la iglesia.",
-      src: "/capas/agustin_full.png"
+      src: "/capas/agustin_full.png",
     },
     {
       id: "gregorio",
@@ -53,7 +53,7 @@ export default function InteractivePainting() {
       fechas: "† 604",
       descripcion:
         "papa. porta tiara, cruz triple, pluma en la derecha y libro en la izquierda.",
-      src: "/capas/gregorio_full.png"
+      src: "/capas/gregorio_full.png",
     },
     {
       id: "domingo",
@@ -61,7 +61,7 @@ export default function InteractivePainting() {
       fechas: "1170–1221",
       descripcion:
         "dominico. hábito bicolor. porta rosario, lirios blancos y un libro.",
-      src: "/capas/domingo_full.png"
+      src: "/capas/domingo_full.png",
     },
     {
       id: "francisco",
@@ -69,7 +69,8 @@ export default function InteractivePainting() {
       fechas: "1182–1226",
       descripcion:
         "hábito café. estigmas visibles. porta un crucifijo.",
-      src: "/capas/francisco_full.png"
+      // ajusta el nombre si en /public/capas se llama distinto
+      src: "/capas/francisco_full1.png",
     },
     {
       id: "jeronimo",
@@ -77,7 +78,7 @@ export default function InteractivePainting() {
       fechas: "347–420",
       descripcion:
         "cardenal. porta pluma y libro. león a sus pies como símbolo tradicional.",
-      src: "/capas/jeronimo_full.png"
+      src: "/capas/jeronimo_full.png",
     },
     {
       id: "ambrosio",
@@ -85,7 +86,7 @@ export default function InteractivePainting() {
       fechas: "340–396",
       descripcion:
         "obispo. porta báculo, libro y pluma. doctor de la iglesia.",
-      src: "/capas/ambrosio_full.png"
+      src: "/capas/ambrosio_full.png",
     },
     {
       id: "bernardo",
@@ -93,7 +94,7 @@ export default function InteractivePainting() {
       fechas: "1090–1153",
       descripcion:
         "cisterciense. manto blanco, mitra, pluma, libro y báculo abacial.",
-      src: "/capas/bernardo_full.png"
+      src: "/capas/bernardo_full.png",
     },
     {
       id: "juan_de_dios",
@@ -101,7 +102,7 @@ export default function InteractivePainting() {
       fechas: "1495–1550",
       descripcion:
         "hábito gris. porta un crucifijo y una granada. fundador de la orden hospitalaria.",
-      src: "/capas/juan_de_dios_full.png"
+      src: "/capas/juan_de_dios_full.png",
     },
     {
       id: "francisco_javier",
@@ -109,12 +110,12 @@ export default function InteractivePainting() {
       fechas: "1506–1552",
       descripcion:
         "jesuita. porta un lirio blanco en la derecha y un crucifijo en la izquierda.",
-      src: "/capas/francisco_javier_full.png"
-    }
+      src: "/capas/francisco_javier_full.png",
+    },
   ];
 
   // -----------------------------------------------------------------------
-  // CARGA DE PNG EN CANVAS
+  // CARGA DE PNG EN CANVAS (para pixel-perfect)
   // -----------------------------------------------------------------------
   useEffect(() => {
     personajes.forEach((p) => {
@@ -135,7 +136,7 @@ export default function InteractivePainting() {
   }, []);
 
   // -----------------------------------------------------------------------
-  // HANDLE PIXEL PERFECT
+  // DETECCIÓN PIXEL PERFECT
   // -----------------------------------------------------------------------
   const handleMove = (e) => {
     if (!containerRef.current) return;
@@ -155,7 +156,7 @@ export default function InteractivePainting() {
 
     setCursor({
       x: clientX - rect.left,
-      y: clientY - rect.top
+      y: clientY - rect.top,
     });
 
     let detected = null;
@@ -177,29 +178,35 @@ export default function InteractivePainting() {
     setActive(detected);
   };
 
-  const handleLeave = () => setActive(null);
+  const handleLeave = () => {
+    setActive(null);
+  };
 
   // -----------------------------------------------------------------------
-  // ZOOM CONTEXTUAL SUAVE
+  // ZOOM: toggle por click (click → zoom fuerte, click otra vez → normal)
   // -----------------------------------------------------------------------
-  const handleStartZoom = (e) => {
+  const handleToggleZoom = (e) => {
     if (!containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-    const cx = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
-    const cy = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
 
-    setZoomPoint({ x: cx, y: cy });
-    setZooming(true);
-  };
-
-  const handleEndZoom = () => {
-    setZooming(false);
+    if (!zooming) {
+      // activamos zoom centrado en el punto de click
+      setZoomPoint({ x, y });
+      setZooming(true);
+    } else {
+      // desactivamos zoom
+      setZooming(false);
+    }
   };
 
   // -----------------------------------------------------------------------
-  // TOOLTIP: no tapa al santo
+  // TOOLTIP: que no tape al santo
   // -----------------------------------------------------------------------
   const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
 
@@ -234,22 +241,22 @@ export default function InteractivePainting() {
         textAlign: "center",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center"
+        alignItems: "center",
       }}
     >
       {/* TÍTULO PRINCIPAL */}
       <h2
         style={{
           margin: 0,
-          marginBottom: "2rem", // más separado de la imagen
+          marginBottom: "2rem",
           color: "#c40000",
           fontFamily: "Matona, serif",
           fontSize: "1.6rem",
           letterSpacing: "0.06em",
-          textTransform: "none"
+          textTransform: "none",
         }}
       >
-        patrocinio de san josé interactivo
+        Patrocinio de san José Interactivo
       </h2>
 
       <div
@@ -257,27 +264,25 @@ export default function InteractivePainting() {
         onMouseMove={handleMove}
         onTouchMove={handleMove}
         onMouseLeave={handleLeave}
-        onMouseDown={handleStartZoom}
-        onMouseUp={handleEndZoom}
-        onTouchStart={handleStartZoom}
-        onTouchEnd={handleEndZoom}
+        onClick={handleToggleZoom}
+        onTouchEnd={handleToggleZoom}
         style={{
           position: "relative",
           width: "100%",
           maxWidth: "900px",
           overflow: "hidden",
-          cursor: "pointer"
+          cursor: "pointer",
         }}
       >
-        {/* WRAPPER QUE SE ESCALA */}
+        {/* WRAPPER QUE SE ESCALA (zoom exagerado) */}
         <div
           style={{
             position: "relative",
             width: "100%",
             height: "100%",
             transformOrigin: `${zoomPoint.x}px ${zoomPoint.y}px`,
-            transform: zooming ? "scale(1.15)" : "scale(1)",
-            transition: "transform 0.2s ease-out"
+            transform: zooming ? "scale(1.6)" : "scale(1)",
+            transition: "transform 0.3s ease-out",
           }}
         >
           {/* fondo */}
@@ -288,7 +293,7 @@ export default function InteractivePainting() {
               height: "auto",
               display: "block",
               filter: active ? "grayscale(1) brightness(0.9)" : "none",
-              transition: "filter 0.25s ease-out"
+              transition: "filter 0.25s ease-out",
             }}
             alt=""
           />
@@ -311,7 +316,7 @@ export default function InteractivePainting() {
                   drop-shadow(0 0 8px rgba(255, 210, 120, 0.55))
                   drop-shadow(0 0 14px rgba(255, 210, 120, 0.35))
                   drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35))
-                `
+                `,
               }}
               alt=""
             />
@@ -328,7 +333,7 @@ export default function InteractivePainting() {
                 borderRadius: "8px",
                 maxWidth: "240px",
                 pointerEvents: "none",
-                boxShadow: "0 3px 10px rgba(0,0,0,0.25)"
+                boxShadow: "0 3px 10px rgba(0,0,0,0.25)",
               }}
             >
               <h3
@@ -336,7 +341,7 @@ export default function InteractivePainting() {
                   margin: "0 0 4px",
                   color: "#c40000",
                   fontFamily: "Matona, serif",
-                  fontSize: "0.95rem"
+                  fontSize: "0.95rem",
                 }}
               >
                 {active.nombre}
@@ -347,7 +352,7 @@ export default function InteractivePainting() {
                   fontSize: "0.88rem",
                   fontWeight: "bold",
                   marginBottom: "4px",
-                  fontFamily: "Garamond, serif"
+                  fontFamily: "Garamond, serif",
                 }}
               >
                 {active.fechas}
@@ -358,7 +363,7 @@ export default function InteractivePainting() {
                   margin: 0,
                   fontSize: "0.86rem",
                   lineHeight: 1.3,
-                  fontFamily: "Garamond, serif"
+                  fontFamily: "Garamond, serif",
                 }}
               >
                 {active.descripcion}
