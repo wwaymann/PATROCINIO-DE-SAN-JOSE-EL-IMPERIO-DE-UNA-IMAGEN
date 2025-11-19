@@ -194,6 +194,19 @@ export default function InteractivePainting() {
     },
   ];
 
+
+ // -----------------------------------------------------------------------
+    // SEGUNDO NIVEL Angeles
+    // -----------------------------------------------------------------------
+    {
+      id: "angeles que sostienen la capa de san josé",
+      nombre: "angeles de la capa",
+     descripcion:
+        "angeles que sostienen la capa de san josé.",
+      src: "/capas/angeles_capa_full",
+
+          
+  
   // -----------------------------------------------------------------------
   // Cargar cada PNG en canvas para detección pixel-perfect
   // -----------------------------------------------------------------------
