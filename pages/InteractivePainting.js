@@ -217,7 +217,7 @@ export default function InteractivePainting() {
     height: "auto",
     display: "block",
     // ⭐ Si hay personaje activo → aplicar blanco y negro
-    filter: active ? "grayscale(1) brightness(0.9)" : "none",
+   filter: active ? "grayscale(1) brightness(0.9) blur(0.6px)" : "none",
     transition: "filter 0.25s ease-out"
   }}
   alt=""
