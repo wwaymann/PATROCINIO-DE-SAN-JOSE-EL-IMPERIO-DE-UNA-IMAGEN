@@ -368,15 +368,17 @@ export default function InteractivePainting() {
     descripcion:
       "representado antropomórficamente, con capa pluvial. sostiene una vara de lirios blancos coronada por una paloma y un cetro en la mano derecha.",
     src: "/capas/trinidad_espiritu_full.png"
-  }
-  {
+  },
+ 
+    {
     id: "texto_banda_trinidad",
     nombre: "ite ad ioseph",
     descripcion:
       "lema latino procedente del génesis (41,55) reinterpretado devocionalmente como «vayan a josé», destacando a san josé como intercesor privilegiado ante la trinidad.",
     src: "/capas/texto_tercer_nivel.png"
-  }
-
+  },
+  
+    
     
   ];
   
