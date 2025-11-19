@@ -196,7 +196,7 @@ export default function InteractivePainting() {
    
 {
   id: "angeles mantos1",
-  nombre: "ángeles portadores del manto",
+  nombre: "ángele portador del manto 1",
   descripcion:
     "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
   src: "/capas/angeles_capa_full_01.png"
@@ -204,25 +204,26 @@ export default function InteractivePainting() {
 
     {
   id: "angeles mantos2",
-  nombre: "ángeles portadores del manto",
+  nombre: "ángele portador del manto 2",
   descripcion:
     "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
   src: "/capas/angeles_capa_full_02.png"
 },
     {
   id: "angeles mantos3",
-  nombre: "ángeles portadores del manto",
+  nombre: "ángele portador del manto 3",
   descripcion:
     "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
   src: "/capas/angeles_capa_full_03.png"
 },
     {
   id: "angeles mantos4",
-  nombre: "ángeles portadores del manto",
+  nombre: "ángele portador del manto 4",
   descripcion:
     "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
   src: "/capas/angeles_capa_full_04.png"
 },
+    
   {
   id: "angeles musicos1",
   nombre: "ángeles musicos",
