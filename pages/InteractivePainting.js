@@ -13,21 +13,21 @@ export default function InteractivePainting() {
       nombre: "San Ignacio de Loyola",
       fechas: "1491–1556",
       descripcion: "Fundador de la Compañía de Jesús.",
-      src: "/capas/ignacio_full.png"
+      src: "/capas/ignacio.png"
     },
     {
       id: "antonio",
       nombre: "San Antonio de Padua",
       fechas: "1195–1231",
       descripcion: "Fraile franciscano.",
-      src: "/capas/antonio_full.png"
+      src: "/capas/dios.png"
     },
     {
       id: "nicolas",
       nombre: "San Nicolás de Bari",
       fechas: "270–342",
       descripcion: "Obispo y figura clave de la caridad cristiana.",
-      src: "/capas/nicolas_full.png"
+      src: "/capas/espiritu.png"
     }
     // Agrega aquí más personajes, todos con PNG del mismo tamaño que cuadro_base
   ];
