@@ -1,0 +1,141 @@
+import { useState } from "react";
+
+const personajesData = [
+  {
+    id: "ignacio",
+    nombre: "San Ignacio de Loyola",
+    fechas: "1491–1556",
+    descripcion: "Fundador de la Compañía de Jesús, sostiene el emblema IHS y el libro de la regla.",
+    src: "/capas/ignacio.png",
+    style: { top: "18%", left: "22%", width: "9%" }
+  },
+  {
+    id: "antonio",
+    nombre: "San Antonio de Padua",
+    fechas: "1195–1231",
+    descripcion: "Fraile franciscano, sostiene al Niño Jesús sobre un libro y un lirio blanco.",
+    src: "/capas/antonio.png",
+    style: { top: "20%", left: "40%", width: "9%" }
+  },
+  {
+    id: "nicolas",
+    nombre: "San Nicolás de Bari",
+    fechas: "270–342",
+    descripcion: "Obispo con capa magna, mitra, báculo y libro con tres esferas.",
+    src: "/capas/nicolas.png",
+    style: { top: "22%", left: "58%", width: "9%" }
+  }
+  // Aquí sigues agregando todos los personajes que tengas como capas…
+];
+
+export default function InteractivePainting({
+  personajes = personajesData,
+  baseImage = "/cuadro_base.jpg",
+  maxWidth = 900,
+  showTitle = "Personajes del Patrocinio de San José"
+}) {
+  const [active, setActive] = useState(null);
+
+  return (
+    <section
+      style={{
+        padding: "2rem 1rem",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "1.5rem"
+      }}
+    >
+      {showTitle && (
+        <h2 style={{ textAlign: "center", fontSize: "1.5rem", margin: 0 }}>
+          {showTitle}
+        </h2>
+      )}
+
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          maxWidth: `${maxWidth}px`,
+          margin: "0 auto"
+        }}
+      >
+        {/* IMAGEN BASE */}
+        <img
+          src={baseImage}
+          alt="Pintura Patrocinio de San José"
+          style={{ width: "100%", display: "block" }}
+        />
+
+        {/* CAPAS INTERACTIVAS */}
+        {personajes.map((p) => (
+          <button
+            key={p.id}
+            type="button"
+            onMouseEnter={() => setActive(p)}
+            onMouseLeave={() => setActive(null)}
+            onFocus={() => setActive(p)}
+            onBlur={() => setActive(null)}
+            onTouchStart={() => setActive(p)}
+            style={{
+              position: "absolute",
+              cursor: "pointer",
+              border: "none",
+              padding: 0,
+              background: "transparent",
+              transition: "transform 0.25s ease, filter 0.25s ease",
+              transform:
+                active?.id === p.id ? "translateY(-8px) scale(1.05)" : "none",
+              filter: active?.id === p.id ? "drop-shadow(0 0 6px rgba(0,0,0,0.6))" : "none",
+              ...p.style
+            }}
+          >
+            <img
+              src={p.src}
+              alt={p.nombre}
+              style={{ width: "100%", pointerEvents: "none", display: "block" }}
+            />
+          </button>
+        ))}
+
+        {/* TARJETA / TOOLTIP */}
+        {active && (
+          <div
+            className="interactive-tooltip"
+            style={{
+              position: "absolute",
+              top: "5%",
+              right: "5%",
+              background: "rgba(0,0,0,0.85)",
+              color: "white",
+              padding: "14px 18px",
+              borderRadius: "10px",
+              maxWidth: "260px",
+              fontSize: "0.9rem"
+            }}
+          >
+            <h3 style={{ margin: "0 0 6px", fontSize: "1.05rem" }}>
+              {active.nombre}
+            </h3>
+            <strong style={{ display: "block", marginBottom: "6px" }}>
+              {active.fechas}
+            </strong>
+            <p style={{ margin: 0, lineHeight: 1.4 }}>{active.descripcion}</p>
+          </div>
+        )}
+      </div>
+
+      <p
+        style={{
+          maxWidth: `${maxWidth}px`,
+          textAlign: "center",
+          fontSize: "0.95rem",
+          lineHeight: 1.5
+        }}
+      >
+        Pasa el cursor o toca sobre cada figura para ver su nombre, fechas y una
+        breve descripción.
+      </p>
+    </section>
+  );
+}
