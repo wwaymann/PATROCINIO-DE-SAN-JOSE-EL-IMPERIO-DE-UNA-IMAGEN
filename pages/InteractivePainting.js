@@ -221,21 +221,33 @@ export default function InteractivePainting() {
         />
 
         {/* CAPA RESALTADA */}
-        {active && (
-          <img
-            src={active.src}
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "auto",     // ✔ mismo escalado que el fondo
-              pointerEvents: "none",
-              filter: "drop-shadow(0 0 16px rgba(0,0,0,0.6))"
-            }}
-            alt=""
-          />
-        )}
+       {active && (
+  <img
+    src={active.src}
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "auto",
+      pointerEvents: "none",
+
+      // ⭐ TRANSFORMACIÓN PARA RESALTAR
+      transform: "scale(1.05)",       // pequeño lift
+      transformOrigin: "center",      // escala desde el centro
+      transition: "transform 0.25s ease-out, filter 0.25s ease-out",
+
+      // ⭐ GLOW + SOMBRA SUAVE
+      filter: `
+        drop-shadow(0 0 20px rgba(255,255,255,0.75))
+        drop-shadow(0 0 28px rgba(255,255,255,0.55))
+        drop-shadow(0 6px 14px rgba(0,0,0,0.35))
+      `
+    }}
+    alt=""
+  />
+)}
+
 
         {/* TOOLTIP */}
         {active && (
