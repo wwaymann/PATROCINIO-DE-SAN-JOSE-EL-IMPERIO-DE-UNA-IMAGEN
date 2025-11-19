@@ -243,7 +243,7 @@ export default function InteractivePainting() {
           margin: 0,
           marginBottom: "2rem", // más separado de la imagen
           color: "#c40000",
-          font-family: 'Matona';
+          fontFamily: "Matona, serif",
           fontSize: "1.6rem",
           letterSpacing: "0.06em",
           textTransform: "none"
