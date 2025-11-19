@@ -15,19 +15,19 @@ export default function InteractivePainting() {
   // PRIMERA FILA (12 figuras)
   // -----------------------------------------------------------------------
   const personajes = [
-     {
-      id: "texto_primer nivel",
-      nombre: "texto",
-           descripcion:
-        "--.",
-      src: "/capas/texto_primer nivel.png",
+    {
+    id: "texto_cartela_inferior",
+    nombre: "sub umbra illius quam desideraveram sedi",
+    descripcion:
+      "inscripción latina tomada del cantar de los cantares (2,3): «me senté a la sombra del que tanto había deseado». alude al amparo que san josé ofrece a los santos cobijados bajo su manto.",
+    src: "/capas/texto_primer nivel.png",
     }, 
     {
-      id: "1uerubines",
-      nombre: "Querubines",
-           descripcion:
-        "--.",
-      src: "/capas/querubines_primer_nivel.png",
+    id: "angeles_querubines",
+    nombre: "ángeles y querubines",
+    descripcion:
+      "una multitud de ángeles y querubines articula el espacio entre la trinidad y san josé. los ángeles mayores tocan instrumentos barrocos, sostienen el manto o portan filacterias, introduciendo movimiento y música en la escena. los querubines, representados como pequeñas cabezas aladas inmersas en la luz y las nubes, pertenecen al orden más elevado y simbolizan el conocimiento y la contemplación de la belleza divina.",
+    src: "/capas/querubines_primer_nivel.png",
     },
     {
       id: "ignacio",
@@ -241,50 +241,49 @@ export default function InteractivePainting() {
   src: "/capas/angeles_capa_full_04.png"
 },
     
-  {
-  id: "angeles musicos1",
-  nombre: "ángeles musicos",
+ {
+  id: "angeles_musicos_inferior",
+  nombre: "ángeles músicos – grupo inferior",
   descripcion:
-    "---Aa.",
+    "ángeles cercanos al nivel de los santos, tocando instrumentos barrocos como órgano portátil, trompeta natural, guitarra barroca, arpa y violín. aportan movimiento y sonido celestial, animando el espacio que conecta el mundo humano con la protección de san josé.",
   src: "/capas/angeles_musicos_01.png"
 },
-     {
-  id: "angeles musicos2",
-  nombre: "ángeles musicos",
+    {
+  id: "angeles_musicos_superior",
+  nombre: "ángeles músicos – grupo superior",
   descripcion:
-    "---aa.",
+    "ángeles ubicados bajo la trinidad, portando instrumentos de viento y cuerdas. acompañan la esfera celestial con música solemne, actuando como puente sonoro entre los arcanos divinos y el resto de la composición.",
   src: "/capas/angeles_musicos_02.png"
 },
      {
-  id: "querubines",
-  nombre: "querubines",
-  descripcion:
-    "---.",
-  src: "/capas/querubines.png"
+    id: "angeles_querubines",
+    nombre: "ángeles y querubines",
+    descripcion:
+      "una multitud de ángeles y querubines articula el espacio entre la trinidad y san josé. los ángeles mayores tocan instrumentos barrocos, sostienen el manto o portan filacterias, introduciendo movimiento y música en la escena. los querubines, representados como pequeñas cabezas aladas inmersas en la luz y las nubes, pertenecen al orden más elevado y simbolizan el conocimiento y la contemplación de la belleza divina.",
+    src: "/capas/querubines.png"
 },
   
-    {
-  id: "san jose",
-  nombre: "San josé",
+    id: "san_jose",
+  nombre: "san josé",
   descripcion:
-    "---.",
+    "representado entronizado en el centro de la composición, coronado y con amplio manto que se extiende para proteger a los santos del nivel inferior. sostiene en su mano derecha un cetro florido de lirios —símbolo de pureza y elección divina— y en la izquierda un libro abierto que alude a la sabiduría y autoridad espiritual. es el intermediario privilegiado entre la trinidad y la iglesia, figura paternal y custodio universal.",
   src: "/capas/san_jose.png"
 },
 
-        {
-  id: "texto1",
-  nombre: "Texto 1",
-  descripcion:
-    "---.",
-  src: "/capas/texto_vertical.png"
+         {
+    id: "texto_filacteria_lateral",
+    nombre: "annulo suo monstravit me decoravit me corona sua",
+    descripcion:
+      "texto devocional que alude a la dignidad concedida por dios a san josé: su elección, su alianza (anillo) y su exaltación (corona). la filacteria es sostenida por ángeles que descienden hacia la figura del santo.",
+    src: "/capas/texto_vertical.png"
 },
 
-        {
-  id: "texto2",
-  nombre: "Texto 2",
-  descripcion:
-    "---.",
-  src: "/capas/texto_horizontal.png"
+     {
+    id: "texto_filacteria_central",
+    nombre: "constituit eum dominum domus suae et principem omnis possessionis suae",
+    descripcion:
+      "cita del salmo 104(105),21: «lo hizo señor de su casa y príncipe de todas sus posesiones». refuerza el papel de san josé como custodio y administrador del pueblo de dios.",
+    src: "/capas/texto_horizontal.png"
 },
   
 
@@ -370,11 +369,11 @@ export default function InteractivePainting() {
       "representado antropomórficamente, con capa pluvial. sostiene una vara de lirios blancos coronada por una paloma y un cetro en la mano derecha.",
     src: "/capas/trinidad_espiritu_full.png"
   }
- {
-    id: "texto_tercer_nivel",
-    nombre: "Texto 3",
+  {
+    id: "texto_banda_trinidad",
+    nombre: "ite ad ioseph",
     descripcion:
-      "--.",
+      "lema latino procedente del génesis (41,55) reinterpretado devocionalmente como «vayan a josé», destacando a san josé como intercesor privilegiado ante la trinidad.",
     src: "/capas/texto_tercer_nivel.png"
   }
 
