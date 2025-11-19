@@ -6,32 +6,33 @@ export default function InteractivePainting() {
   const imgRefs = useRef({});
   const containerRef = useRef(null);
 
+  // 🔹 Define aquí tus personajes/capas full-size (mismo tamaño que el fondo)
   const personajes = [
     {
       id: "ignacio",
       nombre: "San Ignacio de Loyola",
       fechas: "1491–1556",
       descripcion: "Fundador de la Compañía de Jesús.",
-      src: "/capas/ignacio_full.png",
+      src: "/capas/ignacio_full.png"
     },
     {
       id: "antonio",
       nombre: "San Antonio de Padua",
       fechas: "1195–1231",
       descripcion: "Fraile franciscano.",
-      src: "/capas/antonio_full.png",
+      src: "/capas/antonio_full.png"
     },
     {
       id: "nicolas",
       nombre: "San Nicolás de Bari",
       fechas: "270–342",
       descripcion: "Obispo y figura clave de la caridad cristiana.",
-      src: "/capas/nicolas_full.png",
-    },
-    // agrega aquí el resto de tus capas full-size...
+      src: "/capas/nicolas_full.png"
+    }
+    // Agrega aquí más personajes, todos con PNG del mismo tamaño que cuadro_base
   ];
 
-  // Cargar cada capa en un canvas invisible
+  // 🔹 Cargar cada capa en un canvas invisible para lectura de pixeles
   useEffect(() => {
     personajes.forEach((p) => {
       const img = new Image();
@@ -48,62 +49,90 @@ export default function InteractivePainting() {
     });
   }, []);
 
-  // 🔧 handleMove con detección correcta por profundidad
+  // 🔹 Detección pixel-perfect: busca de la capa superior a la inferior
   const handleMove = (e) => {
     if (!containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
-    const baseImg = imgRefs.current[personajes[0].id];
+    const firstId = personajes[0]?.id;
+    const baseImg = firstId ? imgRefs.current[firstId] : null;
     if (!baseImg) return;
 
-    const x = ((e.clientX - rect.left) / rect.width) * baseImg.width;
-    const y = ((e.clientY - rect.top) / rect.height) * baseImg.height;
+    const x =
+      ((e.clientX - rect.left) / rect.width) * baseImg.width;
+    const y =
+      ((e.clientY - rect.top) / rect.height) * baseImg.height;
 
     let detected = null;
 
-    // Recorremos las capas de arriba hacia abajo
+    // Recorremos las capas de arriba hacia abajo (última en el array = más arriba)
     for (let i = personajes.length - 1; i >= 0; i--) {
       const p = personajes[i];
       const canvas = canvasRefs.current[p.id];
       if (!canvas) continue;
 
       const ctx = canvas.getContext("2d");
-      const pixel = ctx.getImageData(Math.floor(x), Math.floor(y), 1, 1).data;
+      const pixel = ctx.getImageData(
+        Math.floor(x),
+        Math.floor(y),
+        1,
+        1
+      ).data;
       const alpha = pixel[3];
 
       if (alpha > 10) {
         detected = p;
-        break; // nos quedamos con el primero visible (el que está “encima”)
+        break; // nos quedamos con el primer pixel visible encontrado
       }
     }
 
     setActive(detected);
   };
 
+  const handleLeave = () => {
+    setActive(null);
+  };
+
   return (
-    <section style={{ padding: "2rem 0", textAlign: "center" }}>
-      <h2>Personajes interactivos</h2>
+    <section
+      style={{
+        padding: "2rem 1rem",
+        textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "1.5rem"
+      }}
+    >
+      <h2
+        style={{
+          fontSize: "1.5rem",
+          margin: 0
+        }}
+      >
+        Personajes del Patrocinio de San José
+      </h2>
 
       <div
         ref={containerRef}
         onMouseMove={handleMove}
-        onMouseLeave={() => setActive(null)}
+        onMouseLeave={handleLeave}
         style={{
           position: "relative",
           width: "100%",
           maxWidth: "900px",
           margin: "0 auto",
-          cursor: "pointer",
+          cursor: "pointer"
         }}
       >
-        {/* Imagen base */}
+        {/* 🔹 Imagen base (pintura completa) */}
         <img
           src="/cuadro_base.jpg"
-          alt="Pintura base"
+          alt="Pintura Patrocinio de San José"
           style={{ width: "100%", display: "block" }}
         />
 
-        {/* Capa activa encima */}
+        {/* 🔹 Capa activa: se dibuja encima de la pintura */}
         {active && (
           <img
             src={active.src}
@@ -113,14 +142,15 @@ export default function InteractivePainting() {
               top: 0,
               left: 0,
               width: "100%",
-              filter: "drop-shadow(0 0 12px rgba(0,0,0,0.7))",
+              display: "block",
               pointerEvents: "none",
-              transition: "0.15s ease",
+              filter: "drop-shadow(0 0 12px rgba(0,0,0,0.7))",
+              transition: "0.15s ease"
             }}
           />
         )}
 
-        {/* Tooltip */}
+        {/* 🔹 Tooltip de información del personaje */}
         {active && (
           <div
             style={{
@@ -133,17 +163,48 @@ export default function InteractivePainting() {
               borderRadius: "10px",
               maxWidth: "240px",
               pointerEvents: "none",
+              fontSize: "0.9rem"
             }}
           >
-            <h3 style={{ margin: 0 }}>{active.nombre}</h3>
-            <strong>{active.fechas}</strong>
-            <p style={{ marginTop: "6px" }}>{active.descripcion}</p>
+            <h3
+              style={{
+                margin: "0 0 4px",
+                fontSize: "1rem"
+              }}
+            >
+              {active.nombre}
+            </h3>
+            <strong
+              style={{
+                display: "block",
+                marginBottom: "4px"
+              }}
+            >
+              {active.fechas}
+            </strong>
+            <p
+              style={{
+                margin: 0,
+                lineHeight: 1.4
+              }}
+            >
+              {active.descripcion}
+            </p>
           </div>
         )}
       </div>
 
-      <p style={{ marginTop: "1rem", opacity: 0.7 }}>
-        Pasa el mouse sobre la pintura para descubrir los personajes.
+      <p
+        style={{
+          maxWidth: "900px",
+          margin: 0,
+          fontSize: "0.95rem",
+          lineHeight: 1.5,
+          opacity: 0.8
+        }}
+      >
+        Pasa el cursor sobre la pintura para descubrir el nombre y la
+        historia de cada figura.
       </p>
     </section>
   );
