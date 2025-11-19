@@ -249,7 +249,7 @@ export default function InteractivePainting() {
           textTransform: "none"
         }}
       >
-        Patrocinio de san José Interactivo
+        patrocinio de san josé interactivo
       </h2>
 
       <div
