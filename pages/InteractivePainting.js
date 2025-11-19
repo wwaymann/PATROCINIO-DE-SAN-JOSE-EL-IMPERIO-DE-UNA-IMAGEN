@@ -262,7 +262,7 @@ export default function InteractivePainting() {
       "una multitud de ángeles y querubines articula el espacio entre la trinidad y san josé. los ángeles mayores tocan instrumentos barrocos, sostienen el manto o portan filacterias, introduciendo movimiento y música en la escena. los querubines, representados como pequeñas cabezas aladas inmersas en la luz y las nubes, pertenecen al orden más elevado y simbolizan el conocimiento y la contemplación de la belleza divina.",
     src: "/capas/querubines.png"
 },
-  
+  {
     id: "san_jose",
   nombre: "san josé",
   descripcion:
