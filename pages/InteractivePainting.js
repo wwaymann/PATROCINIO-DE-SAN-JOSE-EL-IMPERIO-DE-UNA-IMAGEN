@@ -204,8 +204,8 @@ export default function InteractivePainting() {
           position: "relative",
           width: "100%",
           maxWidth: "900px",
-          height: "auto",        // ✔ imagen completa
-          overflow: "visible",   // ✔ sin recortes
+          height: "auto",
+          overflow: "visible",
           cursor: "pointer"
         }}
       >
@@ -214,48 +214,55 @@ export default function InteractivePainting() {
           src="/cuadro_base.jpg"
           style={{
             width: "100%",
-            height: "auto",        // ✔ sin deformar
+            height: "auto",
             display: "block"
           }}
           alt=""
         />
 
-        {/* CAPA RESALTADA */}
-       {active && (
-  <img
-    src={active.src}
-    style={{
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "auto",
-      pointerEvents: "none",
+        {/* CAPA RESALTADA CON GLOW DORADO SUAVE */}
+        {active && (
+          <img
+            src={active.src}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "auto",
+              pointerEvents: "none",
 
-      // ⭐ TRANSFORMACIÓN PARA RESALTAR
-      transform: "scale(1.05)",       // pequeño lift
-      transformOrigin: "center",      // escala desde el centro
-      transition: "transform 0.25s ease-out, filter 0.25s ease-out",
+              // desplazamiento mínimo y escala sutil
+              transform: "translateY(-3px) scale(1.01)",
+              transformOrigin: "center",
+              transition: "transform 0.2s ease-out, filter 0.2s ease-out",
 
-      // ⭐ GLOW + SOMBRA SUAVE
-      filter: `
-        drop-shadow(0 0 20px rgba(255,255,255,0.75))
-        drop-shadow(0 0 28px rgba(255,255,255,0.55))
-        drop-shadow(0 6px 14px rgba(0,0,0,0.35))
-      `
-    }}
-    alt=""
-  />
-)}
-
+              // glow dorado más ceñido y menos intenso
+              filter: `
+                drop-shadow(0 0 8px rgba(255, 210, 120, 0.55))
+                drop-shadow(0 0 14px rgba(255, 210, 120, 0.35))
+                drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35))
+              `
+            }}
+            alt=""
+          />
+        )}
 
         {/* TOOLTIP */}
-        {active && (
+        {active && containerRef.current && (
           <div
             style={{
               position: "absolute",
-              top: clamp(cursor.y + 20, 10, containerRef.current.clientHeight - 140),
-              left: clamp(cursor.x + 20, 10, containerRef.current.clientWidth - 180),
+              top: clamp(
+                cursor.y + 20,
+                10,
+                containerRef.current.clientHeight - 140
+              ),
+              left: clamp(
+                cursor.x + 20,
+                10,
+                containerRef.current.clientWidth - 180
+              ),
               background: "rgba(255,255,255,0.90)",
               padding: "10px 14px",
               borderRadius: "8px",
