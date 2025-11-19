@@ -192,7 +192,11 @@ export default function InteractivePainting() {
         "franciscano y doctor sutil. muceta doctoral, solideo, libro y báculo.",
       src: "/capas/duns_scoto_full.png",
     },
-  
+
+   // -----------------------------------------------------------------------
+    // SEGUNDO NIVEL
+    // -----------------------------------------------------------------------
+    
 {
   id: "angeles mantos",
   nombre: "ángeles portadores del manto",
@@ -222,7 +226,27 @@ export default function InteractivePainting() {
     "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
   src: "/capas/angeles_capa_full_04.png"
 },
- 
+  {
+  id: "angeles musicos",
+  nombre: "ángeles musicos",
+  descripcion:
+    "---.",
+  src: "/capas/angeles_musicos_01.png"
+},
+     {
+  id: "angeles musicos",
+  nombre: "ángeles musicos",
+  descripcion:
+    "---.",
+  src: "/capas/angeles_musicos_02.png"
+},
+     {
+  id: "querubines",
+  nombre: "querubines",
+  descripcion:
+    "---.",
+  src: "/capas/querubines.png"
+},
   
   
   
