@@ -224,14 +224,14 @@ export default function InteractivePainting() {
   src: "/capas/angeles_capa_full_04.png"
 },
   {
-  id: "angeles musicos",
+  id: "angeles musicos1",
   nombre: "ángeles musicos",
   descripcion:
     "---Aa.",
   src: "/capas/angeles_musicos_01.png"
 },
      {
-  id: "angeles musicos",
+  id: "angeles musicos2",
   nombre: "ángeles musicos",
   descripcion:
     "---aa.",
