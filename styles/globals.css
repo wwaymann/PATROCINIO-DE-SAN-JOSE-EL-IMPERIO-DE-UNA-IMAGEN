@@ -25,3 +25,12 @@ html,body{margin:0;padding:0}
 @media (max-width: 920px) {
   .grid.cols-2 { grid-template-columns: 1fr; }
 }
+
+@font-face {
+  font-family: 'Matona';
+  src: url('/fonts/matona.woff2') format('woff2'),
+       url('/fonts/matona.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
