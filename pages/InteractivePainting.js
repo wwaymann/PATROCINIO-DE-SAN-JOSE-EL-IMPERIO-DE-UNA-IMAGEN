@@ -16,7 +16,7 @@ import { useState } from "react";
       src: "/capas/dios.png",
     },
     {
-      id: "espitu",
+      id: "espiritu",
       nombre: "El espiritu de dios",
       fechas: "Siempre",
       descripcion: "EL espiritu.",
