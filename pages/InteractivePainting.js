@@ -203,7 +203,7 @@ export default function InteractivePainting() {
       nombre: "angeles de la capa",
      descripcion:
         "angeles que sostienen la capa de san josé.",
-      src: "/capas/angeles_capa_full",
+      src: "/capas/angeles_capa_full.png",
 
     },
   ];       
