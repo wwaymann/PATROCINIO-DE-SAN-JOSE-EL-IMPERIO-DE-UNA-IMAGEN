@@ -192,7 +192,7 @@ export default function InteractivePainting() {
         "franciscano y doctor sutil. muceta doctoral, solideo, libro y báculo.",
       src: "/capas/duns_scoto_full.png",
     },
-  ];
+  
 
 
  // -----------------------------------------------------------------------
@@ -205,7 +205,8 @@ export default function InteractivePainting() {
         "angeles que sostienen la capa de san josé.",
       src: "/capas/angeles_capa_full",
 
-          
+    },
+  ];       
   
   // -----------------------------------------------------------------------
   // Cargar cada PNG en canvas para detección pixel-perfect
