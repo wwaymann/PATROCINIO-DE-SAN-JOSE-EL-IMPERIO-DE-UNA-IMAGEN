@@ -119,8 +119,9 @@ export default function InteractivePainting() {
       img.src = p.src;
       img.onload = () => {
         const canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
+        canvas.width = img.width;   // debe ser 1080
+        canvas.height = img.height; // debe ser 927
+
         const ctx = canvas.getContext("2d", { willReadFrequently: true });
         ctx.drawImage(img, 0, 0);
 
@@ -131,20 +132,18 @@ export default function InteractivePainting() {
   }, []);
 
   // -----------------------------------------------------------------------
-  // DETECCIÓN PIXEL PERFECT (CORREGIDO)
+  // DETECCIÓN PIXEL PERFECT (ESCALADO CORRECTO)
   // -----------------------------------------------------------------------
   const handleMove = (e) => {
     if (!containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
-    const rectWidth = rect.width;
-    const rectHeight = rect.height;
 
-    const baseImg = imgRefs.current["ignacio"];
-    if (!baseImg) return;
+    const baseWidth = 1080;
+    const baseHeight = 927;
 
-    const scaleX = 1080 / rectWidth;
-    const scaleY = 927 / rectHeight;
+    const scaleX = baseWidth / rect.width;
+    const scaleY = baseHeight / rect.height;
 
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
@@ -159,7 +158,7 @@ export default function InteractivePainting() {
 
     let detected = null;
 
-    // revisar capas arriba → abajo
+    // revisar capas desde la superior
     for (let i = personajes.length - 1; i >= 0; i--) {
       const p = personajes[i];
       const canvas = canvasRefs.current[p.id];
@@ -196,7 +195,6 @@ export default function InteractivePainting() {
     >
       <h2 style={{ margin: 0 }}>Primera Fila – Santos</h2>
 
-      {/* Contenedor con proporción fija */}
       <div
         ref={containerRef}
         onMouseMove={handleMove}
@@ -206,8 +204,8 @@ export default function InteractivePainting() {
           position: "relative",
           width: "100%",
           maxWidth: "900px",
-          aspectRatio: "1080 / 927",
-          overflow: "hidden",
+          height: "auto",        // ✔ imagen completa
+          overflow: "visible",   // ✔ sin recortes
           cursor: "pointer"
         }}
       >
@@ -215,10 +213,9 @@ export default function InteractivePainting() {
         <img
           src="/cuadro_base.jpg"
           style={{
-            position: "absolute",
             width: "100%",
-            height: "100%",
-            objectFit: "cover"
+            height: "auto",        // ✔ sin deformar
+            display: "block"
           }}
           alt=""
         />
@@ -229,9 +226,10 @@ export default function InteractivePainting() {
             src={active.src}
             style={{
               position: "absolute",
+              top: 0,
+              left: 0,
               width: "100%",
-              height: "100%",
-              objectFit: "cover",
+              height: "auto",     // ✔ mismo escalado que el fondo
               pointerEvents: "none",
               filter: "drop-shadow(0 0 16px rgba(0,0,0,0.6))"
             }}
@@ -239,7 +237,7 @@ export default function InteractivePainting() {
           />
         )}
 
-        {/* TOOLTIP CORREGIDO */}
+        {/* TOOLTIP */}
         {active && (
           <div
             style={{
