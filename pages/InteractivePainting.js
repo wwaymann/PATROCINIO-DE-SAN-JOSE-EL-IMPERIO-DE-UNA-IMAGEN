@@ -26,7 +26,7 @@ export default function InteractivePainting() {
       nombre: "El espiritu de dios",
       fechas: "Siempre",
       descripcion: "EL espiritu.",
-      src: "/capas/nicolas_full.png",
+      src: "/capas/espiritu.png",
     },
   ];
 
