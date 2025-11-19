@@ -8,6 +8,13 @@ export default function InteractivePainting() {
 
   // 🔹 Define aquí tus personajes/capas full-size (mismo tamaño que el fondo)
   const personajes = [
+   {
+      id: "ignacio",
+      nombre: "San Ignacio de Loyola",
+      fechas: "1491–1556",
+      descripcion: "Fundador de la Compañía de Jesús.",
+      src: "/capas/Per__0005s_0000_Querubines-Iferior.png"
+    },
     {
       id: "ignacio",
       nombre: "San Ignacio de Loyola",
