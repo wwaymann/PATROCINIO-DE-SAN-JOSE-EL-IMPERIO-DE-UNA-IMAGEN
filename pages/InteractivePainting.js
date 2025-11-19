@@ -9,12 +9,12 @@ export default function InteractivePainting() {
   const containerRef = useRef(null);
 
   // -----------------------------------------------------------------------
-  // PRIMERA FILA – 12 SANTOS – izquierda → derecha
+  // PRIMERA FILA – 12 santos – izquierda → derecha (nombres en minúscula)
   // -----------------------------------------------------------------------
   const personajes = [
     {
       id: "ignacio",
-      nombre: "San Ignacio de Loyola",
+      nombre: "san ignacio de loyola",
       fechas: "1491–1556",
       descripcion:
         "Jesuita. Hábito negro. Porta el emblema IHS rodeado de rayos y el libro de reglas con la divisa 'Ad Majorem Gloriam Dei'.",
@@ -22,7 +22,7 @@ export default function InteractivePainting() {
     },
     {
       id: "antonio",
-      nombre: "San Antonio de Padua",
+      nombre: "san antonio de padua",
       fechas: "1195–1231",
       descripcion:
         "Franciscano. Sostiene al Niño Jesús sobre un libro y un lirio blanco.",
@@ -30,7 +30,7 @@ export default function InteractivePainting() {
     },
     {
       id: "nicolas",
-      nombre: "San Nicolás de Bari",
+      nombre: "san nicolás de bari",
       fechas: "270–342",
       descripcion:
         "Obispo. Porta mitra, capa magna, báculo y un libro con tres esferas alusivas a su caridad.",
@@ -38,7 +38,7 @@ export default function InteractivePainting() {
     },
     {
       id: "agustin",
-      nombre: "San Agustín de Hipona",
+      nombre: "san agustín de hipona",
       fechas: "354–430",
       descripcion:
         "Obispo. Porta báculo, pluma y libro. Doctor de la Iglesia.",
@@ -46,7 +46,7 @@ export default function InteractivePainting() {
     },
     {
       id: "gregorio",
-      nombre: "San Gregorio Magno",
+      nombre: "san gregorio magno",
       fechas: "† 604",
       descripcion:
         "Papa. Porta tiara, cruz triple, pluma en la derecha y libro en la izquierda.",
@@ -54,7 +54,7 @@ export default function InteractivePainting() {
     },
     {
       id: "domingo",
-      nombre: "Santo Domingo de Guzmán",
+      nombre: "santo domingo de guzmán",
       fechas: "1170–1221",
       descripcion:
         "Dominico. Hábito bicolor. Porta rosario, lirios blancos y un libro.",
@@ -62,15 +62,16 @@ export default function InteractivePainting() {
     },
     {
       id: "francisco",
-      nombre: "San Francisco de Asís",
+      nombre: "san francisco de asís",
       fechas: "1182–1226",
       descripcion:
         "Hábito café. Estigmas visibles. Porta un crucifijo.",
-      src: "/capas/francisco_full.png"
+      // Ojo con el nombre del archivo: ajústalo si en el servidor se llama distinto.
+      src: "/capas/francisco_full1.png"
     },
     {
       id: "jeronimo",
-      nombre: "San Jerónimo",
+      nombre: "san jerónimo",
       fechas: "347–420",
       descripcion:
         "Cardenal. Porta pluma y libro. León a sus pies como símbolo tradicional.",
@@ -78,7 +79,7 @@ export default function InteractivePainting() {
     },
     {
       id: "ambrosio",
-      nombre: "San Ambrosio de Milán",
+      nombre: "san ambrosio de milán",
       fechas: "340–396",
       descripcion:
         "Obispo. Porta báculo, libro y pluma. Doctor de la Iglesia.",
@@ -86,7 +87,7 @@ export default function InteractivePainting() {
     },
     {
       id: "bernardo",
-      nombre: "San Bernardo de Claraval",
+      nombre: "san bernardo de claraval",
       fechas: "1090–1153",
       descripcion:
         "Cisterciense. Manto blanco, mitra, pluma, libro y báculo abacial.",
@@ -94,7 +95,7 @@ export default function InteractivePainting() {
     },
     {
       id: "juan_de_dios",
-      nombre: "San Juan de Dios",
+      nombre: "san juan de dios",
       fechas: "1495–1550",
       descripcion:
         "Hábito gris. Porta un crucifijo y una granada. Fundador de la Orden Hospitalaria.",
@@ -102,7 +103,7 @@ export default function InteractivePainting() {
     },
     {
       id: "francisco_javier",
-      nombre: "San Francisco Javier",
+      nombre: "san francisco javier",
       fechas: "1506–1552",
       descripcion:
         "Jesuita. Porta un lirio blanco en la derecha y un crucifijo en la izquierda.",
@@ -132,7 +133,7 @@ export default function InteractivePainting() {
   }, []);
 
   // -----------------------------------------------------------------------
-  // DETECCIÓN PIXEL PERFECT (ESCALADO CORRECTO)
+  // DETECCIÓN PIXEL PERFECT
   // -----------------------------------------------------------------------
   const handleMove = (e) => {
     if (!containerRef.current) return;
@@ -158,7 +159,6 @@ export default function InteractivePainting() {
 
     let detected = null;
 
-    // revisar capas desde la superior
     for (let i = personajes.length - 1; i >= 0; i--) {
       const p = personajes[i];
       const canvas = canvasRefs.current[p.id];
@@ -181,6 +181,37 @@ export default function InteractivePainting() {
   const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
 
   // -----------------------------------------------------------------------
+  // CÁLCULO DE POSICIÓN DEL TOOLTIP (para no tapar al santo)
+  // -----------------------------------------------------------------------
+  let tooltipPosition = {};
+  if (active && containerRef.current) {
+    const w = containerRef.current.clientWidth;
+    const h = containerRef.current.clientHeight;
+
+    const margin = 20;
+    const tooltipW = 260; // estimado
+    const tooltipH = 140; // estimado
+
+    const isLeft = cursor.x < w / 2;
+    const isTop = cursor.y < h / 2;
+
+    // Si el cursor está a la izquierda, ponemos el tooltip a la derecha, y viceversa.
+    let left = isLeft
+      ? cursor.x + margin
+      : cursor.x - margin - tooltipW;
+
+    // Si el cursor está arriba, el tooltip va abajo, y viceversa.
+    let top = isTop
+      ? cursor.y + margin
+      : cursor.y - margin - tooltipH;
+
+    left = clamp(left, 10, w - tooltipW - 10);
+    top = clamp(top, 10, h - tooltipH - 10);
+
+    tooltipPosition = { left, top };
+  }
+
+  // -----------------------------------------------------------------------
   // RENDER
   // -----------------------------------------------------------------------
   return (
@@ -193,7 +224,7 @@ export default function InteractivePainting() {
         alignItems: "center"
       }}
     >
-      <h2 style={{ margin: 0 }}>Primera Fila – Santos</h2>
+      <h2 style={{ margin: 0 }}>primera fila – santos</h2>
 
       <div
         ref={containerRef}
@@ -209,22 +240,20 @@ export default function InteractivePainting() {
           cursor: "pointer"
         }}
       >
-        {/* FONDO */}
-       <img
-  src="/cuadro_base.jpg"
-  style={{
-    width: "100%",
-    height: "auto",
-    display: "block",
-    // ⭐ Si hay personaje activo → aplicar blanco y negro
-   filter: active ? "grayscale(1) brightness(0.9) blur(0.6px)" : "none",
-    transition: "filter 0.25s ease-out"
-  }}
-  alt=""
-/>
+        {/* FONDO: se pone blanco y negro con personaje activo */}
+        <img
+          src="/cuadro_base.jpg"
+          style={{
+            width: "100%",
+            height: "auto",
+            display: "block",
+            filter: active ? "grayscale(1) brightness(0.9)" : "none",
+            transition: "filter 0.25s ease-out"
+          }}
+          alt=""
+        />
 
-
-        {/* CAPA RESALTADA CON GLOW DORADO SUAVE */}
+        {/* CAPA RESALTADA CON GLOW DORADO SUAVE Y DESPLAZAMIENTO MÍNIMO */}
         {active && (
           <img
             src={active.src}
@@ -235,13 +264,9 @@ export default function InteractivePainting() {
               width: "100%",
               height: "auto",
               pointerEvents: "none",
-
-              // desplazamiento mínimo y escala sutil
               transform: "translateY(-3px) scale(1.01)",
               transformOrigin: "center",
               transition: "transform 0.2s ease-out, filter 0.2s ease-out",
-
-              // glow dorado más ceñido y menos intenso
               filter: `
                 drop-shadow(0 0 8px rgba(255, 210, 120, 0.55))
                 drop-shadow(0 0 14px rgba(255, 210, 120, 0.35))
@@ -252,21 +277,12 @@ export default function InteractivePainting() {
           />
         )}
 
-        {/* TOOLTIP */}
+        {/* TOOLTIP – reposicionado para no tapar al santo */}
         {active && containerRef.current && (
           <div
             style={{
               position: "absolute",
-              top: clamp(
-                cursor.y + 20,
-                10,
-                containerRef.current.clientHeight - 140
-              ),
-              left: clamp(
-                cursor.x + 20,
-                10,
-                containerRef.current.clientWidth - 180
-              ),
+              ...tooltipPosition,
               background: "rgba(255,255,255,0.90)",
               padding: "10px 14px",
               borderRadius: "8px",
@@ -280,7 +296,8 @@ export default function InteractivePainting() {
                 margin: "0 0 4px",
                 color: "#c40000",
                 fontFamily: "Matona, serif",
-                fontSize: "0.95rem"
+                fontSize: "0.95rem",
+                textTransform: "none"
               }}
             >
               {active.nombre}
@@ -288,9 +305,10 @@ export default function InteractivePainting() {
 
             <div
               style={{
-                fontSize: "0.82rem",
+                fontSize: "0.88rem",
                 fontWeight: "bold",
-                marginBottom: "4px"
+                marginBottom: "4px",
+                fontFamily: "Garamond, 'Times New Roman', serif"
               }}
             >
               {active.fechas}
@@ -299,8 +317,9 @@ export default function InteractivePainting() {
             <p
               style={{
                 margin: 0,
-                fontSize: "0.80rem",
-                lineHeight: 1.25
+                fontSize: "0.86rem",
+                lineHeight: 1.3,
+                fontFamily: "Garamond, 'Times New Roman', serif"
               }}
             >
               {active.descripcion}
