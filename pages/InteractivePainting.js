@@ -210,15 +210,19 @@ export default function InteractivePainting() {
         }}
       >
         {/* FONDO */}
-        <img
-          src="/cuadro_base.jpg"
-          style={{
-            width: "100%",
-            height: "auto",
-            display: "block"
-          }}
-          alt=""
-        />
+       <img
+  src="/cuadro_base.jpg"
+  style={{
+    width: "100%",
+    height: "auto",
+    display: "block",
+    // ⭐ Si hay personaje activo → aplicar blanco y negro
+    filter: active ? "grayscale(1) brightness(0.9)" : "none",
+    transition: "filter 0.25s ease-out"
+  }}
+  alt=""
+/>
+
 
         {/* CAPA RESALTADA CON GLOW DORADO SUAVE */}
         {active && (
