@@ -8,7 +8,9 @@ export default function InteractivePainting() {
   const imgRefs = useRef({});
   const containerRef = useRef(null);
 
-  // 🔹 12 PERSONAJES – Primera fila – orden de izquierda a derecha
+  // -----------------------------------------------------------------------
+  // PRIMERA FILA – 12 SANTOS – izquierda → derecha
+  // -----------------------------------------------------------------------
   const personajes = [
     {
       id: "ignacio",
@@ -31,7 +33,7 @@ export default function InteractivePainting() {
       nombre: "San Nicolás de Bari",
       fechas: "270–342",
       descripcion:
-        "Obispo. Porta capa magna, mitra, báculo y un libro con tres esferas asociadas a su caridad.",
+        "Obispo. Porta mitra, capa magna, báculo y un libro con tres esferas alusivas a su caridad.",
       src: "/capas/nicolas_full.png"
     },
     {
@@ -39,7 +41,7 @@ export default function InteractivePainting() {
       nombre: "San Agustín de Hipona",
       fechas: "354–430",
       descripcion:
-        "Obispo y Doctor de la Iglesia. Porta báculo, pluma y un libro.",
+        "Obispo. Porta báculo, pluma y libro. Doctor de la Iglesia.",
       src: "/capas/agustin_full.png"
     },
     {
@@ -47,7 +49,7 @@ export default function InteractivePainting() {
       nombre: "San Gregorio Magno",
       fechas: "† 604",
       descripcion:
-        "Papa. Tiara pontificia, cruz triple, pluma en la derecha y libro en la izquierda.",
+        "Papa. Porta tiara, cruz triple, pluma en la derecha y libro en la izquierda.",
       src: "/capas/gregorio_full.png"
     },
     {
@@ -55,7 +57,7 @@ export default function InteractivePainting() {
       nombre: "Santo Domingo de Guzmán",
       fechas: "1170–1221",
       descripcion:
-        "Dominico. Porta rosario, lirios blancos y un libro cerrado.",
+        "Dominico. Hábito bicolor. Porta rosario, lirios blancos y un libro.",
       src: "/capas/domingo_full.png"
     },
     {
@@ -71,7 +73,7 @@ export default function InteractivePainting() {
       nombre: "San Jerónimo",
       fechas: "347–420",
       descripcion:
-        "Vestido como cardenal. Porta pluma y libro. León a sus pies.",
+        "Cardenal. Porta pluma y libro. León a sus pies como símbolo tradicional.",
       src: "/capas/jeronimo_full.png"
     },
     {
@@ -79,7 +81,7 @@ export default function InteractivePainting() {
       nombre: "San Ambrosio de Milán",
       fechas: "340–396",
       descripcion:
-        "Obispo y Doctor de la Iglesia. Porta báculo, libro y pluma.",
+        "Obispo. Porta báculo, libro y pluma. Doctor de la Iglesia.",
       src: "/capas/ambrosio_full.png"
     },
     {
@@ -95,7 +97,7 @@ export default function InteractivePainting() {
       nombre: "San Juan de Dios",
       fechas: "1495–1550",
       descripcion:
-        "Hábito gris. Porta un crucifijo y una granada.",
+        "Hábito gris. Porta un crucifijo y una granada. Fundador de la Orden Hospitalaria.",
       src: "/capas/juan_de_dios_full.png"
     },
     {
@@ -103,14 +105,14 @@ export default function InteractivePainting() {
       nombre: "San Francisco Javier",
       fechas: "1506–1552",
       descripcion:
-        "Jesuita y misionero. Porta un lirio y un crucifijo.",
+        "Jesuita. Porta un lirio blanco en la derecha y un crucifijo en la izquierda.",
       src: "/capas/francisco_javier_full.png"
     }
   ];
 
-  // --------------------------------------------------------------
-  // CARGA DE CAPAS EN CANVAS
-  // --------------------------------------------------------------
+  // -----------------------------------------------------------------------
+  // CARGA DE CAPAS EN CANVAS INVISIBLE
+  // -----------------------------------------------------------------------
   useEffect(() => {
     personajes.forEach((p) => {
       const img = new Image();
@@ -118,8 +120,8 @@ export default function InteractivePainting() {
 
       img.onload = () => {
         const canvas = document.createElement("canvas");
-        canvas.width = img.width;   // Debe ser 1080
-        canvas.height = img.height; // Debe ser 927
+        canvas.width = img.width;   // debe ser 1080
+        canvas.height = img.height; // debe ser 927
 
         const ctx = canvas.getContext("2d");
         ctx.drawImage(img, 0, 0);
@@ -130,9 +132,9 @@ export default function InteractivePainting() {
     });
   }, []);
 
-  // --------------------------------------------------------------
-  // DETECCIÓN PIXEL-PERFECT
-  // --------------------------------------------------------------
+  // -----------------------------------------------------------------------
+  // DETECCIÓN PIXEL PERFECT
+  // -----------------------------------------------------------------------
   const handleMove = (e) => {
     if (!containerRef.current) return;
 
@@ -143,13 +145,13 @@ export default function InteractivePainting() {
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-    const scaleX = baseImg.width / rect.width;   // 1080 / ancho visual
-    const scaleY = baseImg.height / rect.height; // 927 / alto visual
+    const x = (clientX - rect.left) * (1080 / rect.width);
+    const y = (clientY - rect.top) * (927 / rect.height);
 
-    const x = (clientX - rect.left) * scaleX;
-    const y = (clientY - rect.top) * scaleY;
-
-    setCursor({ x: clientX - rect.left, y: clientY - rect.top });
+    setCursor({
+      x: clientX - rect.left,
+      y: clientY - rect.top
+    });
 
     let detected = null;
 
@@ -172,12 +174,12 @@ export default function InteractivePainting() {
 
   const handleLeave = () => setActive(null);
 
-  // Mantener tooltip dentro de la imagen
-  const clamp = (value, min, max) => Math.max(min, Math.min(value, max));
+  // Para evitar que el tooltip se salga del contenedor
+  const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
 
-  // --------------------------------------------------------------
+  // -----------------------------------------------------------------------
   // RENDER
-  // --------------------------------------------------------------
+  // -----------------------------------------------------------------------
   return (
     <section
       style={{
@@ -188,8 +190,9 @@ export default function InteractivePainting() {
         alignItems: "center"
       }}
     >
-      <h2 style={{ margin: 0 }}>Primera Fila – Santos</h2>
+      <h2 style={{ margin: 0 }}>PATROCINIO INTERACTIVO</h2>
 
+      {/* CONTENEDOR CON PROPORCIÓN FIJA */}
       <div
         ref={containerRef}
         onMouseMove={handleMove}
@@ -199,14 +202,21 @@ export default function InteractivePainting() {
           position: "relative",
           width: "100%",
           maxWidth: "900px",
+          aspectRatio: "1080 / 927",   // 🔥 CORRECCIÓN CLAVE
+          overflow: "hidden",
           cursor: "pointer"
         }}
       >
         {/* FONDO */}
         <img
           src="/cuadro_base.jpg"
-          style={{ width: "100%", display: "block" }}
-          alt="Pintura base"
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover"
+          }}
+          alt=""
         />
 
         {/* CAPA RESALTADA */}
@@ -218,8 +228,10 @@ export default function InteractivePainting() {
               top: 0,
               left: 0,
               width: "100%",
+              height: "100%",
+              objectFit: "cover",
               pointerEvents: "none",
-              filter: "drop-shadow(0 0 12px rgba(0,0,0,0.6))"
+              filter: "drop-shadow(0 0 16px rgba(0,0,0,0.6))"
             }}
             alt=""
           />
@@ -230,8 +242,8 @@ export default function InteractivePainting() {
           <div
             style={{
               position: "absolute",
-              top: clamp(cursor.y + 25, 10, 927 - 120),
-              left: clamp(cursor.x + 25, 10, 1080 - 150),
+              top: clamp(cursor.y + 25, 10, rectHeight - 130),
+              left: clamp(cursor.x + 25, 10, rectWidth - 180),
               background: "rgba(255,255,255,0.90)",
               padding: "10px 14px",
               borderRadius: "8px",
@@ -253,7 +265,7 @@ export default function InteractivePainting() {
 
             <div
               style={{
-                fontSize: "0.80rem",
+                fontSize: "0.82rem",
                 fontWeight: "bold",
                 marginBottom: "4px"
               }}
@@ -264,7 +276,7 @@ export default function InteractivePainting() {
             <p
               style={{
                 margin: 0,
-                fontSize: "0.78rem",
+                fontSize: "0.80rem",
                 lineHeight: 1.25
               }}
             >
