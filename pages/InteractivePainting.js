@@ -200,7 +200,7 @@ export default function InteractivePainting() {
     "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
   src: "/capas/angeles_capa_full.png"
 },
-
+ ];
   
   // -----------------------------------------------------------------------
   // Cargar cada PNG en canvas para detección pixel-perfect
