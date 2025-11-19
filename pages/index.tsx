@@ -446,7 +446,7 @@ END:VCALENDAR`
           </div>
         </section>
 
-       {/* VISTA PREVIA (FlipHTML5)  */}
+       {/* VISTA PREVIA (FlipHTML5)  
 <section id="preview" className="section">
   <h2>vista previa del eBook</h2>
   <div style={{ position:'relative', paddingTop:'max(60%, 324px)', width:'100%', height:0 }}>
@@ -461,6 +461,7 @@ END:VCALENDAR`
     />
   </div>
 </section>
+*/}
 
 
 
