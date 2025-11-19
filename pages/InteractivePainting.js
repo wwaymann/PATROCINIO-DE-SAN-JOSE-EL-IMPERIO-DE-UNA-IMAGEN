@@ -111,19 +111,17 @@ export default function InteractivePainting() {
   ];
 
   // -----------------------------------------------------------------------
-  // CARGA DE CAPAS EN CANVAS INVISIBLE
+  // CARGA DE PNG EN CANVAS
   // -----------------------------------------------------------------------
   useEffect(() => {
     personajes.forEach((p) => {
       const img = new Image();
       img.src = p.src;
-
       img.onload = () => {
         const canvas = document.createElement("canvas");
-        canvas.width = img.width;   // debe ser 1080
-        canvas.height = img.height; // debe ser 927
-
-        const ctx = canvas.getContext("2d");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext("2d", { willReadFrequently: true });
         ctx.drawImage(img, 0, 0);
 
         canvasRefs.current[p.id] = canvas;
@@ -133,20 +131,26 @@ export default function InteractivePainting() {
   }, []);
 
   // -----------------------------------------------------------------------
-  // DETECCIÓN PIXEL PERFECT
+  // DETECCIÓN PIXEL PERFECT (CORREGIDO)
   // -----------------------------------------------------------------------
   const handleMove = (e) => {
     if (!containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
-    const baseImg = imgRefs.current[personajes[0].id];
+    const rectWidth = rect.width;
+    const rectHeight = rect.height;
+
+    const baseImg = imgRefs.current["ignacio"];
     if (!baseImg) return;
+
+    const scaleX = 1080 / rectWidth;
+    const scaleY = 927 / rectHeight;
 
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-    const x = (clientX - rect.left) * (1080 / rect.width);
-    const y = (clientY - rect.top) * (927 / rect.height);
+    const x = (clientX - rect.left) * scaleX;
+    const y = (clientY - rect.top) * scaleY;
 
     setCursor({
       x: clientX - rect.left,
@@ -155,6 +159,7 @@ export default function InteractivePainting() {
 
     let detected = null;
 
+    // revisar capas arriba → abajo
     for (let i = personajes.length - 1; i >= 0; i--) {
       const p = personajes[i];
       const canvas = canvasRefs.current[p.id];
@@ -174,7 +179,6 @@ export default function InteractivePainting() {
 
   const handleLeave = () => setActive(null);
 
-  // Para evitar que el tooltip se salga del contenedor
   const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
 
   // -----------------------------------------------------------------------
@@ -190,9 +194,9 @@ export default function InteractivePainting() {
         alignItems: "center"
       }}
     >
-      <h2 style={{ margin: 0 }}>PATROCINIO INTERACTIVO</h2>
+      <h2 style={{ margin: 0 }}>Primera Fila – Santos</h2>
 
-      {/* CONTENEDOR CON PROPORCIÓN FIJA */}
+      {/* Contenedor con proporción fija */}
       <div
         ref={containerRef}
         onMouseMove={handleMove}
@@ -202,7 +206,7 @@ export default function InteractivePainting() {
           position: "relative",
           width: "100%",
           maxWidth: "900px",
-          aspectRatio: "1080 / 927",   // 🔥 CORRECCIÓN CLAVE
+          aspectRatio: "1080 / 927",
           overflow: "hidden",
           cursor: "pointer"
         }}
@@ -225,8 +229,6 @@ export default function InteractivePainting() {
             src={active.src}
             style={{
               position: "absolute",
-              top: 0,
-              left: 0,
               width: "100%",
               height: "100%",
               objectFit: "cover",
@@ -237,13 +239,13 @@ export default function InteractivePainting() {
           />
         )}
 
-        {/* TOOLTIP */}
+        {/* TOOLTIP CORREGIDO */}
         {active && (
           <div
             style={{
               position: "absolute",
-              top: clamp(cursor.y + 25, 10, rectHeight - 130),
-              left: clamp(cursor.x + 25, 10, rectWidth - 180),
+              top: clamp(cursor.y + 20, 10, containerRef.current.clientHeight - 140),
+              left: clamp(cursor.x + 20, 10, containerRef.current.clientWidth - 180),
               background: "rgba(255,255,255,0.90)",
               padding: "10px 14px",
               borderRadius: "8px",
