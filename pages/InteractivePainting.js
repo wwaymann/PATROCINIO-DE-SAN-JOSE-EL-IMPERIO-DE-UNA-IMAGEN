@@ -198,9 +198,37 @@ export default function InteractivePainting() {
   nombre: "ángeles portadores del manto",
   descripcion:
     "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
-  src: "/capas/angeles_capa_full.png"
+  src: "/capas/angeles_capa_full_01.png"
 },
- ];
+
+    {
+  id: "angeles mantos",
+  nombre: "ángeles portadores del manto",
+  descripcion:
+    "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
+  src: "/capas/angeles_capa_full_02.png"
+},
+    {
+  id: "angeles mantos",
+  nombre: "ángeles portadores del manto",
+  descripcion:
+    "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
+  src: "/capas/angeles_capa_full_03.png"
+},
+    {
+  id: "angeles mantos",
+  nombre: "ángeles portadores del manto",
+  descripcion:
+    "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
+  src: "/capas/angeles_capa_full_04.png"
+},
+ 
+  
+  
+  
+  
+  
+  ];
   
   // -----------------------------------------------------------------------
   // Cargar cada PNG en canvas para detección pixel-perfect
