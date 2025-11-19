@@ -115,6 +115,90 @@ export default function InteractivePainting() {
   ];
 
   // -----------------------------------------------------------------------
+// SEGUNDA FILA – 10 figuras (izquierda a derecha)
+// -----------------------------------------------------------------------
+{
+  id: "buenaventura",
+  nombre: "san buenaventura",
+  fechas: "1218–1274",
+  descripcion:
+    "franciscano. porta un libro con una pequeña iglesia sobre él y un árbol en su mano izquierda.",
+  src: "/capas/buenaventura_full.png"
+},
+{
+  id: "monica",
+  nombre: "santa mónica de hipona",
+  fechas: "siglo IV",
+  descripcion:
+    "madre de san agustín. toca blanca y telas negras de viuda. sostiene un libro y un crucifijo.",
+  src: "/capas/monica_full.png"
+},
+{
+  id: "francisco_de_paula",
+  nombre: "san francisco de paula",
+  fechas: "1416–1507",
+  descripcion:
+    "fundador de los mínimos. hábito pardo. porta la divisa 'charitas' y un bastón.",
+  src: "/capas/francisco_de_paula_full.png"
+},
+{
+  id: "barbara",
+  nombre: "santa bárbara",
+  fechas: "siglo III",
+  descripcion:
+    "mártir. representada como princesa con corona. lleva la palma del martirio y una torre en llamas.",
+  src: "/capas/barbara_full.png"
+},
+{
+  id: "gertrudis",
+  nombre: "santa gertrudis la magna",
+  fechas: "1256–1302",
+  descripcion:
+    "monja agustina. sostiene un corazón inflamado y un báculo.",
+  src: "/capas/gertrudis_full.png"
+},
+{
+  id: "teresa",
+  nombre: "santa teresa de ávila",
+  fechas: "1515–1582",
+  descripcion:
+    "descalza carmelita. hábito marrón y capa blanca. porta una pluma y un libro.",
+  src: "/capas/teresa_full.png"
+},
+{
+  id: "apolonia",
+  nombre: "santa apolonia de alejandría",
+  fechas: "† 249",
+  descripcion:
+    "mártir. representada como princesa con corona. porta la palma del martirio y una tenaza con un diente.",
+  src: "/capas/apolonia_full.png"
+},
+{
+  id: "tomas",
+  nombre: "santo tomás de aquino",
+  fechas: "1225–1274",
+  descripcion:
+    "doctor angélico. túnica gris decorada. porta un cáliz y un lirio.",
+  src: "/capas/tomas_full.png"
+},
+{
+  id: "clara",
+  nombre: "santa clara de asís",
+  fechas: "1193–1243",
+  descripcion:
+    "fundadora de las clarisas. porta la custodia eucarística y un báculo.",
+  src: "/capas/clara_full.png"
+},
+{
+  id: "duns_scoto",
+  nombre: "san juan duns escoto",
+  fechas: "1266–1308",
+  descripcion:
+    "franciscano y doctor sutil. hábito franciscano, muceta doctoral y solideo. lleva un libro cerrado y un báculo.",
+  src: "/capas/duns_scoto_full.png"
+}
+
+  // -----------------------------------------------------------------------
   // CARGA DE PNG EN CANVAS (para pixel-perfect)
   // -----------------------------------------------------------------------
   useEffect(() => {
