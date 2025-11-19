@@ -8,14 +8,14 @@ export default function InteractivePainting() {
   const imgRefs = useRef({});
   const containerRef = useRef(null);
 
-  // 🔹 12 SANTOS – PRIMERA FILA – DE IZQUIERDA A DERECHA
+  // 🔹 12 PERSONAJES – Primera fila – orden de izquierda a derecha
   const personajes = [
     {
       id: "ignacio",
       nombre: "San Ignacio de Loyola",
       fechas: "1491–1556",
       descripcion:
-        "Jesuita. Hábito negro. Porta el emblema IHS rodeado de rayos y el libro de sus reglas con la divisa 'Ad Majorem Gloriam Dei'.",
+        "Jesuita. Hábito negro. Porta el emblema IHS rodeado de rayos y el libro de reglas con la divisa 'Ad Majorem Gloriam Dei'.",
       src: "/capas/ignacio_full.png"
     },
     {
@@ -23,7 +23,7 @@ export default function InteractivePainting() {
       nombre: "San Antonio de Padua",
       fechas: "1195–1231",
       descripcion:
-        "Franciscano. Sostiene al Niño Jesús sentado sobre un libro y un lirio blanco.",
+        "Franciscano. Sostiene al Niño Jesús sobre un libro y un lirio blanco.",
       src: "/capas/antonio_full.png"
     },
     {
@@ -31,7 +31,7 @@ export default function InteractivePainting() {
       nombre: "San Nicolás de Bari",
       fechas: "270–342",
       descripcion:
-        "Obispo. Porta capa magna, mitra, báculo y un libro con tres esferas alusivas a su caridad.",
+        "Obispo. Porta capa magna, mitra, báculo y un libro con tres esferas asociadas a su caridad.",
       src: "/capas/nicolas_full.png"
     },
     {
@@ -47,7 +47,7 @@ export default function InteractivePainting() {
       nombre: "San Gregorio Magno",
       fechas: "† 604",
       descripcion:
-        "Papa. Tiara pontificia, cruz triple, pluma en la mano derecha y libro en la izquierda.",
+        "Papa. Tiara pontificia, cruz triple, pluma en la derecha y libro en la izquierda.",
       src: "/capas/gregorio_full.png"
     },
     {
@@ -55,7 +55,7 @@ export default function InteractivePainting() {
       nombre: "Santo Domingo de Guzmán",
       fechas: "1170–1221",
       descripcion:
-        "Dominico. Hábito blanco y negro. Porta rosario, rama de lirios blancos y un libro cerrado.",
+        "Dominico. Porta rosario, lirios blancos y un libro cerrado.",
       src: "/capas/domingo_full.png"
     },
     {
@@ -63,7 +63,7 @@ export default function InteractivePainting() {
       nombre: "San Francisco de Asís",
       fechas: "1182–1226",
       descripcion:
-        "Fundador franciscano. Hábito café. Estigmas visibles. Porta un crucifijo.",
+        "Hábito café. Estigmas visibles. Porta un crucifijo.",
       src: "/capas/francisco_full.png"
     },
     {
@@ -71,7 +71,7 @@ export default function InteractivePainting() {
       nombre: "San Jerónimo",
       fechas: "347–420",
       descripcion:
-        "Vestido como cardenal. Porta pluma y libro. León a sus pies como símbolo de su historia.",
+        "Vestido como cardenal. Porta pluma y libro. León a sus pies.",
       src: "/capas/jeronimo_full.png"
     },
     {
@@ -95,7 +95,7 @@ export default function InteractivePainting() {
       nombre: "San Juan de Dios",
       fechas: "1495–1550",
       descripcion:
-        "Fundador de la Orden Hospitalaria. Hábito gris oscuro. Porta un crucifijo y una granada.",
+        "Hábito gris. Porta un crucifijo y una granada.",
       src: "/capas/juan_de_dios_full.png"
     },
     {
@@ -103,20 +103,24 @@ export default function InteractivePainting() {
       nombre: "San Francisco Javier",
       fechas: "1506–1552",
       descripcion:
-        "Misionero jesuita. Porta un lirio en la derecha y un crucifijo en la izquierda.",
+        "Jesuita y misionero. Porta un lirio y un crucifijo.",
       src: "/capas/francisco_javier_full.png"
     }
   ];
 
-  // 🔹 Cargar PNGs en canvas invisible
+  // --------------------------------------------------------------
+  // CARGA DE CAPAS EN CANVAS
+  // --------------------------------------------------------------
   useEffect(() => {
     personajes.forEach((p) => {
       const img = new Image();
       img.src = p.src;
+
       img.onload = () => {
         const canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
+        canvas.width = img.width;   // Debe ser 1080
+        canvas.height = img.height; // Debe ser 927
+
         const ctx = canvas.getContext("2d");
         ctx.drawImage(img, 0, 0);
 
@@ -126,28 +130,29 @@ export default function InteractivePainting() {
     });
   }, []);
 
-  // 🔹 Detección pixel-perfect + tracking del cursor
+  // --------------------------------------------------------------
+  // DETECCIÓN PIXEL-PERFECT
+  // --------------------------------------------------------------
   const handleMove = (e) => {
     if (!containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
     const baseImg = imgRefs.current[personajes[0].id];
     if (!baseImg) return;
 
-    const x = ((clientX - rect.left) / rect.width) * baseImg.width;
-    const y = ((clientY - rect.top) / rect.height) * baseImg.height;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-    setCursor({
-      x: clientX - rect.left,
-      y: clientY - rect.top
-    });
+    const scaleX = baseImg.width / rect.width;   // 1080 / ancho visual
+    const scaleY = baseImg.height / rect.height; // 927 / alto visual
+
+    const x = (clientX - rect.left) * scaleX;
+    const y = (clientY - rect.top) * scaleY;
+
+    setCursor({ x: clientX - rect.left, y: clientY - rect.top });
 
     let detected = null;
 
-    // revisa capas desde la superior hacia la inferior
     for (let i = personajes.length - 1; i >= 0; i--) {
       const p = personajes[i];
       const canvas = canvasRefs.current[p.id];
@@ -167,9 +172,12 @@ export default function InteractivePainting() {
 
   const handleLeave = () => setActive(null);
 
-  // 🔹 validación para evitar que el popup se salga de los bordes
-  const keepInside = (val, min, max) => Math.max(min, Math.min(val, max));
+  // Mantener tooltip dentro de la imagen
+  const clamp = (value, min, max) => Math.max(min, Math.min(value, max));
 
+  // --------------------------------------------------------------
+  // RENDER
+  // --------------------------------------------------------------
   return (
     <section
       style={{
@@ -194,13 +202,14 @@ export default function InteractivePainting() {
           cursor: "pointer"
         }}
       >
-        {/* Fondo */}
+        {/* FONDO */}
         <img
           src="/cuadro_base.jpg"
           style={{ width: "100%", display: "block" }}
+          alt="Pintura base"
         />
 
-        {/* Capa activa */}
+        {/* CAPA RESALTADA */}
         {active && (
           <img
             src={active.src}
@@ -212,16 +221,17 @@ export default function InteractivePainting() {
               pointerEvents: "none",
               filter: "drop-shadow(0 0 12px rgba(0,0,0,0.6))"
             }}
+            alt=""
           />
         )}
 
-        {/* Tooltip pegado al cursor */}
+        {/* TOOLTIP */}
         {active && (
           <div
             style={{
               position: "absolute",
-              top: keepInside(cursor.y + 25, 10, 880),
-              left: keepInside(cursor.x + 25, 10, 860),
+              top: clamp(cursor.y + 25, 10, 927 - 120),
+              left: clamp(cursor.x + 25, 10, 1080 - 150),
               background: "rgba(255,255,255,0.90)",
               padding: "10px 14px",
               borderRadius: "8px",
@@ -235,21 +245,29 @@ export default function InteractivePainting() {
                 margin: "0 0 4px",
                 color: "#c40000",
                 fontFamily: "Matona, serif",
-                fontSize: "0.98rem"
+                fontSize: "0.95rem"
               }}
             >
               {active.nombre}
             </h3>
+
             <div
               style={{
-                fontSize: "0.82rem",
+                fontSize: "0.80rem",
                 fontWeight: "bold",
                 marginBottom: "4px"
               }}
             >
               {active.fechas}
             </div>
-            <p style={{ margin: 0, fontSize: "0.82rem", lineHeight: 1.3 }}>
+
+            <p
+              style={{
+                margin: 0,
+                fontSize: "0.78rem",
+                lineHeight: 1.25
+              }}
+            >
               {active.descripcion}
             </p>
           </div>
