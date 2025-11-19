@@ -1,32 +1,28 @@
 import { useState } from "react";
 
-const personajesData = [
-  {
-    id: "ignacio",
-    nombre: "San Ignacio de Loyola",
-    fechas: "1491–1556",
-    descripcion:
-      "Fundador de la Compañía de Jesús, sostiene el emblema IHS y el libro de la regla.",
-    src: "/capas/ignacio_full.png" // PNG del mismo tamaño que el fondo
-  },
-  {
-    id: "antonio",
-    nombre: "San Antonio de Padua",
-    fechas: "1195–1231",
-    descripcion:
-      "Fraile franciscano, sostiene al Niño Jesús sobre un libro y un lirio blanco.",
-    src: "/capas/antonio_full.png"
-  },
-  {
-    id: "nicolas",
-    nombre: "San Nicolás de Bari",
-    fechas: "270–342",
-    descripcion:
-      "Obispo con capa magna, mitra, báculo y libro con tres esferas.",
-    src: "/capas/nicolas_full.png"
-  }
-  // Agrega aquí el resto de los personajes, cada uno en su PNG full-size
-];
+  const personajesData = [
+    {
+      id: "ignacio",
+      nombre: "San Ignacio de Loyola",
+      fechas: "1491–1556",
+      descripcion: "Fundador de la Compañía de Jesús.",
+      src: "/capas/ignacio_full.png",
+    },
+    {
+      id: "dios",
+      nombre: "DIOS",
+      fechas: "ETERNO",
+      descripcion: "Deidad.",
+      src: "/capas/dios.png",
+    },
+    {
+      id: "espitu",
+      nombre: "El espiritu de dios",
+      fechas: "Siempre",
+      descripcion: "EL espiritu.",
+      src: "/capas/espiritu.png",
+    },
+  ];
 
 export default function InteractivePainting({
   personajes = personajesData,
