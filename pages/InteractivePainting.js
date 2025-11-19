@@ -193,10 +193,7 @@ export default function InteractivePainting() {
       src: "/capas/duns_scoto_full.png",
     },
 
-   // -----------------------------------------------------------------------
-    // SEGUNDO NIVEL
-    // -----------------------------------------------------------------------
-    
+   
 {
   id: "angeles mantos",
   nombre: "ángeles portadores del manto",
