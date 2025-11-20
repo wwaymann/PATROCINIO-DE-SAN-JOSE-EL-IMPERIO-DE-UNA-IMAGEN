@@ -99,9 +99,8 @@ const PERSONAJES_NIVEL3 = [
     nombre: "querubines",
     descripcion:
       "Querubines, representados como pequeñas cabezas aladas.",
-    src: "/capas/querubinesMaria.png",
-  },
-
+    src: "/capas/querubinesMaria.png"
+   },
   
 ];
 
