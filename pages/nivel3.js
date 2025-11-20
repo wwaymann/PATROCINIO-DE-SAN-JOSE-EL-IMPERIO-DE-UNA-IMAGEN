@@ -78,14 +78,14 @@ const PERSONAJES_NIVEL3 = [
     descripcion:
       "Representado antropomórficamente, con capa pluvial. Sostiene una vara de lirios blancos coronada por una paloma y un cetro en la mano derecha.",
     src: "/capas/trinidad_espiritu_full.png"
-  }
+  },
   {
     id: "texto_banda_trinidad",
     nombre: "ite ad ioseph",
     descripcion:
       "Cita de Génesis 41:55, cuya traducción es «Id a José».",
     src: "/capas/texto_tercer_nivel.png"
-}
+},
  {
     id: "querubinesTrinidad",
     nombre: "querubines",
