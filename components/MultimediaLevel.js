@@ -224,41 +224,55 @@ export default function MultimediaLevel({
           cursor: "pointer",
         }}
       >
-        {/* IMAGEN DE FONDO */}
-        <img
-          src={background}
+        {/* CONTENEDOR CON ZOOM (FONDO + PERSONAJE) */}
+        <div
           style={{
+            position: "relative",
             width: "100%",
-            display: "block",
+            height: "100%",
             transformOrigin: `${zoomPoint.x}px ${zoomPoint.y}px`,
             transform: zooming ? "scale(1.6)" : "scale(1)",
             transition: "transform 0.35s ease-out",
-            filter: active
-              ? "grayscale(1) brightness(0.9)"
-              : "none",
           }}
-        />
-
-        {/* RESALTADO */}
-        {active && (
+        >
+          {/* IMAGEN DE FONDO */}
           <img
-            src={active.src}
+            src={background}
             style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
               width: "100%",
               height: "auto",
-              pointerEvents: "none",
-              transform: "translateY(-3px) scale(1.01)",
-              filter: `
-                drop-shadow(0 0 8px rgba(255,210,120,0.55))
-                drop-shadow(0 0 14px rgba(255,210,120,0.35))
-              `,
-              transition: "filter 0.2s, transform 0.2s",
+              display: "block",
+              filter: active
+                ? "grayscale(1) brightness(0.9)"
+                : "none",
+              transition: "filter 0.25s",
             }}
+            alt=""
           />
-        )}
+
+          {/* RESALTADO */}
+          {active && (
+            <img
+              src={active.src}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "auto",
+                pointerEvents: "none",
+                transform: "translateY(-3px) scale(1.01)",
+                filter: `
+                  drop-shadow(0 0 8px rgba(255,210,120,0.55))
+                  drop-shadow(0 0 14px rgba(255,210,120,0.35))
+                  drop-shadow(0 4px 10px rgba(0,0,0,0.35))
+                `,
+                transition: "filter 0.2s, transform 0.2s",
+              }}
+              alt=""
+            />
+          )}
+        </div>
 
         {/* TOOLTIP */}
         {active && (
@@ -315,7 +329,7 @@ export default function MultimediaLevel({
             borderRadius: "8px",
             cursor: "pointer",
             zIndex: 999,
-            fontSize: "1.2rem"
+            fontSize: "1.2rem",
           }}
         >
           {mute ? "🔇" : "🔊"}
