@@ -53,7 +53,7 @@ const PERSONAJES_NIVEL2 = [
       "Querubines, representados como niños alados y como pequeñas cabezas aladas.",
     src: "/capas/querubines.png"
 },
-¨ {
+ {
     id: "san_jose",
   nombre: "san josé",
   descripcion:
