@@ -75,7 +75,7 @@ const PERSONAJES_NIVEL2 = [
     descripcion:
       "Cita del salmo 105:21, que dice: «Lo puso por señor de su casa, Y por gobernador de todas sus posesiones».",
     src: "/capas/texto_horizontal.png"
-},
+}
 ];
 
 export default function Nivel2() {
