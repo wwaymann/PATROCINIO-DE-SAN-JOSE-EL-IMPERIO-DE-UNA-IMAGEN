@@ -95,7 +95,7 @@ export default function Nivel3() {
   return (
     <MultimediaLevel
       titulo="Tercer Nivel"
-      background="/fondos/TercerNivel.png"
+     src: "/fondos/TercerNivel.png"
       personajes={PERSONAJES_NIVEL3}
     />
   );
