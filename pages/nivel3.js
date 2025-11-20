@@ -1,9 +1,7 @@
 import MultimediaLevel from "../components/MultimediaLevel";
 
 const PERSONAJES_NIVEL3 = [
-  // -------------------------------------------------------------
-  // TERCER NIVEL
-  // -------------------------------------------------------------
+
   {
     id: "arcangel_gabriel",
     nombre: "arcángel gabriel",
@@ -112,7 +110,7 @@ export default function Nivel3() {
   return (
     <MultimediaLevel
       titulo="Tercer Nivel"
-      background="/fondos/TercerNivel.png"
+      background="/fondos/TercerNivel.jpg"
       personajes={PERSONAJES_NIVEL3}
     />
   );
