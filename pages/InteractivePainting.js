@@ -437,23 +437,19 @@ export default function InteractivePainting() {
   return (
     <div className="painting">
       {layers.map((layer) => (
-        <button
-          key={layer.id}
-          className="hotspot"
-          // leer en voz alta al pasar el mouse
-          onMouseEnter={() => speak(layer.descripcion)}
-          onMouseLeave={cancel}
-          // accesible con teclado
-          onFocus={() => speak(layer.descripcion)}
-          onBlur={cancel}
-          aria-label={layer.descripcion}
-        >
-          {layer.nombre}
-          <span className="tooltip">
-            {layer.descripcion}
-          </span>
-        </button>
-      ))}
+  <button
+    key={layer.id}
+    className="hotspot"
+    onMouseEnter={() => speak(layer.descripcion)}  // lee al pasar el mouse
+    onMouseLeave={cancel}                          // corta al salir
+    onFocus={() => speak(layer.descripcion)}       // lee al enfocar con teclado
+    onBlur={cancel}                                // corta al salir del foco
+    aria-label={layer.descripcion}                 // accesible para lectores de pantalla
+  >
+    <span className="hotspot-label">{layer.nombre}</span>
+    <span className="tooltip">{layer.descripcion}</span>
+  </button>
+))}
     </div>
   )
 }
