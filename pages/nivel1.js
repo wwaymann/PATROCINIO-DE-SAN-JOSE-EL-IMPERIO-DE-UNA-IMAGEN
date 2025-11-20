@@ -193,7 +193,7 @@ const PERSONAJES_NIVEL1 = [
       descripcion:
         "Con hábito franciscano, muceta doctoral y solideo, porta libro y báculo.",
       src: "/capas/duns_scoto_full.png",
-    },
+    }
     
   
 
