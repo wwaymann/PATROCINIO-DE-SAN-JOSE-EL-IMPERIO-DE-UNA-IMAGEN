@@ -48,367 +48,15 @@ function useTooltipVoice() {
 }
 
 // -----------------------------------------------------------------------
-// PRIMERA NIVEL, PRIMERA FILA
+// PERSONAJES TEMPORALES (REDUCIDOS)
 // -----------------------------------------------------------------------
 const PERSONAJES = [
   {
     id: "texto_cartela_inferior",
     nombre: "sub umbra illius quam desideraveram sedi",
     descripcion:
-      "inscripción latina tomada del cantar de los cantares (2,3): «me senté a la sombra del que tanto había deseado». alude al amparo que san josé ofrece a los santos cobijados bajo su manto.",
+      "inscripción latina del cantar de los cantares, 'me senté a la sombra del que tanto había deseado'.",
     src: "/capas/texto_primer nivel.png",
-  },
-  {
-    id: "angeles_querubines",
-    nombre: "ángeles y querubines",
-    descripcion:
-      "una multitud de ángeles y querubines articula el espacio entre la trinidad y san josé. los ángeles mayores tocan instrumentos barrocos, sostienen el manto o portan filacterias, introduciendo movimiento y música en la escena. los querubines, representados como pequeñas cabezas aladas inmersas en la luz y las nubes, pertenecen al orden más elevado y simbolizan el conocimiento y la contemplación de la belleza divina.",
-    src: "/capas/querubines_primer_nivel.png",
-  },
-  {
-    id: "ignacio",
-    nombre: "san ignacio de loyola",
-    fechas: "1491–1556",
-    descripcion:
-      "jesuita. hábito negro. porta el emblema ihs rodeado de rayos y el libro de reglas con la divisa 'ad majorem gloriam dei'.",
-    src: "/capas/ignacio_full.png",
-  },
-  {
-    id: "antonio",
-    nombre: "san antonio de padua",
-    fechas: "1195–1231",
-    descripcion:
-      "franciscano. sostiene al niño jesús sobre un libro y un lirio blanco.",
-    src: "/capas/antonio_full.png",
-  },
-  {
-    id: "nicolas",
-    nombre: "san nicolás de bari",
-    fechas: "270–342",
-    descripcion:
-      "obispo. porta mitra, capa magna, báculo y un libro con tres esferas alusivas a su caridad.",
-    src: "/capas/nicolas_full.png",
-  },
-  {
-    id: "agustin",
-    nombre: "san agustín de hipona",
-    fechas: "354–430",
-    descripcion:
-      "obispo. porta báculo, pluma y libro. doctor de la iglesia.",
-    src: "/capas/agustin_full.png",
-  },
-  {
-    id: "gregorio",
-    nombre: "san gregorio magno",
-    fechas: "† 604",
-    descripcion:
-      "papa. porta tiara, cruz triple, pluma en la derecha y libro en la izquierda.",
-    src: "/capas/gregorio_full.png",
-  },
-  {
-    id: "domingo",
-    nombre: "santo domingo de guzmán",
-    fechas: "1170–1221",
-    descripcion:
-      "dominico. hábito bicolor. porta rosario, lirios blancos y un libro.",
-    src: "/capas/domingo_full.png",
-  },
-  {
-    id: "francisco",
-    nombre: "san francisco de asís",
-    fechas: "1182–1226",
-    descripcion:
-      "hábito café. estigmas visibles. porta un crucifijo.",
-    src: "/capas/francisco_full1.png",
-  },
-  {
-    id: "jeronimo",
-    nombre: "san jerónimo",
-    fechas: "347–420",
-    descripcion:
-      "cardenal. porta pluma y libro. león a sus pies como símbolo tradicional.",
-    src: "/capas/jeronimo_full.png",
-  },
-  {
-    id: "ambrosio",
-    nombre: "san ambrosio de milán",
-    fechas: "340–396",
-    descripcion:
-      "obispo. porta báculo, libro y pluma. doctor de la iglesia.",
-    src: "/capas/ambrosio_full.png",
-  },
-  {
-    id: "bernardo",
-    nombre: "san bernardo de claraval",
-    fechas: "1090–1153",
-    descripcion:
-      "cisterciense. manto blanco, mitra, pluma, libro y báculo abacial.",
-    src: "/capas/bernardo_full.png",
-  },
-  {
-    id: "juan_de_dios",
-    nombre: "san juan de dios",
-    fechas: "1495–1550",
-    descripcion:
-      "hábito gris. porta un crucifijo y una granada. fundador de la orden hospitalaria.",
-    src: "/capas/juan_de_dios_full.png",
-  },
-  {
-    id: "francisco_javier",
-    nombre: "san francisco javier",
-    fechas: "1506–1552",
-    descripcion:
-      "jesuita. porta un lirio blanco en la derecha y un crucifijo en la izquierda.",
-    src: "/capas/francisco_javier_full.png",
-  },
-
-  // -----------------------------------------------------------------------
-  // PRIMER NIVEL, SEGUNDA FILA
-  // -----------------------------------------------------------------------
-  {
-    id: "buenaventura",
-    nombre: "san buenaventura",
-    fechas: "1218–1274",
-    descripcion:
-      "franciscano. porta un libro con una pequeña iglesia sobre él y un árbol en su mano izquierda.",
-    src: "/capas/buenaventura_full.png",
-  },
-  {
-    id: "monica",
-    nombre: "santa mónica de hipona",
-    fechas: "siglo IV",
-    descripcion:
-      "madre de san agustín. toca blanca y telas negras de viuda. sostiene un libro y un crucifijo.",
-    src: "/capas/monica_full.png",
-  },
-  {
-    id: "francisco_de_paula",
-    nombre: "san francisco de paula",
-    fechas: "1416–1507",
-    descripcion:
-      "fundador de los mínimos. hábito pardo. porta la divisa 'charitas' y un bastón.",
-    src: "/capas/francisco_de_paula_full.png",
-  },
-  {
-    id: "barbara",
-    nombre: "santa bárbara",
-    fechas: "siglo III",
-    descripcion:
-      "mártir. princesa con corona. palma del martirio y torre en llamas.",
-    src: "/capas/barbara_full.png",
-  },
-  {
-    id: "gertrudis",
-    nombre: "santa gertrudis la magna",
-    fechas: "1256–1302",
-    descripcion: "agustina. corazón inflamado y báculo.",
-    src: "/capas/gertrudis_full.png",
-  },
-  {
-    id: "teresa",
-    nombre: "santa teresa de ávila",
-    fechas: "1515–1582",
-    descripcion:
-      "carmelita descalza. hábito marrón y capa blanca. porta una pluma y un libro.",
-    src: "/capas/teresa_full.png",
-  },
-  {
-    id: "apolonia",
-    nombre: "santa apolonia de alejandría",
-    fechas: "† 249",
-    descripcion:
-      "mártir. princesa con corona. palma del martirio y tenaza con diente.",
-    src: "/capas/apolonia_full.png",
-  },
-  {
-    id: "tomas",
-    nombre: "santo tomás de aquino",
-    fechas: "1225–1274",
-    descripcion:
-      "doctor angélico. túnica gris decorada. cáliz y lirio.",
-    src: "/capas/tomas_full.png",
-  },
-  {
-    id: "clara",
-    nombre: "santa clara de asís",
-    fechas: "1193–1243",
-    descripcion: "porta custodia eucarística y báculo.",
-    src: "/capas/clara_full.png",
-  },
-  {
-    id: "duns_scoto",
-    nombre: "san juan duns escoto",
-    fechas: "1266–1308",
-    descripcion:
-      "franciscano y doctor sutil. muceta doctoral, solideo, libro y báculo.",
-    src: "/capas/duns_scoto_full.png",
-  },
-
-  // -----------------------------------------------------------------------
-  // SEGUNDO NIVEL
-  // -----------------------------------------------------------------------
-  {
-    id: "angeles mantos1",
-    nombre: "ángele portador del manto 1",
-    descripcion:
-      "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
-    src: "/capas/angeles_capa_full_01.png",
-  },
-
-  {
-    id: "angeles mantos2",
-    nombre: "ángele portador del manto 2",
-    descripcion:
-      "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
-    src: "/capas/angeles_capa_full_02.png",
-  },
-  {
-    id: "angeles mantos3",
-    nombre: "ángele portador del manto 3",
-    descripcion:
-      "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
-    src: "/capas/angeles_capa_full_03.png",
-  },
-  {
-    id: "angeles mantos4",
-    nombre: "ángele portador del manto 4",
-    descripcion:
-      "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
-    src: "/capas/angeles_capa_full_04.png",
-  },
-
-  {
-    id: "angeles_musicos_inferior",
-    nombre: "ángeles músicos – grupo inferior",
-    descripcion:
-      "ángeles cercanos al nivel de los santos, tocando instrumentos barrocos como órgano portátil, trompeta natural, guitarra barroca, arpa y violín. aportan movimiento y sonido celestial, animando el espacio que conecta el mundo humano con la protección de san josé.",
-    src: "/capas/angeles_musicos_01.png",
-  },
-  {
-    id: "angeles_musicos_superior",
-    nombre: "ángeles músicos – grupo superior",
-    descripcion:
-      "ángeles ubicados bajo la trinidad, portando instrumentos de viento y cuerdas. acompañan la esfera celestial con música solemne, actuando como puente sonoro entre los arcanos divinos y el resto de la composición.",
-    src: "/capas/angeles_musicos_02.png",
-  },
-  {
-    id: "angeles_querubines_superior",
-    nombre: "ángeles y querubines – nivel superior",
-    descripcion:
-      "grupo de ángeles y querubines que envuelve la esfera de la trinidad, integrando luz, nubes y movimiento celestial.",
-    src: "/capas/querubines.png",
-  },
-  {
-    id: "san_jose",
-    nombre: "san josé",
-    descripcion:
-      "representado entronizado en el centro de la composición, coronado y con amplio manto que se extiende para proteger a los santos del nivel inferior. sostiene en su mano derecha un cetro florido de lirios —símbolo de pureza y elección divina— y en la izquierda un libro abierto que alude a la sabiduría y autoridad espiritual. es el intermediario privilegiado entre la trinidad y la iglesia, figura paternal y custodio universal.",
-    src: "/capas/san_jose.png",
-  },
-
-  {
-    id: "texto_filacteria_lateral",
-    nombre: "annulo suo monstravit me decoravit me corona sua",
-    descripcion:
-      "texto devocional que alude a la dignidad concedida por dios a san josé: su elección, su alianza (anillo) y su exaltación (corona). la filacteria es sostenida por ángeles que descienden hacia la figura del santo.",
-    src: "/capas/texto_vertical.png",
-  },
-
-  {
-    id: "texto_filacteria_central",
-    nombre: "constituit eum dominum domus suae et principem omnis possessionis suae",
-    descripcion:
-      "cita del salmo 104(105),21: «lo hizo señor de su casa y príncipe de todas sus posesiones». refuerza el papel de san josé como custodio y administrador del pueblo de dios.",
-    src: "/capas/texto_horizontal.png",
-  },
-
-  // -------------------------------------------------------------
-  // TERCER NIVEL
-  // -------------------------------------------------------------
-  {
-    id: "arcangel_gabriel",
-    nombre: "arcángel gabriel",
-    descripcion:
-      "sostiene una rama de lirios en la mano derecha y un anillo en la izquierda. mensajero divino asociado a la anunciación.",
-    src: "/capas/gabriel_full.png",
-  },
-  {
-    id: "arcangel_miguel",
-    nombre: "arcángel miguel",
-    descripcion:
-      "porta una espada flamígera en la mano derecha y una cruz en la izquierda. jefe de las milicias celestiales.",
-    src: "/capas/miguel_full.png",
-  },
-  {
-    id: "arcangel_rafael",
-    nombre: "arcángel rafael",
-    descripcion:
-      "sostiene un pez en la mano derecha y un báculo o vara en la izquierda. protector de viajeros y sanador.",
-    src: "/capas/rafael_full.png",
-  },
-  {
-    id: "angel_de_la_guarda",
-    nombre: "ángel de la guarda",
-    descripcion:
-      "lleva un corazón en la mano derecha y guía a un niño con la izquierda. versión devocional derivada de la iconografía de rafael y tobías.",
-    src: "/capas/angel_guardia_full.png",
-  },
-  {
-    id: "san_juan_bautista",
-    nombre: "san juan bautista",
-    descripcion:
-      "representado como asceta, con sayo de pelo de camello y capa roja. sostiene un cayado rematado en cruz con la filacteria 'ecce agnus dei' y un cordero sobre un libro.",
-    src: "/capas/juan_bautista_full.png",
-  },
-  {
-    id: "virgen_maria",
-    nombre: "virgen maría",
-    descripcion:
-      "inmaculada y virgen del carmen: coronada, sentada sobre una nube, luna a sus pies, halo de doce estrellas, cetro en la mano derecha y anillo con filacteria en la izquierda. viste hábito café y capa blanca carmelita con escapulario en el pecho.",
-    src: "/capas/virgen_maria_full.png",
-  },
-  {
-    id: "santa_ana",
-    nombre: "santa ana",
-    descripcion:
-      "madre de la virgen, de apariencia anciana, sentada sobre nube, manos juntas en oración y mirada dirigida hacia su hija.",
-    src: "/capas/santa_ana_full.png",
-  },
-  {
-    id: "san_joaquin",
-    nombre: "san joaquín",
-    descripcion:
-      "padre de la virgen, representado como anciano, sentado sobre nube, en actitud orante y mirando hacia la trinidad.",
-    src: "/capas/san_joaquin_full.png",
-  },
-  {
-    id: "trinidad_padre",
-    nombre: "dios padre",
-    descripcion:
-      "figura central de la trinidad antropomorfa. entronizado, con capa pluvial, sosteniendo un cetro en la mano derecha y el orbe del mundo en la izquierda.",
-    src: "/capas/trinidad_padre_full.png",
-  },
-  {
-    id: "trinidad_hijo",
-    nombre: "dios hijo",
-    descripcion:
-      "sentado a la diestra del padre, con capa pluvial. porta una cruz en la mano derecha y un cetro en la izquierda.",
-    src: "/capas/trinidad_hijo_full.png",
-  },
-  {
-    id: "trinidad_espiritu_santo",
-    nombre: "espíritu santo",
-    descripcion:
-      "representado antropomórficamente, con capa pluvial. sostiene una vara de lirios blancos coronada por una paloma y un cetro en la mano derecha.",
-    src: "/capas/trinidad_espiritu_full.png",
-  },
-
-  {
-    id: "texto_banda_trinidad",
-    nombre: "ite ad ioseph",
-    descripcion:
-      "lema latino procedente del génesis (41,55) reinterpretado devocionalmente como «vayan a josé», destacando a san josé como intercesor privilegiado ante la trinidad.",
-    src: "/capas/texto_tercer_nivel.png",
   },
 ];
 
@@ -417,6 +65,8 @@ const PERSONAJES = [
 ------------------------------------------------------------- */
 export default function InteractivePainting() {
   const { speak, cancel } = useTooltipVoice();
+
+  const [mute, setMute] = useState(false);  // 🔊 botón de sonido
 
   const [active, setActive] = useState(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
@@ -447,60 +97,62 @@ export default function InteractivePainting() {
   }, []);
 
   /* -------------------------------------------------------------
-     DETECCIÓN PIXEL PERFECT
+     DETECCIÓN PIXEL PERFECT + SONIDO
   ------------------------------------------------------------- */
-const handleMove = e => {
-  if (!containerRef.current) return;
+  const handleMove = e => {
+    if (!containerRef.current) return;
 
-  const rect = containerRef.current.getBoundingClientRect();
-  const baseW = 1080;
-  const baseH = 927;
+    const rect = containerRef.current.getBoundingClientRect();
+    const baseW = 1080;
+    const baseH = 927;
 
-  const sx = baseW / rect.width;
-  const sy = baseH / rect.height;
+    const sx = baseW / rect.width;
+    const sy = baseH / rect.height;
 
-  const cx = e.touches ? e.touches[0].clientX : e.clientX;
-  const cy = e.touches ? e.touches[0].clientY : e.clientY;
+    const cx = e.touches ? e.touches[0].clientX : e.clientX;
+    const cy = e.touches ? e.touches[0].clientY : e.clientY;
 
-  const x = (cx - rect.left) * sx;
-  const y = (cy - rect.top) * sy;
+    const x = (cx - rect.left) * sx;
+    const y = (cy - rect.top) * sy;
 
-  setCursor({
-    x: cx - rect.left,
-    y: cy - rect.top,
-  });
+    setCursor({
+      x: cx - rect.left,
+      y: cy - rect.top,
+    });
 
-  let found = null;
-  for (let i = PERSONAJES.length - 1; i >= 0; i--) {
-    const p = PERSONAJES[i];
-    const cvs = canvasRefs.current[p.id];
-    if (!cvs) continue;
+    let found = null;
+    for (let i = PERSONAJES.length - 1; i >= 0; i--) {
+      const p = PERSONAJES[i];
+      const cvs = canvasRefs.current[p.id];
+      if (!cvs) continue;
 
-    const px = cvs
-      .getContext("2d")
-      .getImageData(Math.floor(x), Math.floor(y), 1, 1).data;
+      const px = cvs
+        .getContext("2d")
+        .getImageData(Math.floor(x), Math.floor(y), 1, 1).data;
 
-    if (px[3] > 10) {
-      found = p;
-      break;
+      if (px[3] > 10) {
+        found = p;
+        break;
+      }
     }
-  }
 
-  // 🔊 aquí entra la voz
-  if (found && found !== active) {
-    speak(found.descripcion);
-  }
+    // 🔊 voz solamente si no está muteado
+    if (!mute && found && found !== active) {
+      speak(found.descripcion);
+    }
 
-  // 🔇 si salimos del personaje, cortamos la voz
-  if (!found && active) {
+    // 🔇 cortar voz al salir
+    if ((!found && active) || mute) {
+      cancel();
+    }
+
+    setActive(found);
+  };
+
+  const handleLeave = () => {
     cancel();
-  }
-
-  setActive(found);
-};
-
-
-  const handleLeave = () => setActive(null);
+    setActive(null);
+  };
 
   /* -------------------------------------------------------------
      ZOOM
@@ -639,58 +291,69 @@ const handleMove = e => {
           )}
         </div>
 
-     {/* TOOLTIP */}
-{active && (
-  <div
-    style={{
-      position: "absolute",
-      ...tooltipPos,
-      background: "rgba(255,255,255,0.9)",
-      padding: "10px 14px",
-      borderRadius: "8px",
-      maxWidth: "240px",
-      pointerEvents: "none",   // esto sigue igual, está bien
-      boxShadow: "0 3px 10px rgba(0,0,0,0.25)",
-      zIndex: 40,
-    }}
-  >
-    <h3
-      style={{
-        margin: "0 0 4px",
-        color: "#c40000",
-        fontFamily: "Matona, serif",
-        fontSize: "0.95rem",
-      }}
-    >
-      {active.nombre}
-    </h3>
+        {/* TOOLTIP */}
+        {active && (
+          <div
+            style={{
+              position: "absolute",
+              ...tooltipPos,
+              background: "rgba(255,255,255,0.9)",
+              padding: "10px 14px",
+              borderRadius: "8px",
+              maxWidth: "240px",
+              pointerEvents: "none",
+              boxShadow: "0 3px 10px rgba(0,0,0,0.25)",
+              zIndex: 40,
+            }}
+          >
+            <h3
+              style={{
+                margin: "0 0 4px",
+                color: "#c40000",
+                fontFamily: "Matona, serif",
+                fontSize: "0.95rem",
+              }}
+            >
+              {active.nombre}
+            </h3>
 
-    {active.fechas && (
-      <div
-        style={{
-          fontSize: "0.88rem",
-          fontWeight: "bold",
-          marginBottom: "4px",
-          fontFamily: "Garamond, serif",
-        }}
-      >
-        {active.fechas}
+            <p
+              style={{
+                margin: 0,
+                fontSize: "0.86rem",
+                lineHeight: 1.3,
+                fontFamily: "Garamond, serif",
+              }}
+            >
+              {active.descripcion}
+            </p>
+          </div>
+        )}
+
+        {/* 🔊 BOTÓN DE SONIDO */}
+        <button
+          onClick={() => {
+            setMute(!mute);
+            cancel();
+          }}
+          style={{
+            position: "absolute",
+            bottom: "10px",
+            right: "10px",
+            background: "rgba(255,255,255,0.35)",
+            border: "1px solid rgba(255,255,255,0.6)",
+            backdropFilter: "blur(6px)",
+            padding: "8px 10px",
+            borderRadius: "8px",
+            cursor: "pointer",
+            zIndex: 999,
+            fontSize: "1.2rem"
+          }}
+        >
+          {mute ? "🔇" : "🔊"}
+        </button>
+
       </div>
-    )}
-
-    <p
-      style={{
-        margin: 0,
-        fontSize: "0.86rem",
-        lineHeight: 1.3,
-        fontFamily: "Garamond, serif",
-      }}
-    >
-      {active.descripcion}
-    </p>
-  </div>
-)}
- </div>
-</section> 
-  );   
-} 
+    </section>
+  );
+}
