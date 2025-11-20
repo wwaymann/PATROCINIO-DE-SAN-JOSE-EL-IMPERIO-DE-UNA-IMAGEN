@@ -449,45 +449,56 @@ export default function InteractivePainting() {
   /* -------------------------------------------------------------
      DETECCIÓN PIXEL PERFECT
   ------------------------------------------------------------- */
-  const handleMove = e => {
-    if (!containerRef.current) return;
+const handleMove = e => {
+  if (!containerRef.current) return;
 
-    const rect = containerRef.current.getBoundingClientRect();
-    const baseW = 1080;
-    const baseH = 927;
+  const rect = containerRef.current.getBoundingClientRect();
+  const baseW = 1080;
+  const baseH = 927;
 
-    const sx = baseW / rect.width;
-    const sy = baseH / rect.height;
+  const sx = baseW / rect.width;
+  const sy = baseH / rect.height;
 
-    const cx = e.touches ? e.touches[0].clientX : e.clientX;
-    const cy = e.touches ? e.touches[0].clientY : e.clientY;
+  const cx = e.touches ? e.touches[0].clientX : e.clientX;
+  const cy = e.touches ? e.touches[0].clientY : e.clientY;
 
-    const x = (cx - rect.left) * sx;
-    const y = (cy - rect.top) * sy;
+  const x = (cx - rect.left) * sx;
+  const y = (cy - rect.top) * sy;
 
-    setCursor({
-      x: cx - rect.left,
-      y: cy - rect.top,
-    });
+  setCursor({
+    x: cx - rect.left,
+    y: cy - rect.top,
+  });
 
-    let found = null;
-    for (let i = PERSONAJES.length - 1; i >= 0; i--) {
-      const p = PERSONAJES[i];
-      const cvs = canvasRefs.current[p.id];
-      if (!cvs) continue;
+  let found = null;
+  for (let i = PERSONAJES.length - 1; i >= 0; i--) {
+    const p = PERSONAJES[i];
+    const cvs = canvasRefs.current[p.id];
+    if (!cvs) continue;
 
-      const px = cvs
-        .getContext("2d")
-        .getImageData(Math.floor(x), Math.floor(y), 1, 1).data;
+    const px = cvs
+      .getContext("2d")
+      .getImageData(Math.floor(x), Math.floor(y), 1, 1).data;
 
-      if (px[3] > 10) {
-        found = p;
-        break;
-      }
+    if (px[3] > 10) {
+      found = p;
+      break;
     }
+  }
 
-    setActive(found);
-  };
+  // 🔊 aquí entra la voz
+  if (found && found !== active) {
+    speak(found.descripcion);
+  }
+
+  // 🔇 si salimos del personaje, cortamos la voz
+  if (!found && active) {
+    cancel();
+  }
+
+  setActive(found);
+};
+
 
   const handleLeave = () => setActive(null);
 
@@ -628,60 +639,54 @@ export default function InteractivePainting() {
           )}
         </div>
 
-        {/* TOOLTIP */}
-        {active && (
-          <div
-            style={{
-              position: "absolute",
-              ...tooltipPos,
-              background: "rgba(255,255,255,0.9)",
-              padding: "10px 14px",
-              borderRadius: "8px",
-              maxWidth: "240px",
-              pointerEvents: "none",
-              boxShadow: "0 3px 10px rgba(0,0,0,0.25)",
-              zIndex: 40,
-            }}
-            onMouseEnter={() => speak(active.descripcion)}
-            onMouseLeave={cancel}
-          >
-            <h3
-              style={{
-                margin: "0 0 4px",
-                color: "#c40000",
-                fontFamily: "Matona, serif",
-                fontSize: "0.95rem",
-              }}
-            >
-              {active.nombre}
-            </h3>
+     {/* TOOLTIP */}
+{active && (
+  <div
+    style={{
+      position: "absolute",
+      ...tooltipPos,
+      background: "rgba(255,255,255,0.9)",
+      padding: "10px 14px",
+      borderRadius: "8px",
+      maxWidth: "240px",
+      pointerEvents: "none",   // esto sigue igual, está bien
+      boxShadow: "0 3px 10px rgba(0,0,0,0.25)",
+      zIndex: 40,
+    }}
+  >
+    <h3
+      style={{
+        margin: "0 0 4px",
+        color: "#c40000",
+        fontFamily: "Matona, serif",
+        fontSize: "0.95rem",
+      }}
+    >
+      {active.nombre}
+    </h3>
 
-            {active.fechas && (
-              <div
-                style={{
-                  fontSize: "0.88rem",
-                  fontWeight: "bold",
-                  marginBottom: "4px",
-                  fontFamily: "Garamond, serif",
-                }}
-              >
-                {active.fechas}
-              </div>
-            )}
-
-            <p
-              style={{
-                margin: 0,
-                fontSize: "0.86rem",
-                lineHeight: 1.3,
-                fontFamily: "Garamond, serif",
-              }}
-            >
-              {active.descripcion}
-            </p>
-          </div>
-        )}
+    {active.fechas && (
+      <div
+        style={{
+          fontSize: "0.88rem",
+          fontWeight: "bold",
+          marginBottom: "4px",
+          fontFamily: "Garamond, serif",
+        }}
+      >
+        {active.fechas}
       </div>
-    </section>
-  );
-}
+    )}
+
+    <p
+      style={{
+        margin: 0,
+        fontSize: "0.86rem",
+        lineHeight: 1.3,
+        fontFamily: "Garamond, serif",
+      }}
+    >
+      {active.descripcion}
+    </p>
+  </div>
+)}
