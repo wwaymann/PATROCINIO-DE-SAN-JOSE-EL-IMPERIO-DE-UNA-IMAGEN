@@ -50,7 +50,7 @@ function useTooltipVoice() {
 // -----------------------------------------------------------------------
   // PRIMERA NIVEL, PRIMERA FILA
   // -----------------------------------------------------------------------
-  const personajes = [
+ const PERSONAJES = [
     {
     id: "texto_cartela_inferior",
     nombre: "sub umbra illius quam desideraveram sedi",
