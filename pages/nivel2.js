@@ -1,9 +1,7 @@
 import MultimediaLevel from "../components/MultimediaLevel";
 
 const PERSONAJES_NIVEL2 = [
- // -----------------------------------------------------------------------
-  // SEGUNDO NIVEL
-  // -----------------------------------------------------------------------
+
   {
     id: "angeles mantos1",
     nombre: "ángele portador del manto 1",
@@ -84,7 +82,7 @@ export default function Nivel2() {
   return (
     <MultimediaLevel
       titulo="Segundo Nivel"
-      background="/fondos/SegundoNivel.png"
+      background="/fondos/SegundoNivel.jpg"
       personajes={PERSONAJES_NIVEL2}
     />
   );
