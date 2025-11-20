@@ -109,7 +109,7 @@ const PERSONAJES_NIVEL3 = [
 export default function Nivel3() {
   return (
     <MultimediaLevel
-      titulo="Tercer Nivel"
+      titulo="tercer nivel"
       background="/fondos/TercerNivel.jpg"
       personajes={PERSONAJES_NIVEL3}
     />
