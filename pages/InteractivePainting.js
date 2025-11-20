@@ -690,3 +690,7 @@ const handleMove = e => {
     </p>
   </div>
 )}
+ </div>
+</section> 
+  );   
+} 
