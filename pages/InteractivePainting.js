@@ -703,6 +703,31 @@ export default function InteractivePainting() {
           </div>
         )}
       </div>
+
+{/* BOTÓN DE SONIDO */}
+        <button
+          onClick={() => {
+            setMute(!mute);
+            cancel();
+          }}
+          style={{
+            position: "absolute",
+            bottom: "10px",
+            right: "10px",
+            background: "rgba(255,255,255,0.35)",
+            border: "1px solid rgba(255,255,255,0.6)",
+            backdropFilter: "blur(6px)",
+            padding: "8px 10px",
+            borderRadius: "8px",
+            cursor: "pointer",
+            zIndex: 999,
+            fontSize: "1.2rem",
+          }}
+        >
+          {mute ? "🔇" : "🔊"}
+        </button>
+      </div>
+        
     </section>
   );
 }
