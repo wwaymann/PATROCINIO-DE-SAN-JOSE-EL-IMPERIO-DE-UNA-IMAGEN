@@ -3,198 +3,277 @@ import MultimediaLevel from "../components/MultimediaLevel";
 const PERSONAJES_NIVEL1 = [
 
 
-  {
+     {
     id: "texto_cartela_inferior",
     nombre: "sub umbra illius quam desideraveram sedi",
     descripcion:
-      "inscripción latina tomada del cantar de los cantares (2,3): «me senté a la sombra del que tanto había deseado». alude al amparo que san josé ofrece a los santos cobijados bajo su manto.",
+      "Cantar de los Cantares 2:3 «Bajo la sombra del deseado me senté».",
     src: "/capas/texto_primer nivel.png",
-  },
-  {
+    }, 
+    {
     id: "angeles_querubines",
-    nombre: "ángeles y querubines",
+    nombre: "querubines",
     descripcion:
-      "una multitud de ángeles y querubines articula el espacio entre la trinidad y san josé. los ángeles mayores tocan instrumentos barrocos, sostienen el manto o portan filacterias, introduciendo movimiento y música en la escena. los querubines, representados como pequeñas cabezas aladas inmersas en la luz y las nubes, pertenecen al orden más elevado y simbolizan el conocimiento y la contemplación de la belleza divina.",
+      "Representados como cabezas aladas.",
     src: "/capas/querubines_primer_nivel.png",
-  },
-  {
-    id: "ignacio",
-    nombre: "san ignacio de loyola",
-    fechas: "1491–1556",
-    descripcion:
-      "jesuita. hábito negro. porta el emblema ihs rodeado de rayos y el libro de reglas con la divisa 'ad majorem gloriam dei'.",
-    src: "/capas/ignacio_full.png",
-  },
-  {
-    id: "antonio",
-    nombre: "san antonio de padua",
-    fechas: "1195–1231",
-    descripcion:
-      "franciscano. sostiene al niño jesús sobre un libro y un lirio blanco.",
-    src: "/capas/antonio_full.png",
-  },
-  {
-    id: "nicolas",
-    nombre: "san nicolás de bari",
-    fechas: "270–342",
-    descripcion:
-      "obispo. porta mitra, capa magna, báculo y un libro con tres esferas alusivas a su caridad.",
-    src: "/capas/nicolas_full.png",
-  },
-  {
-    id: "agustin",
-    nombre: "san agustín de hipona",
-    fechas: "354–430",
-    descripcion:
-      "obispo. porta báculo, pluma y libro. doctor de la iglesia.",
-    src: "/capas/agustin_full.png",
-  },
-  {
-    id: "gregorio",
-    nombre: "san gregorio magno",
-    fechas: "† 604",
-    descripcion:
-      "papa. porta tiara, cruz triple, pluma en la derecha y libro en la izquierda.",
-    src: "/capas/gregorio_full.png",
-  },
-  {
-    id: "domingo",
-    nombre: "santo domingo de guzmán",
-    fechas: "1170–1221",
-    descripcion:
-      "dominico. hábito bicolor. porta rosario, lirios blancos y un libro.",
-    src: "/capas/domingo_full.png",
-  },
-  {
-    id: "francisco",
-    nombre: "san francisco de asís",
-    fechas: "1182–1226",
-    descripcion:
-      "hábito café. estigmas visibles. porta un crucifijo.",
-    src: "/capas/francisco_full1.png",
-  },
-  {
-    id: "jeronimo",
-    nombre: "san jerónimo",
-    fechas: "347–420",
-    descripcion:
-      "cardenal. porta pluma y libro. león a sus pies como símbolo tradicional.",
-    src: "/capas/jeronimo_full.png",
-  },
-  {
-    id: "ambrosio",
-    nombre: "san ambrosio de milán",
-    fechas: "340–396",
-    descripcion:
-      "obispo. porta báculo, libro y pluma. doctor de la iglesia.",
-    src: "/capas/ambrosio_full.png",
-  },
-  {
-    id: "bernardo",
-    nombre: "san bernardo de claraval",
-    fechas: "1090–1153",
-    descripcion:
-      "cisterciense. manto blanco, mitra, pluma, libro y báculo abacial.",
-    src: "/capas/bernardo_full.png",
-  },
-  {
-    id: "juan_de_dios",
-    nombre: "san juan de dios",
-    fechas: "1495–1550",
-    descripcion:
-      "hábito gris. porta un crucifijo y una granada. fundador de la orden hospitalaria.",
-    src: "/capas/juan_de_dios_full.png",
-  },
-  {
-    id: "francisco_javier",
-    nombre: "san francisco javier",
-    fechas: "1506–1552",
-    descripcion:
-      "jesuita. porta un lirio blanco en la derecha y un crucifijo en la izquierda.",
-    src: "/capas/francisco_javier_full.png",
-  },
+    },
+    {
+      id: "ignacio",
+      nombre: "san ignacio de loyola",
+      fechas: "1491–1556",
+      descripcion:
+        "Con hábito negro, porta el emblema IHS rodeado de rayos y el libro de reglas con la divisa 'Ad Majorem Gloriam Dei'.",
+      src: "/capas/ignacio_full.png",
+    },
+    {
+      id: "antonio",
+      nombre: "san antonio de padua",
+      fechas: "1195–1231",
+      descripcion:
+        "Con hábito café oscuro, sostiene al niño jesús sobre un libro y un lirio blanco.",
+      src: "/capas/antonio_full.png",
+    },
+    {
+      id: "nicolas",
+      nombre: "san nicolás de bari",
+      fechas: "270–342",
+      descripcion:
+        "Vestido de pontifical, porta mitra, capa magna, báculo y un libro con tres esferas.",
+      src: "/capas/nicolas_full.png",
+    },
+    {
+      id: "agustin",
+      nombre: "san agustín de hipona",
+      fechas: "354–430",
+      descripcion:
+        "Vestido de obispo, porta báculo, pluma y libro. Doctor de la iglesia.",
+      src: "/capas/agustin_full.png",
+    },
+    {
+      id: "gregorio",
+      nombre: "san gregorio magno",
+      fechas: "† 604",
+      descripcion:
+        "Papa. Vestido de pontifical con tiara papal, porta cruz triple, pluma en la derecha y libro en la izquierda.",
+      src: "/capas/gregorio_full.png",
+    },
+    {
+      id: "domingo",
+      nombre: "santo domingo de guzmán",
+      fechas: "1170–1221",
+      descripcion:
+        "Con hábito bicolor, túnica blanca y manteo negro, porta rosario, lirios blancos y un libro cerrado.",
+      src: "/capas/domingo_full.png",
+    },
+    {
+      id: "francisco",
+      nombre: "san francisco de asís",
+      fechas: "1182–1226",
+      descripcion: "Con hábito café y estigmas visibles, porta un crucifijo.",
+      src: "/capas/francisco_full1.png",
+    },
+    {
+      id: "jeronimo",
+      nombre: "san jerónimo",
+      fechas: "347–420",
+      descripcion:
+        "Vestido como cardenal, porta pluma y libro. Con un león a sus pies.",
+      src: "/capas/jeronimo_full.png",
+    },
+    {
+      id: "ambrosio",
+      nombre: "san ambrosio de milán",
+      fechas: "340–396",
+      descripcion:
+        "Vestido de obispo, porta báculo, libro y pluma. Doctor de la iglesia.",
+      src: "/capas/ambrosio_full.png",
+    },
+    {
+      id: "bernardo",
+      nombre: "san bernardo de claraval",
+      fechas: "1090–1153",
+      descripcion:
+        "Con mitra y cogulla blanca de abad de la orden del Císter, porta pluma, libro y báculo.",
+      src: "/capas/bernardo_full.png",
+    },
+    {
+      id: "juan_de_dios",
+      nombre: "san juan de dios",
+      fechas: "1495–1550",
+      descripcion:
+        "Con hábito de sayal, porta un crucifijo y una granada.",
+      src: "/capas/juan_de_dios_full.png",
+    },
+    {
+      id: "francisco_javier",
+      nombre: "san francisco javier",
+      fechas: "1506–1552",
+      descripcion:
+        "Con hábito jesuita, porta lirio blanco y crucifijo.",
+      src: "/capas/francisco_javier_full.png",
+    },
 
-  // -----------------------------------------------------------------------
-  // PRIMER NIVEL, SEGUNDA FILA
-  // -----------------------------------------------------------------------
-  {
-    id: "buenaventura",
-    nombre: "san buenaventura",
-    fechas: "1218–1274",
+    // -----------------------------------------------------------------------
+    // SEGUNDA FILA (10 figuras)
+    // -----------------------------------------------------------------------
+    {
+      id: "buenaventura",
+      nombre: "san buenaventura",
+      fechas: "1218–1274",
+      descripcion:
+        "Con hábito franciscano, porta libro con pequeña iglesia sobre él y árbol.",
+      src: "/capas/buenaventura_full.png",
+    },
+    {
+      id: "monica",
+      nombre: "santa mónica de hipona",
+      fechas: "siglo IV",
+      descripcion:
+        "Con toca blanca y telas negras, sostiene un libro y un crucifijo.",
+      src: "/capas/monica_full.png",
+    },
+    {
+      id: "francisco_de_paula",
+      nombre: "san francisco de paula",
+      fechas: "1416–1507",
+      descripcion:
+        "Con hábito pardo, porta divisa 'charitas' y un bastón.",
+      src: "/capas/francisco_de_paula_full.png",
+    },
+    {
+      id: "barbara",
+      nombre: "santa bárbara",
+      fechas: "siglo III",
+      descripcion:
+        "Vestida como princesa con corona, porta palma de martirio y torre en llamas.",
+      src: "/capas/barbara_full.png",
+    },
+    {
+      id: "gertrudis",
+      nombre: "santa gertrudis la magna",
+      fechas: "1256–1302",
+      descripcion: "Con hábito de agustina, porta corazón inflamado y báculo.",
+      src: "/capas/gertrudis_full.png",
+    },
+    {
+      id: "teresa",
+      nombre: "santa teresa de ávila",
+      fechas: "1515–1582",
+      descripcion:
+        "Con hábito marrón y capa blanca, porta una pluma y un libro.",
+      src: "/capas/teresa_full.png",
+    },
+    {
+      id: "apolonia",
+      nombre: "santa apolonia de alejandría",
+      fechas: "† 249",
+      descripcion:
+        "Vestida como princesa con corona, porta palma de martirio y tenaza con diente.",
+      src: "/capas/apolonia_full.png",
+    },
+    {
+      id: "tomas",
+      nombre: "santo tomás de aquino",
+      fechas: "1225–1274",
+      descripcion:
+        "Con túnica gris decorada, porta cáliz y lirio.",
+      src: "/capas/tomas_full.png",
+    },
+    {
+      id: "clara",
+      nombre: "santa clara de asís",
+      fechas: "1193–1243",
+      descripcion: "porta custodia eucarística y báculo.",
+      src: "/capas/clara_full.png",
+    },
+    {
+      id: "duns_scoto",
+      nombre: "san juan duns escoto",
+      fechas: "1266–1308",
+      descripcion:
+        "Con hábito franciscano, muceta doctoral y solideo, porta libro y báculo.",
+      src: "/capas/duns_scoto_full.png",
+    },
+    
+    // -----------------------------------------------------------------------
+    // SEGUNDO NIVEL
+    // -----------------------------------------------------------------------
+   
+{
+  id: "angeles mantos1",
+  nombre: "ángel portador del manto",
+  descripcion:
+    "Sostiene el amplio manto que san José extiende sobre los santos bajo su patrocinio.",
+  src: "/capas/angeles_capa_full_01.png"
+},
+
+    {
+  id: "angeles mantos2",
+  nombre: "ángel portador del manto",
+  descripcion:
+    "Sostiene el amplio manto que san José extiende sobre los santos bajo su patrocinio.",
+  src: "/capas/angeles_capa_full_02.png"
+},
+    {
+  id: "angeles mantos3",
+  nombre: "ángel portador del manto",
+  descripcion:
+    "Sostiene el amplio manto que san José extiende sobre los santos bajo su patrocinio.",
+  src: "/capas/angeles_capa_full_03.png"
+},
+    {
+  id: "angeles mantos4",
+  nombre: "ángel portador del manto",
+  descripcion:
+    "Sostiene el amplio manto que san José extiende sobre los santos bajo su patrocinio.",
+  src: "/capas/angeles_capa_full_04.png"
+},
+    
+ {
+  id: "angeles_musicos_inferior",
+  nombre: "ángeles músicos",
+  descripcion:
+    "Ángeles tocando instrumentos como órgano de tubos, trompeta natural, guitarra barroca, fagot, arpa y violín.",
+  src: "/capas/angeles_musicos_01.png"
+},
+    {
+  id: "angeles_musicos_superior",
+  nombre: "ángeles músicos",
+  descripcion:
+    "Ángeles tocando instrumentos como órgano de tubos, trompeta natural, guitarra barroca, fagot, arpa y violín.",
+  src: "/capas/angeles_musicos_02.png"
+},
+     {
+    id: "angeles_querubines",
+    nombre: "querubines",
     descripcion:
-      "franciscano. porta un libro con una pequeña iglesia sobre él y un árbol en su mano izquierda.",
-    src: "/capas/buenaventura_full.png",
-  },
-  {
-    id: "monica",
-    nombre: "santa mónica de hipona",
-    fechas: "siglo IV",
+      "Querubines, representados como niños alados y como pequeñas cabezas aladas.",
+    src: "/capas/querubines.png"
+},
+¨ {
+    id: "san_jose",
+  nombre: "san josé",
+  descripcion:
+    "Entronizado, coronado y con amplio manto sobre los santos bajo su protección. Sostiene rama de lirios blancos y anillo.",
+  src: "/capas/san_jose.png"
+},
+
+         {
+    id: "texto_filacteria_lateral",
+    nombre: "annulo suo suvarravit me et decoravit me corona",
     descripcion:
-      "madre de san agustín. toca blanca y telas negras de viuda. sostiene un libro y un crucifijo.",
-    src: "/capas/monica_full.png",
-  },
-  {
-    id: "francisco_de_paula",
-    nombre: "san francisco de paula",
-    fechas: "1416–1507",
+      "Texto de antífona, que puede traducirse como: con su anillo me desposó y me adornó con una corona.",
+    src: "/capas/texto_vertical.png"
+},
+
+     {
+    id: "texto_filacteria_central",
+    nombre: "constituit eum dominum domus suae et principem omnis possessionis suae",
     descripcion:
-      "fundador de los mínimos. hábito pardo. porta la divisa 'charitas' y un bastón.",
-    src: "/capas/francisco_de_paula_full.png",
-  },
-  {
-    id: "barbara",
-    nombre: "santa bárbara",
-    fechas: "siglo III",
-    descripcion:
-      "mártir. princesa con corona. palma del martirio y torre en llamas.",
-    src: "/capas/barbara_full.png",
-  },
-  {
-    id: "gertrudis",
-    nombre: "santa gertrudis la magna",
-    fechas: "1256–1302",
-    descripcion: "agustina. corazón inflamado y báculo.",
-    src: "/capas/gertrudis_full.png",
-  },
-  {
-    id: "teresa",
-    nombre: "santa teresa de ávila",
-    fechas: "1515–1582",
-    descripcion:
-      "carmelita descalza. hábito marrón y capa blanca. porta una pluma y un libro.",
-    src: "/capas/teresa_full.png",
-  },
-  {
-    id: "apolonia",
-    nombre: "santa apolonia de alejandría",
-    fechas: "† 249",
-    descripcion:
-      "mártir. princesa con corona. palma del martirio y tenaza con diente.",
-    src: "/capas/apolonia_full.png",
-  },
-  {
-    id: "tomas",
-    nombre: "santo tomás de aquino",
-    fechas: "1225–1274",
-    descripcion:
-      "doctor angélico. túnica gris decorada. cáliz y lirio.",
-    src: "/capas/tomas_full.png",
-  },
-  {
-    id: "clara",
-    nombre: "santa clara de asís",
-    fechas: "1193–1243",
-    descripcion: "porta custodia eucarística y báculo.",
-    src: "/capas/clara_full.png",
-  },
-  {
-    id: "duns_scoto",
-    nombre: "san juan duns escoto",
-    fechas: "1266–1308",
-    descripcion:
-      "franciscano y doctor sutil. muceta doctoral, solideo, libro y báculo.",
-    src: "/capas/duns_scoto_full.png",
-  },
+      "Cita del salmo 105:21, que dice: «Lo puso por señor de su casa, Y por gobernador de todas sus posesiones».",
+    src: "/capas/texto_horizontal.png"
+},
+
 ];
 
 export default function Nivel1() {
