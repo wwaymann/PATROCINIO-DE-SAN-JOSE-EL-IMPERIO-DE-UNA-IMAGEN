@@ -89,6 +89,23 @@ const PERSONAJES_NIVEL3 = [
       "lema latino procedente del génesis (41,55) reinterpretado devocionalmente como «vayan a josé», destacando a san josé como intercesor privilegiado ante la trinidad.",
     src: "/capas/texto_tercer_nivel.png",
   },
+
+   {
+    id: "querubinesTrinidad",
+    nombre: "querubines trinidad",
+    descripcion:
+      "---.",
+    src: "/capas/querubinesTrinidad.png",
+  },
+
+   {
+    id: "querubinesMaria",
+    nombre: "querubines maria",
+    descripcion:
+      "---.",
+    src: "/capas/querubinesMaria.png",
+  },
+  
 ];
 
 export default function Nivel3() {
