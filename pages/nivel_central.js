@@ -12,7 +12,7 @@ const PERSONAJES_NIVEL_CENTRAL = [
 export default function Nivel_central() {
   return (
     <MultimediaLevel
-      titulo="Tercer Nivel"
+      titulo="nivel central"
       background="/fondos/TercerNivel.png"
       personajes={PERSONAJES_NIVEL3}
     />
