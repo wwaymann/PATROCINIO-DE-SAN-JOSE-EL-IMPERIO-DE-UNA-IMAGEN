@@ -1,9 +1,7 @@
 import MultimediaLevel from "../components/MultimediaLevel";
 
 const PERSONAJES_NIVEL1 = [
- // -----------------------------------------------------------------------
-// PRIMERA NIVEL, PRIMERA FILA
-// -----------------------------------------------------------------------
+
 
   {
     id: "texto_cartela_inferior",
@@ -203,7 +201,7 @@ export default function Nivel1() {
   return (
     <MultimediaLevel
       titulo="primer nivel"
-      background="/fondos/PrimerNivel.png"
+      background="/fondos/PrimerNivel.jpg"
       personajes={PERSONAJES_NIVEL1}
     />
   );
