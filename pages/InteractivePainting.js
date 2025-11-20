@@ -56,14 +56,14 @@ function useTooltipVoice() {
     id: "texto_cartela_inferior",
     nombre: "sub umbra illius quam desideraveram sedi",
     descripcion:
-      "inscripción latina tomada del cantar de los cantares (2,3): «me senté a la sombra del que tanto había deseado». alude al amparo que san josé ofrece a los santos cobijados bajo su manto.",
+      "Cantar de los Cantares 2:3 «Bajo la sombra del deseado me senté».",
     src: "/capas/texto_primer nivel.png",
     }, 
     {
     id: "angeles_querubines",
-    nombre: "ángeles y querubines",
+    nombre: "querubines",
     descripcion:
-      "una multitud de ángeles y querubines articula el espacio entre la trinidad y san josé. los ángeles mayores tocan instrumentos barrocos, sostienen el manto o portan filacterias, introduciendo movimiento y música en la escena. los querubines, representados como pequeñas cabezas aladas inmersas en la luz y las nubes, pertenecen al orden más elevado y simbolizan el conocimiento y la contemplación de la belleza divina.",
+      "Representados como cabezas aladas.",
     src: "/capas/querubines_primer_nivel.png",
     },
     {
@@ -71,7 +71,7 @@ function useTooltipVoice() {
       nombre: "san ignacio de loyola",
       fechas: "1491–1556",
       descripcion:
-        "jesuita. hábito negro. porta el emblema ihs rodeado de rayos y el libro de reglas con la divisa 'ad majorem gloriam dei'.",
+        "Con hábito negro, porta el emblema IHS rodeado de rayos y el libro de reglas con la divisa 'Ad Majorem Gloriam Dei'.",
       src: "/capas/ignacio_full.png",
     },
     {
@@ -79,7 +79,7 @@ function useTooltipVoice() {
       nombre: "san antonio de padua",
       fechas: "1195–1231",
       descripcion:
-        "franciscano. sostiene al niño jesús sobre un libro y un lirio blanco.",
+        "Con hábito café oscuro, sostiene al niño jesús sobre un libro y un lirio blanco.",
       src: "/capas/antonio_full.png",
     },
     {
@@ -87,7 +87,7 @@ function useTooltipVoice() {
       nombre: "san nicolás de bari",
       fechas: "270–342",
       descripcion:
-        "obispo. porta mitra, capa magna, báculo y un libro con tres esferas alusivas a su caridad.",
+        "Vestido de pontifical, porta mitra, capa magna, báculo y un libro con tres esferas.",
       src: "/capas/nicolas_full.png",
     },
     {
@@ -95,7 +95,7 @@ function useTooltipVoice() {
       nombre: "san agustín de hipona",
       fechas: "354–430",
       descripcion:
-        "obispo. porta báculo, pluma y libro. doctor de la iglesia.",
+        "Vestido de obispo, porta báculo, pluma y libro. Doctor de la iglesia.",
       src: "/capas/agustin_full.png",
     },
     {
@@ -103,7 +103,7 @@ function useTooltipVoice() {
       nombre: "san gregorio magno",
       fechas: "† 604",
       descripcion:
-        "papa. porta tiara, cruz triple, pluma en la derecha y libro en la izquierda.",
+        "Papa. Vestido de pontifical con tiara papal, porta cruz triple, pluma en la derecha y libro en la izquierda.",
       src: "/capas/gregorio_full.png",
     },
     {
@@ -111,14 +111,14 @@ function useTooltipVoice() {
       nombre: "santo domingo de guzmán",
       fechas: "1170–1221",
       descripcion:
-        "dominico. hábito bicolor. porta rosario, lirios blancos y un libro.",
+        "Con hábito bicolor, túnica blanca y manteo negro, porta rosario, lirios blancos y un libro cerrado.",
       src: "/capas/domingo_full.png",
     },
     {
       id: "francisco",
       nombre: "san francisco de asís",
       fechas: "1182–1226",
-      descripcion: "hábito café. estigmas visibles. porta un crucifijo.",
+      descripcion: "Con hábito café y estigmas visibles, porta un crucifijo.",
       src: "/capas/francisco_full1.png",
     },
     {
@@ -126,7 +126,7 @@ function useTooltipVoice() {
       nombre: "san jerónimo",
       fechas: "347–420",
       descripcion:
-        "cardenal. porta pluma y libro. león a sus pies como símbolo tradicional.",
+        "Vestido como cardenal, porta pluma y libro. Con un león a sus pies.",
       src: "/capas/jeronimo_full.png",
     },
     {
@@ -134,7 +134,7 @@ function useTooltipVoice() {
       nombre: "san ambrosio de milán",
       fechas: "340–396",
       descripcion:
-        "obispo. porta báculo, libro y pluma. doctor de la iglesia.",
+        "Vestido de obispo, porta báculo, libro y pluma. Doctor de la iglesia.",
       src: "/capas/ambrosio_full.png",
     },
     {
@@ -142,7 +142,7 @@ function useTooltipVoice() {
       nombre: "san bernardo de claraval",
       fechas: "1090–1153",
       descripcion:
-        "cisterciense. manto blanco, mitra, pluma, libro y báculo abacial.",
+        "Con mitra y cogulla blanca de abad de la orden del Císter, porta pluma, libro y báculo.",
       src: "/capas/bernardo_full.png",
     },
     {
@@ -150,7 +150,7 @@ function useTooltipVoice() {
       nombre: "san juan de dios",
       fechas: "1495–1550",
       descripcion:
-        "hábito gris. porta un crucifijo y una granada. fundador de la orden hospitalaria.",
+        "Con hábito de sayal, porta un crucifijo y una granada.",
       src: "/capas/juan_de_dios_full.png",
     },
     {
@@ -158,19 +158,19 @@ function useTooltipVoice() {
       nombre: "san francisco javier",
       fechas: "1506–1552",
       descripcion:
-        "jesuita. porta un lirio blanco en la derecha y un crucifijo en la izquierda.",
+        "Con hábito jesuita, porta lirio blanco y crucifijo.",
       src: "/capas/francisco_javier_full.png",
     },
 
     // -----------------------------------------------------------------------
-    // PRIMER NIVEL, SEGUNDA FILA
+    // SEGUNDA FILA (10 figuras)
     // -----------------------------------------------------------------------
     {
       id: "buenaventura",
       nombre: "san buenaventura",
       fechas: "1218–1274",
       descripcion:
-        "franciscano. porta un libro con una pequeña iglesia sobre él y un árbol en su mano izquierda.",
+        "Con hábito franciscano, porta libro con pequeña iglesia sobre él y árbol.",
       src: "/capas/buenaventura_full.png",
     },
     {
@@ -178,7 +178,7 @@ function useTooltipVoice() {
       nombre: "santa mónica de hipona",
       fechas: "siglo IV",
       descripcion:
-        "madre de san agustín. toca blanca y telas negras de viuda. sostiene un libro y un crucifijo.",
+        "Con toca blanca y telas negras, sostiene un libro y un crucifijo.",
       src: "/capas/monica_full.png",
     },
     {
@@ -186,7 +186,7 @@ function useTooltipVoice() {
       nombre: "san francisco de paula",
       fechas: "1416–1507",
       descripcion:
-        "fundador de los mínimos. hábito pardo. porta la divisa 'charitas' y un bastón.",
+        "Con hábito pardo, porta divisa 'charitas' y un bastón.",
       src: "/capas/francisco_de_paula_full.png",
     },
     {
@@ -194,14 +194,14 @@ function useTooltipVoice() {
       nombre: "santa bárbara",
       fechas: "siglo III",
       descripcion:
-        "mártir. princesa con corona. palma del martirio y torre en llamas.",
+        "Vestida como princesa con corona, porta palma de martirio y torre en llamas.",
       src: "/capas/barbara_full.png",
     },
     {
       id: "gertrudis",
       nombre: "santa gertrudis la magna",
       fechas: "1256–1302",
-      descripcion: "agustina. corazón inflamado y báculo.",
+      descripcion: "Con hábito de agustina, porta corazón inflamado y báculo.",
       src: "/capas/gertrudis_full.png",
     },
     {
@@ -209,7 +209,7 @@ function useTooltipVoice() {
       nombre: "santa teresa de ávila",
       fechas: "1515–1582",
       descripcion:
-        "carmelita descalza. hábito marrón y capa blanca. porta una pluma y un libro.",
+        "Con hábito marrón y capa blanca, porta una pluma y un libro.",
       src: "/capas/teresa_full.png",
     },
     {
@@ -217,7 +217,7 @@ function useTooltipVoice() {
       nombre: "santa apolonia de alejandría",
       fechas: "† 249",
       descripcion:
-        "mártir. princesa con corona. palma del martirio y tenaza con diente.",
+        "Vestida como princesa con corona, porta palma de martirio y tenaza con diente.",
       src: "/capas/apolonia_full.png",
     },
     {
@@ -225,7 +225,7 @@ function useTooltipVoice() {
       nombre: "santo tomás de aquino",
       fechas: "1225–1274",
       descripcion:
-        "doctor angélico. túnica gris decorada. cáliz y lirio.",
+        "Con túnica gris decorada, porta cáliz y lirio.",
       src: "/capas/tomas_full.png",
     },
     {
@@ -240,9 +240,11 @@ function useTooltipVoice() {
       nombre: "san juan duns escoto",
       fechas: "1266–1308",
       descripcion:
-        "franciscano y doctor sutil. muceta doctoral, solideo, libro y báculo.",
+        "Con hábito franciscano, muceta doctoral y solideo, porta libro y báculo.",
       src: "/capas/duns_scoto_full.png",
     },
+    
+
     
     // -----------------------------------------------------------------------
     // SEGUNDO NIVEL
@@ -250,68 +252,69 @@ function useTooltipVoice() {
    
 {
   id: "angeles mantos1",
-  nombre: "ángele portador del manto 1",
+  nombre: "ángel portador del manto",
   descripcion:
-    "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
+    "Sostiene el amplio manto que san José extiende sobre los santos bajo su patrocinio.",
   src: "/capas/angeles_capa_full_01.png"
 },
 
     {
   id: "angeles mantos2",
-  nombre: "ángele portador del manto 2",
+  nombre: "ángel portador del manto",
   descripcion:
-    "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
+    "Sostiene el amplio manto que san José extiende sobre los santos bajo su patrocinio.",
   src: "/capas/angeles_capa_full_02.png"
 },
     {
   id: "angeles mantos3",
-  nombre: "ángele portador del manto 3",
+  nombre: "ángel portador del manto",
   descripcion:
-    "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
+    "Sostiene el amplio manto que san José extiende sobre los santos bajo su patrocinio.",
   src: "/capas/angeles_capa_full_03.png"
 },
     {
   id: "angeles mantos4",
-  nombre: "ángele portador del manto 4",
+  nombre: "ángel portador del manto",
   descripcion:
-    "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
+    "Sostiene el amplio manto que san José extiende sobre los santos bajo su patrocinio.",
   src: "/capas/angeles_capa_full_04.png"
 },
     
  {
   id: "angeles_musicos_inferior",
-  nombre: "ángeles músicos – grupo inferior",
+  nombre: "ángeles músicos",
   descripcion:
-    "ángeles cercanos al nivel de los santos, tocando instrumentos barrocos como órgano portátil, trompeta natural, guitarra barroca, arpa y violín. aportan movimiento y sonido celestial, animando el espacio que conecta el mundo humano con la protección de san josé.",
+    "Ángeles tocando instrumentos como órgano de tubos, trompeta natural, guitarra barroca, fagot, arpa y violín.",
   src: "/capas/angeles_musicos_01.png"
 },
     {
   id: "angeles_musicos_superior",
-  nombre: "ángeles músicos – grupo superior",
+  nombre: "ángeles músicos",
   descripcion:
-    "ángeles ubicados bajo la trinidad, portando instrumentos de viento y cuerdas. acompañan la esfera celestial con música solemne, actuando como puente sonoro entre los arcanos divinos y el resto de la composición.",
+    "Ángeles tocando instrumentos como órgano de tubos, trompeta natural, guitarra barroca, fagot, arpa y violín.",
   src: "/capas/angeles_musicos_02.png"
 },
      {
     id: "angeles_querubines",
-    nombre: "ángeles y querubines",
+    nombre: "querubines",
     descripcion:
-      "una multitud de ángeles y querubines articula el espacio entre la trinidad y san josé. los ángeles mayores tocan instrumentos barrocos, sostienen el manto o portan filacterias, introduciendo movimiento y música en la escena. los querubines, representados como pequeñas cabezas aladas inmersas en la luz y las nubes, pertenecen al orden más elevado y simbolizan el conocimiento y la contemplación de la belleza divina.",
+      "Querubines, representados como niños alados y como pequeñas cabezas aladas.",
     src: "/capas/querubines.png"
-},
-  {
+ },
+ {
     id: "san_jose",
   nombre: "san josé",
   descripcion:
-    "representado entronizado en el centro de la composición, coronado y con amplio manto que se extiende para proteger a los santos del nivel inferior. sostiene en su mano derecha un cetro florido de lirios —símbolo de pureza y elección divina— y en la izquierda un libro abierto que alude a la sabiduría y autoridad espiritual. es el intermediario privilegiado entre la trinidad y la iglesia, figura paternal y custodio universal.",
+    "Entronizado, coronado y con amplio manto sobre los santos bajo su protección. Sostiene rama de lirios blancos y anillo.",
   src: "/capas/san_jose.png"
 },
 
-         {
+   
+   {
     id: "texto_filacteria_lateral",
-    nombre: "annulo suo monstravit me decoravit me corona sua",
+    nombre: "annulo suo suvarravit me et decoravit me corona",
     descripcion:
-      "texto devocional que alude a la dignidad concedida por dios a san josé: su elección, su alianza (anillo) y su exaltación (corona). la filacteria es sostenida por ángeles que descienden hacia la figura del santo.",
+      "Texto de antífona, que puede traducirse como: con su anillo me desposó y me adornó con una corona.",
     src: "/capas/texto_vertical.png"
 },
 
@@ -319,9 +322,10 @@ function useTooltipVoice() {
     id: "texto_filacteria_central",
     nombre: "constituit eum dominum domus suae et principem omnis possessionis suae",
     descripcion:
-      "cita del salmo 104(105),21: «lo hizo señor de su casa y príncipe de todas sus posesiones». refuerza el papel de san josé como custodio y administrador del pueblo de dios.",
+      "Cita del salmo 105:21, que dice: «Lo puso por señor de su casa, Y por gobernador de todas sus posesiones».",
     src: "/capas/texto_horizontal.png"
 },
+
   
 
  // -------------------------------------------------------------
@@ -329,107 +333,106 @@ function useTooltipVoice() {
 // -------------------------------------------------------------
 
 
-  {
+ {
     id: "arcangel_gabriel",
     nombre: "arcángel gabriel",
     descripcion:
-      "sostiene una rama de lirios en la mano derecha y un anillo en la izquierda. mensajero divino asociado a la anunciación.",
+      "Sostiene rama de lirios en mano derecha y anillo en izquierda.",
     src: "/capas/gabriel_full.png" // ajusta al nombre real de tu archivo
   },
   {
     id: "arcangel_miguel",
     nombre: "arcángel miguel",
     descripcion:
-      "porta una espada flamígera en la mano derecha y una cruz en la izquierda. jefe de las milicias celestiales.",
+      "Porta espada flamígera en mano derecha y cruz en izquierda.",
     src: "/capas/miguel_full.png"
   },
   {
     id: "arcangel_rafael",
     nombre: "arcángel rafael",
     descripcion:
-      "sostiene un pez en la mano derecha y un báculo o vara en la izquierda. protector de viajeros y sanador.",
+      "Sostiene pescado en mano derecha y báculo o vara en la izquierda.",
     src: "/capas/rafael_full.png"
   },
   {
     id: "angel_de_la_guarda",
     nombre: "ángel de la guarda",
     descripcion:
-      "lleva un corazón en la mano derecha y guía a un niño con la izquierda. versión devocional derivada de la iconografía de rafael y tobías.",
+      "Porta corazón en mano derecha y guía a un niño con la izquierda.",
     src: "/capas/angel_guardia_full.png"
   },
   {
     id: "san_juan_bautista",
     nombre: "san juan bautista",
     descripcion:
-      "representado como asceta, con sayo de pelo de camello y capa roja. sostiene un cayado rematado en cruz con la filacteria 'ecce agnus dei' y un cordero sobre un libro.",
+      "Representado como asceta, con sayo de pelo de camello y capa roja. Sostiene un cayado rematado en cruz con la filacteria 'Ecce agnus dei' y un cordero sobre un libro.",
     src: "/capas/juan_bautista_full.png"
   },
   {
     id: "virgen_maria",
     nombre: "virgen maría",
     descripcion:
-      "inmaculada y virgen del carmen: coronada, sentada sobre una nube, luna a sus pies, halo de doce estrellas, cetro en la mano derecha y anillo con filacteria en la izquierda. viste hábito café y capa blanca carmelita con escapulario en el pecho.",
+      "Representada como Inmaculada Concepción y virgen del Carmen: coronada, sentada sobre una nube, luna a sus pies, halo de doce estrellas, cetro en la mano derecha y anillo con filacteria en la izquierda. Viste hábito café y capa blanca carmelita con escapulario en el pecho.",
     src: "/capas/virgen_maria_full.png"
   },
   {
     id: "santa_ana",
     nombre: "santa ana",
     descripcion:
-      "madre de la virgen, de apariencia anciana, sentada sobre nube, manos juntas en oración y mirada dirigida hacia su hija.",
+      "Madre de la virgen, de apariencia anciana, sentada sobre nube, manos juntas en oración y mirada dirigida hacia su hija.",
     src: "/capas/santa_ana_full.png"
   },
   {
     id: "san_joaquin",
     nombre: "san joaquín",
     descripcion:
-      "padre de la virgen, representado como anciano, sentado sobre nube, en actitud orante y mirando hacia la trinidad.",
+      "Padre de la virgen, representado como anciano, sentado sobre nube, en actitud orante y mirando hacia la Trinidad.",
     src: "/capas/san_joaquin_full.png"
   },
   {
     id: "trinidad_padre",
     nombre: "dios padre",
     descripcion:
-      "figura central de la trinidad antropomorfa. entronizado, con capa pluvial, sosteniendo un cetro en la mano derecha y el orbe del mundo en la izquierda.",
+      "Figura central de la Trinidad antropomorfa. Entronizado, con capa pluvial, sosteniendo un cetro en la mano derecha y el mundo en la izquierda.",
     src: "/capas/trinidad_padre_full.png"
   },
   {
     id: "trinidad_hijo",
     nombre: "dios hijo",
     descripcion:
-      "sentado a la diestra del padre, con capa pluvial. porta una cruz en la mano derecha y un cetro en la izquierda.",
+      "Sentado a la diestra del padre, con capa pluvial. Porta una cruz en la mano derecha y un cetro en la izquierda.",
     src: "/capas/trinidad_hijo_full.png"
   },
   {
     id: "trinidad_espiritu_santo",
     nombre: "espíritu santo",
     descripcion:
-      "representado antropomórficamente, con capa pluvial. sostiene una vara de lirios blancos coronada por una paloma y un cetro en la mano derecha.",
+      "Representado antropomórficamente, con capa pluvial. Sostiene una vara de lirios blancos coronada por una paloma y un cetro en la mano derecha.",
     src: "/capas/trinidad_espiritu_full.png"
   },
- 
-    {
+  {
     id: "texto_banda_trinidad",
     nombre: "ite ad ioseph",
     descripcion:
-      "lema latino procedente del génesis (41,55) reinterpretado devocionalmente como «vayan a josé», destacando a san josé como intercesor privilegiado ante la trinidad.",
+      "Cita de Génesis 41:55, cuya traducción es «Id a José».",
     src: "/capas/texto_tercer_nivel.png"
-  },
-   {
+},
+ {
     id: "querubinesTrinidad",
-    nombre: "querubines trinidad",
+    nombre: "querubines",
     descripcion:
-      "---.",
+      "Querubines, representados como pequeñas cabezas aladas.",
     src: "/capas/querubinesTrinidad.png",
   },
 
    {
     id: "querubinesMaria",
-    nombre: "querubines maria",
+    nombre: "querubines",
     descripcion:
-      "---.",
-    src: "/capas/querubinesMaria.png",
-  },
-    
+      "Querubines, representados como pequeñas cabezas aladas.",
+    src: "/capas/querubinesMaria.png"
+   },
+
     
   ];
 
