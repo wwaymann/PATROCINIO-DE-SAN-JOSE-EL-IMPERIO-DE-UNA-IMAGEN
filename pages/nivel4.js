@@ -59,7 +59,7 @@ const PERSONAJES_NIVEL4 = [
     descripcion:
       "Texto de antífona, que puede traducirse como: con su anillo me desposó y me adornó con una corona.",
     src: "/capas/texto_vertical.png"
-},
+}
 
 
 
