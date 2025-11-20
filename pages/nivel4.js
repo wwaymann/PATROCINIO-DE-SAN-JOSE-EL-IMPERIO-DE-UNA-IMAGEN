@@ -14,7 +14,7 @@ export default function Nivel4() {
     <MultimediaLevel
       titulo="nivel central"
       background="/fondos/TercerNivel.png"
-      personajes={PERSONAJES_NIVEL3}
+      personajes={PERSONAJES_NIVEL4}
     />
   );
 }
