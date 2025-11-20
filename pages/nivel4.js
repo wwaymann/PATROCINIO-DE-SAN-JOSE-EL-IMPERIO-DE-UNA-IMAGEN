@@ -9,7 +9,7 @@ const PERSONAJES_NIVEL4 = [
   },
 ];
 
-export default function Nivel_central() {
+export default function Nivel4() {
   return (
     <MultimediaLevel
       titulo="nivel central"
