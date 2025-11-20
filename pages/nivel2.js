@@ -84,8 +84,9 @@ export default function Nivel2() {
   return (
     <MultimediaLevel
       titulo="Segundo Nivel"
-      src:"/fondos/SegundoNivel.png"
+      background="/fondos/SegundoNivel.png"
       personajes={PERSONAJES_NIVEL2}
     />
   );
 }
+
