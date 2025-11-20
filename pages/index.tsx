@@ -1,687 +1,681 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useCallback
-} from "react";
+import Head from 'next/head'
+import { useEffect } from 'react'
 
-/* -------------------------------------------------------------
-   VOZ PARA TOOLTIP
-------------------------------------------------------------- */
-function useTooltipVoice() {
-  const synthRef = useRef(null);
-  const voiceRef = useRef(null);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const synth = window.speechSynthesis;
-    synthRef.current = synth;
-
-    const load = () => {
-      const voices = synth.getVoices();
-      const es = voices.find(v =>
-        v.lang.toLowerCase().startsWith("es")
-      );
-      voiceRef.current = es || voices[0];
-    };
-
-    load();
-    synth.onvoiceschanged = load;
-  }, []);
-
-  const speak = useCallback(text => {
-    if (!text || !synthRef.current) return;
-    synthRef.current.cancel();
-
-    const u = new SpeechSynthesisUtterance(text);
-    if (voiceRef.current) u.voice = voiceRef.current;
-    u.rate = 1;
-    synthRef.current.speak(u);
-  }, []);
-
-  const cancel = useCallback(() => {
-    if (synthRef.current) synthRef.current.cancel();
-  }, []);
-
-  return { speak, cancel };
+const CONFIG = {
+  DATE: '20 Noviembre.',
+  TIME: '17:00 h.',
+  VENUE: 'Museo Nacional de Bellas Artes.',
+  ADDRESS: 'José Miguel de la Barra 650.',
+  CITY: 'Santiago, Chile.',
+  MAP_URL: 'https://maps.app.goo.gl/XEuH5wU11vUN1NhCA',
+  TICKETS_URL: '#',
+  IOS_URL: '#',
+  ANDROID_URL: '#',
+  FORM_ENDPOINT: ''
 }
 
-// -----------------------------------------------------------------------
-// PRIMERA NIVEL, PRIMERA FILA
-// -----------------------------------------------------------------------
-const PERSONAJES = [
-  {
-    id: "texto_cartela_inferior",
-    nombre: "sub umbra illius quam desideraveram sedi",
-    descripcion:
-      "inscripción latina tomada del cantar de los cantares (2,3): «me senté a la sombra del que tanto había deseado». alude al amparo que san josé ofrece a los santos cobijados bajo su manto.",
-    src: "/capas/texto_primer nivel.png",
-  },
-  {
-    id: "angeles_querubines",
-    nombre: "ángeles y querubines",
-    descripcion:
-      "una multitud de ángeles y querubines articula el espacio entre la trinidad y san josé. los ángeles mayores tocan instrumentos barrocos, sostienen el manto o portan filacterias, introduciendo movimiento y música en la escena. los querubines, representados como pequeñas cabezas aladas inmersas en la luz y las nubes, pertenecen al orden más elevado y simbolizan el conocimiento y la contemplación de la belleza divina.",
-    src: "/capas/querubines_primer_nivel.png",
-  },
-  {
-    id: "ignacio",
-    nombre: "san ignacio de loyola",
-    fechas: "1491–1556",
-    descripcion:
-      "jesuita. hábito negro. porta el emblema ihs rodeado de rayos y el libro de reglas con la divisa 'ad majorem gloriam dei'.",
-    src: "/capas/ignacio_full.png",
-  },
-  {
-    id: "antonio",
-    nombre: "san antonio de padua",
-    fechas: "1195–1231",
-    descripcion:
-      "franciscano. sostiene al niño jesús sobre un libro y un lirio blanco.",
-    src: "/capas/antonio_full.png",
-  },
-  {
-    id: "nicolas",
-    nombre: "san nicolás de bari",
-    fechas: "270–342",
-    descripcion:
-      "obispo. porta mitra, capa magna, báculo y un libro con tres esferas alusivas a su caridad.",
-    src: "/capas/nicolas_full.png",
-  },
-  {
-    id: "agustin",
-    nombre: "san agustín de hipona",
-    fechas: "354–430",
-    descripcion:
-      "obispo. porta báculo, pluma y libro. doctor de la iglesia.",
-    src: "/capas/agustin_full.png",
-  },
-  {
-    id: "gregorio",
-    nombre: "san gregorio magno",
-    fechas: "† 604",
-    descripcion:
-      "papa. porta tiara, cruz triple, pluma en la derecha y libro en la izquierda.",
-    src: "/capas/gregorio_full.png",
-  },
-  {
-    id: "domingo",
-    nombre: "santo domingo de guzmán",
-    fechas: "1170–1221",
-    descripcion:
-      "dominico. hábito bicolor. porta rosario, lirios blancos y un libro.",
-    src: "/capas/domingo_full.png",
-  },
-  {
-    id: "francisco",
-    nombre: "san francisco de asís",
-    fechas: "1182–1226",
-    descripcion:
-      "hábito café. estigmas visibles. porta un crucifijo.",
-    src: "/capas/francisco_full1.png",
-  },
-  {
-    id: "jeronimo",
-    nombre: "san jerónimo",
-    fechas: "347–420",
-    descripcion:
-      "cardenal. porta pluma y libro. león a sus pies como símbolo tradicional.",
-    src: "/capas/jeronimo_full.png",
-  },
-  {
-    id: "ambrosio",
-    nombre: "san ambrosio de milán",
-    fechas: "340–396",
-    descripcion:
-      "obispo. porta báculo, libro y pluma. doctor de la iglesia.",
-    src: "/capas/ambrosio_full.png",
-  },
-  {
-    id: "bernardo",
-    nombre: "san bernardo de claraval",
-    fechas: "1090–1153",
-    descripcion:
-      "cisterciense. manto blanco, mitra, pluma, libro y báculo abacial.",
-    src: "/capas/bernardo_full.png",
-  },
-  {
-    id: "juan_de_dios",
-    nombre: "san juan de dios",
-    fechas: "1495–1550",
-    descripcion:
-      "hábito gris. porta un crucifijo y una granada. fundador de la orden hospitalaria.",
-    src: "/capas/juan_de_dios_full.png",
-  },
-  {
-    id: "francisco_javier",
-    nombre: "san francisco javier",
-    fechas: "1506–1552",
-    descripcion:
-      "jesuita. porta un lirio blanco en la derecha y un crucifijo en la izquierda.",
-    src: "/capas/francisco_javier_full.png",
-  },
-
-  // -----------------------------------------------------------------------
-  // PRIMER NIVEL, SEGUNDA FILA
-  // -----------------------------------------------------------------------
-  {
-    id: "buenaventura",
-    nombre: "san buenaventura",
-    fechas: "1218–1274",
-    descripcion:
-      "franciscano. porta un libro con una pequeña iglesia sobre él y un árbol en su mano izquierda.",
-    src: "/capas/buenaventura_full.png",
-  },
-  {
-    id: "monica",
-    nombre: "santa mónica de hipona",
-    fechas: "siglo IV",
-    descripcion:
-      "madre de san agustín. toca blanca y telas negras de viuda. sostiene un libro y un crucifijo.",
-    src: "/capas/monica_full.png",
-  },
-  {
-    id: "francisco_de_paula",
-    nombre: "san francisco de paula",
-    fechas: "1416–1507",
-    descripcion:
-      "fundador de los mínimos. hábito pardo. porta la divisa 'charitas' y un bastón.",
-    src: "/capas/francisco_de_paula_full.png",
-  },
-  {
-    id: "barbara",
-    nombre: "santa bárbara",
-    fechas: "siglo III",
-    descripcion:
-      "mártir. princesa con corona. palma del martirio y torre en llamas.",
-    src: "/capas/barbara_full.png",
-  },
-  {
-    id: "gertrudis",
-    nombre: "santa gertrudis la magna",
-    fechas: "1256–1302",
-    descripcion: "agustina. corazón inflamado y báculo.",
-    src: "/capas/gertrudis_full.png",
-  },
-  {
-    id: "teresa",
-    nombre: "santa teresa de ávila",
-    fechas: "1515–1582",
-    descripcion:
-      "carmelita descalza. hábito marrón y capa blanca. porta una pluma y un libro.",
-    src: "/capas/teresa_full.png",
-  },
-  {
-    id: "apolonia",
-    nombre: "santa apolonia de alejandría",
-    fechas: "† 249",
-    descripcion:
-      "mártir. princesa con corona. palma del martirio y tenaza con diente.",
-    src: "/capas/apolonia_full.png",
-  },
-  {
-    id: "tomas",
-    nombre: "santo tomás de aquino",
-    fechas: "1225–1274",
-    descripcion:
-      "doctor angélico. túnica gris decorada. cáliz y lirio.",
-    src: "/capas/tomas_full.png",
-  },
-  {
-    id: "clara",
-    nombre: "santa clara de asís",
-    fechas: "1193–1243",
-    descripcion: "porta custodia eucarística y báculo.",
-    src: "/capas/clara_full.png",
-  },
-  {
-    id: "duns_scoto",
-    nombre: "san juan duns escoto",
-    fechas: "1266–1308",
-    descripcion:
-      "franciscano y doctor sutil. muceta doctoral, solideo, libro y báculo.",
-    src: "/capas/duns_scoto_full.png",
-  },
-
-  // -----------------------------------------------------------------------
-  // SEGUNDO NIVEL
-  // -----------------------------------------------------------------------
-  {
-    id: "angeles mantos1",
-    nombre: "ángele portador del manto 1",
-    descripcion:
-      "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
-    src: "/capas/angeles_capa_full_01.png",
-  },
-
-  {
-    id: "angeles mantos2",
-    nombre: "ángele portador del manto 2",
-    descripcion:
-      "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
-    src: "/capas/angeles_capa_full_02.png",
-  },
-  {
-    id: "angeles mantos3",
-    nombre: "ángele portador del manto 3",
-    descripcion:
-      "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
-    src: "/capas/angeles_capa_full_03.png",
-  },
-  {
-    id: "angeles mantos4",
-    nombre: "ángele portador del manto 4",
-    descripcion:
-      "sostiene el amplio manto que san josé extiende sobre los santos del nivel inferior.",
-    src: "/capas/angeles_capa_full_04.png",
-  },
-
-  {
-    id: "angeles_musicos_inferior",
-    nombre: "ángeles músicos – grupo inferior",
-    descripcion:
-      "ángeles cercanos al nivel de los santos, tocando instrumentos barrocos como órgano portátil, trompeta natural, guitarra barroca, arpa y violín. aportan movimiento y sonido celestial, animando el espacio que conecta el mundo humano con la protección de san josé.",
-    src: "/capas/angeles_musicos_01.png",
-  },
-  {
-    id: "angeles_musicos_superior",
-    nombre: "ángeles músicos – grupo superior",
-    descripcion:
-      "ángeles ubicados bajo la trinidad, portando instrumentos de viento y cuerdas. acompañan la esfera celestial con música solemne, actuando como puente sonoro entre los arcanos divinos y el resto de la composición.",
-    src: "/capas/angeles_musicos_02.png",
-  },
-  {
-    id: "angeles_querubines_superior",
-    nombre: "ángeles y querubines – nivel superior",
-    descripcion:
-      "grupo de ángeles y querubines que envuelve la esfera de la trinidad, integrando luz, nubes y movimiento celestial.",
-    src: "/capas/querubines.png",
-  },
-  {
-    id: "san_jose",
-    nombre: "san josé",
-    descripcion:
-      "representado entronizado en el centro de la composición, coronado y con amplio manto que se extiende para proteger a los santos del nivel inferior. sostiene en su mano derecha un cetro florido de lirios —símbolo de pureza y elección divina— y en la izquierda un libro abierto que alude a la sabiduría y autoridad espiritual. es el intermediario privilegiado entre la trinidad y la iglesia, figura paternal y custodio universal.",
-    src: "/capas/san_jose.png",
-  },
-
-  {
-    id: "texto_filacteria_lateral",
-    nombre: "annulo suo monstravit me decoravit me corona sua",
-    descripcion:
-      "texto devocional que alude a la dignidad concedida por dios a san josé: su elección, su alianza (anillo) y su exaltación (corona). la filacteria es sostenida por ángeles que descienden hacia la figura del santo.",
-    src: "/capas/texto_vertical.png",
-  },
-
-  {
-    id: "texto_filacteria_central",
-    nombre: "constituit eum dominum domus suae et principem omnis possessionis suae",
-    descripcion:
-      "cita del salmo 104(105),21: «lo hizo señor de su casa y príncipe de todas sus posesiones». refuerza el papel de san josé como custodio y administrador del pueblo de dios.",
-    src: "/capas/texto_horizontal.png",
-  },
-
-  // -------------------------------------------------------------
-  // TERCER NIVEL
-  // -------------------------------------------------------------
-  {
-    id: "arcangel_gabriel",
-    nombre: "arcángel gabriel",
-    descripcion:
-      "sostiene una rama de lirios en la mano derecha y un anillo en la izquierda. mensajero divino asociado a la anunciación.",
-    src: "/capas/gabriel_full.png",
-  },
-  {
-    id: "arcangel_miguel",
-    nombre: "arcángel miguel",
-    descripcion:
-      "porta una espada flamígera en la mano derecha y una cruz en la izquierda. jefe de las milicias celestiales.",
-    src: "/capas/miguel_full.png",
-  },
-  {
-    id: "arcangel_rafael",
-    nombre: "arcángel rafael",
-    descripcion:
-      "sostiene un pez en la mano derecha y un báculo o vara en la izquierda. protector de viajeros y sanador.",
-    src: "/capas/rafael_full.png",
-  },
-  {
-    id: "angel_de_la_guarda",
-    nombre: "ángel de la guarda",
-    descripcion:
-      "lleva un corazón en la mano derecha y guía a un niño con la izquierda. versión devocional derivada de la iconografía de rafael y tobías.",
-    src: "/capas/angel_guardia_full.png",
-  },
-  {
-    id: "san_juan_bautista",
-    nombre: "san juan bautista",
-    descripcion:
-      "representado como asceta, con sayo de pelo de camello y capa roja. sostiene un cayado rematado en cruz con la filacteria 'ecce agnus dei' y un cordero sobre un libro.",
-    src: "/capas/juan_bautista_full.png",
-  },
-  {
-    id: "virgen_maria",
-    nombre: "virgen maría",
-    descripcion:
-      "inmaculada y virgen del carmen: coronada, sentada sobre una nube, luna a sus pies, halo de doce estrellas, cetro en la mano derecha y anillo con filacteria en la izquierda. viste hábito café y capa blanca carmelita con escapulario en el pecho.",
-    src: "/capas/virgen_maria_full.png",
-  },
-  {
-    id: "santa_ana",
-    nombre: "santa ana",
-    descripcion:
-      "madre de la virgen, de apariencia anciana, sentada sobre nube, manos juntas en oración y mirada dirigida hacia su hija.",
-    src: "/capas/santa_ana_full.png",
-  },
-  {
-    id: "san_joaquin",
-    nombre: "san joaquín",
-    descripcion:
-      "padre de la virgen, representado como anciano, sentado sobre nube, en actitud orante y mirando hacia la trinidad.",
-    src: "/capas/san_joaquin_full.png",
-  },
-  {
-    id: "trinidad_padre",
-    nombre: "dios padre",
-    descripcion:
-      "figura central de la trinidad antropomorfa. entronizado, con capa pluvial, sosteniendo un cetro en la mano derecha y el orbe del mundo en la izquierda.",
-    src: "/capas/trinidad_padre_full.png",
-  },
-  {
-    id: "trinidad_hijo",
-    nombre: "dios hijo",
-    descripcion:
-      "sentado a la diestra del padre, con capa pluvial. porta una cruz en la mano derecha y un cetro en la izquierda.",
-    src: "/capas/trinidad_hijo_full.png",
-  },
-  {
-    id: "trinidad_espiritu_santo",
-    nombre: "espíritu santo",
-    descripcion:
-      "representado antropomórficamente, con capa pluvial. sostiene una vara de lirios blancos coronada por una paloma y un cetro en la mano derecha.",
-    src: "/capas/trinidad_espiritu_full.png",
-  },
-
-  {
-    id: "texto_banda_trinidad",
-    nombre: "ite ad ioseph",
-    descripcion:
-      "lema latino procedente del génesis (41,55) reinterpretado devocionalmente como «vayan a josé», destacando a san josé como intercesor privilegiado ante la trinidad.",
-    src: "/capas/texto_tercer_nivel.png",
-  },
-];
-
-/* -------------------------------------------------------------
-   COMPONENTE PRINCIPAL
-------------------------------------------------------------- */
-export default function InteractivePainting() {
-  const { speak, cancel } = useTooltipVoice();
-
-  const [active, setActive] = useState(null);
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
-  const [zooming, setZooming] = useState(false);
-  const [zoomPoint, setZoomPoint] = useState({ x: 0, y: 0 });
-
-  const canvasRefs = useRef({});
-  const imgRefs = useRef({});
-  const containerRef = useRef(null);
-
-  /* -------------------------------------------------------------
-     CARGA DE PNG PARA DETECCIÓN
-  ------------------------------------------------------------- */
+export default function Home() {
+  // Tema claro/oscuro (aunque ahora no hay botón, lo dejo preparado)
   useEffect(() => {
-    PERSONAJES.forEach(p => {
-      const img = new Image();
-      img.src = p.src;
-      img.onload = () => {
-        const c = document.createElement("canvas");
-        c.width = img.width;
-        c.height = img.height;
-        c.getContext("2d").drawImage(img, 0, 0);
-
-        canvasRefs.current[p.id] = c;
-        imgRefs.current[p.id] = img;
-      };
-    });
-  }, []);
-
-  /* -------------------------------------------------------------
-     DETECCIÓN PIXEL PERFECT
-  ------------------------------------------------------------- */
-  const handleMove = e => {
-    if (!containerRef.current) return;
-
-    const rect = containerRef.current.getBoundingClientRect();
-    const baseW = 1080;
-    const baseH = 927;
-
-    const sx = baseW / rect.width;
-    const sy = baseH / rect.height;
-
-    const cx = e.touches ? e.touches[0].clientX : e.clientX;
-    const cy = e.touches ? e.touches[0].clientY : e.clientY;
-
-    const x = (cx - rect.left) * sx;
-    const y = (cy - rect.top) * sy;
-
-    setCursor({
-      x: cx - rect.left,
-      y: cy - rect.top,
-    });
-
-    let found = null;
-    for (let i = PERSONAJES.length - 1; i >= 0; i--) {
-      const p = PERSONAJES[i];
-      const cvs = canvasRefs.current[p.id];
-      if (!cvs) continue;
-
-      const px = cvs
-        .getContext("2d")
-        .getImageData(Math.floor(x), Math.floor(y), 1, 1).data;
-
-      if (px[3] > 10) {
-        found = p;
-        break;
-      }
+    const root = document.documentElement
+    if (!root.getAttribute('data-theme')) {
+      root.setAttribute('data-theme', 'light')
     }
+    const saved =
+      typeof window !== 'undefined' ? localStorage.getItem('psj_theme') : null
+    if (saved) root.setAttribute('data-theme', saved)
 
-    setActive(found);
-  };
-
-  const handleLeave = () => setActive(null);
-
-  /* -------------------------------------------------------------
-     ZOOM
-  ------------------------------------------------------------- */
-  const handleToggleZoom = e => {
-    if (!containerRef.current) return;
-
-    const rect = containerRef.current.getBoundingClientRect();
-
-    const x =
-      (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
-    const y =
-      (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
-
-    if (!zooming) {
-      setZoomPoint({ x, y });
-      setZooming(true);
-    } else {
-      setZooming(false);
+    const btn = document.getElementById('themeToggle')
+    const onClick = () => {
+      const current =
+        root.getAttribute('data-theme') === 'light' ? 'dark' : 'light'
+      root.setAttribute('data-theme', current)
+      localStorage.setItem('psj_theme', current)
     }
-  };
+    if (btn) btn.addEventListener('click', onClick)
+    return () => {
+      if (btn) btn.removeEventListener('click', onClick)
+    }
+  }, [])
 
-  /* -------------------------------------------------------------
-     TOOLTIP POSITION
-  ------------------------------------------------------------- */
-  const clamp = (v, min, max) => Math.max(min, Math.min(v, max));
+  const handleAddCalendar = () => {
+    const title = 'Lanzamiento — Patrocinio de San José'
+    const desc =
+      ' del libro: Patrocinio de San José — El imperio de una imagen'
+    const dt = new Date()
+    const dtStart = dt.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+    const dtEnd =
+      new Date(dt.getTime() + 2 * 60 * 60 * 1000)
+        .toISOString()
+        .replace(/[-:]/g, '')
+        .split('.')[0] + 'Z'
 
-  let tooltipPos = {};
-  if (active && containerRef.current) {
-    const w = containerRef.current.clientWidth;
-    const h = containerRef.current.clientHeight;
+    const ics = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+DTSTART:${dtStart}
+DTEND:${dtEnd}
+SUMMARY:${title}
+DESCRIPTION:${desc}
+LOCATION:${CONFIG.VENUE}, ${CONFIG.ADDRESS}, ${CONFIG.CITY}
+END:VEVENT
+END:VCALENDAR`
 
-    const TW = 260;
-    const TH = 150;
-    const m = 20;
-
-    const leftSide = cursor.x < w / 2;
-    const topSide = cursor.y < h / 2;
-
-    let L = leftSide ? cursor.x + m : cursor.x - TW - m;
-    let T = topSide ? cursor.y + m : cursor.y - TH - m;
-
-    tooltipPos = {
-      left: clamp(L, 10, w - TW - 10),
-      top: clamp(T, 10, h - TH - 10),
-    };
+    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'lanzamiento-san-jose.ics'
+    a.click()
+    URL.revokeObjectURL(url)
   }
 
-  /* -------------------------------------------------------------
-     RENDER
-  ------------------------------------------------------------- */
+  const year = new Date().getFullYear()
+
   return (
-    <section
-      style={{
-        padding: "2rem 1rem",
-        textAlign: "center",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <h2
-        style={{
-          margin: 0,
-          marginBottom: "2rem",
-          color: "#c40000",
-          fontFamily: "Matona, serif",
-          fontSize: "1.6rem",
-          letterSpacing: "0.06em",
-        }}
-      >
-        Patrocinio de san José Interactivo
-      </h2>
+    <>
+      <Head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Patrocinio de San José — El imperio de una imagen</title>
+        <meta
+          name="description"
+          content="Lanzamiento libro Patrocinio de San José — El imperio de una imagen. , reseña, fecha y lugar, registro y descargas del eBook."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://db.onlinewebfonts.com/c/3e50ef03ad2b5b310b83f47172d6dcd2?family=Matona"
+          rel="stylesheet"
+        />
+        {/* EB Garamond para texto, como en la maqueta */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
 
-      <div
-        ref={containerRef}
-        onMouseMove={handleMove}
-        onTouchMove={handleMove}
-        onMouseLeave={handleLeave}
-        onClick={handleToggleZoom}
-        onTouchEnd={handleToggleZoom}
-        style={{
-          position: "relative",
-          width: "100%",
-          maxWidth: "900px",
-          overflow: "hidden",
-          cursor: "pointer",
-        }}
-      >
-        {/* IMAGEN BASE */}
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            height: "100%",
-            transformOrigin: `${zoomPoint.x}px ${zoomPoint.y}px`,
-            transform: zooming ? "scale(1.6)" : "scale(1)",
-            transition: "transform 0.35s ease-out",
-          }}
-        >
-          <img
-            src="/cuadro_base.jpg"
-            style={{
-              width: "100%",
-              height: "auto",
-              display: "block",
-              filter: active
-                ? "grayscale(1) brightness(0.9)"
-                : "none",
-              transition: "filter 0.25s",
-            }}
-            alt=""
-          />
+      <style jsx global>{`
+        :root {
+          --bg: #ffffff;
+          --text: #19110e;
+          --muted: #403533;
+          --accent: #e04310;
+          --orange: #e04310;
+          --terracotta: #b96b3a;
+          --burnt: #742f12;
+          --rust: #af4a1d;
+          --card-1: #f9f4ef;
+          --card-2: #fdfaf7;
+          --ring: rgba(224, 67, 16, 0.35);
+        }
+        :root[data-theme='light'] {
+          --bg: #ffffff;
+          --text: #19110e;
+          --muted: #403533;
+          --accent: #e04310;
+          --orange: #e04310;
+          --terracotta: #b96b3a;
+          --burnt: #742f12;
+          --rust: #af4a1d;
+          --card-1: #f9f4ef;
+          --card-2: #fdfaf7;
+          --ring: rgba(224, 67, 16, 0.35);
+        }
 
-          {/* PERSONAJE ILUMINADO */}
-          {active && (
+        * {
+          box-sizing: border-box;
+        }
+        html,
+        body {
+          margin: 0;
+          background: var(--bg);
+          color: var(--text);
+          font-family: 'EB Garamond', serif;
+        }
+        a {
+          color: var(--accent);
+          text-decoration: none;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+        .container {
+          max-width: 1120px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        header {
+          position: sticky;
+          top: 0;
+          z-index: 40;
+          background: linear-gradient(
+            180deg,
+            color-mix(in oklab, var(--bg), transparent 10%),
+            color-mix(in oklab, var(--bg), transparent 30%)
+          );
+          backdrop-filter: saturate(140%) blur(8px);
+          border-bottom: 1px solid var(--ring);
+        }
+        .nav {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 12px 0;
+        }
+        .brand {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .brand-logo {
+          width: 36px;
+          height: 36px;
+          border: 2px solid var(--accent);
+          border-radius: 12px;
+        }
+        .brand-title {
+          font-family: 'Matona', 'Cinzel', serif;
+          letter-spacing: 0.06em;
+          font-weight: 500;
+          color: var(--accent);
+        }
+
+        .hero {
+          position: relative;
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 28px;
+          align-items: center;
+          padding: 64px 0 40px;
+          border-bottom: 1px solid var(--ring);
+        }
+        .kicker {
+          color: var(--orange);
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+        }
+        /* h1 solo accesible (oculto), estilos casi irrelevantes visualmente */
+        h1 {
+          font-family: 'Matona', 'Cinzel', serif;
+          font-size: clamp(38px, 6.5vw, 72px);
+          line-height: 1.02;
+          margin: 10px 0;
+          color: var(--accent);
+          font-weight: 400;
+          text-transform: none;
+          letter-spacing: 0.08em;
+        }
+        h1 span {
+          display: block;
+          margin-top: 18px;
+          font-family: 'EB Garamond', serif;
+          font-style: italic;
+          font-size: 0.58em;
+          letter-spacing: 0.02em;
+          color: var(--text);
+          text-transform: none;
+        }
+        .hero-author {
+          margin-top: 24px;
+          font-family: 'EB Garamond', serif;
+          font-size: 1.05rem;
+          letter-spacing: 0.04em;
+        }
+        .hero-cta {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 14px;
+          margin-top: 18px;
+        }
+        .badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+          padding: 10px 14px;
+          border-radius: 14px;
+          background: var(--card-2);
+          border: 1px solid var(--ring);
+        }
+        .badge img {
+          height: 48px;
+          display: block;
+        }
+        .hero-media {
+          position: relative;
+        }
+        .hero::before {
+          content: '';
+          position: absolute;
+          left: -32px;
+          top: 12%;
+          bottom: 18%;
+          width: 6px;
+          background: var(--accent);
+        }
+     
+        .frame {
+          position: relative;
+          border-radius: 14px;
+          overflow: hidden;
+          border: 1px solid var(--ring);
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+        }
+        .frame::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--accent), transparent 80%);
+        }
+        .hero-img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+
+        .event-bar {
+          display: flex;
+          gap: 18px;
+          flex-wrap: wrap;
+          align-items: center;
+          background: linear-gradient(
+            90deg,
+            color-mix(in oklab, var(--accent), transparent 85%),
+            transparent
+          );
+          border: 1px solid var(--ring);
+          border-radius: 14px;
+          padding: 12px 16px;
+          margin-top: 14px;
+        }
+        .event-pill {
+          display: flex;
+          gap: 8px;
+          align-items: center;
+          padding: 6px 10px;
+          border-radius: 999px;
+          background: var(--card-1);
+          border: 1px solid var(--ring);
+          font-weight: 600;
+        }
+
+        .section {
+          padding: 60px 0;
+        }
+        .section h2 {
+          font-family: 'Matona', 'Cinzel', serif;
+          color: var(--accent);
+          font-size: clamp(28px, 4vw, 40px);
+          margin: 0 0 10px;
+        }
+        .lede {
+          font-size: 22px;
+          opacity: 0.95;
+        }
+        .grid {
+          display: grid;
+          gap: 26px;
+        }
+        .grid.cols-2 {
+          grid-template-columns: 1fr 1fr;
+        }
+        .card {
+          background: linear-gradient(180deg, var(--card-1), var(--card-2));
+          border: 1px solid var(--ring);
+          border-radius: 16px;
+          padding: 22px;
+        }
+
+        .download {
+          display: grid;
+          gap: 18px;
+        }
+        .download a {
+          display: block;
+        }
+        .download .note {
+          opacity: 0.8;
+        }
+
+        .actions {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+        }
+        .hint {
+          opacity: 0.75;
+        }
+
+        footer {
+          padding: 36px 0;
+          border-top: 1px solid var(--ring);
+          opacity: 0.9;
+        }
+
+        /* Imagen de título y h1 accesible oculto */
+        .title-banner {
+          display: block;
+          max-width: 100%;
+          height: auto;
+          margin-top: 16px;
+        }
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+
+        @media (max-width: 920px) {
+          .hero {
+            grid-template-columns: 1fr;
+          }
+          .grid.cols-2 {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+
+      <header>
+       
+      </header>
+
+      <main className="container">
+        {/* HERO */}
+        <section className="hero" aria-label="">
+          <div>
+            <div className="kicker">Lanzamiento libro</div>
+
+            {/* H1 oculto solo para SEO/accesibilidad */}
+            <h1 className="sr-only">
+              Patrocinio de San José — El imperio de una imagen
+            </h1>
+
+            {/* Imagen de título, como en tu portada */}
             <img
-              src={active.src}
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "auto",
-                pointerEvents: "none",
-                transform: "translateY(-3px) scale(1.01)",
-                filter: `
-                  drop-shadow(0 0 8px rgba(255,210,120,0.55))
-                  drop-shadow(0 0 14px rgba(255,210,120,0.35))
-                  drop-shadow(0 4px 10px rgba(0,0,0,0.35))
-                `,
-                transition: "filter 0.2s, transform 0.2s",
-              }}
-              alt=""
+              className="title-banner"
+              src="/banner-patrocinio-san-jose-1.jpg"
+              alt="Patrocinio de San José. El imperio de una imagen. Autora: Natalia Portugueis Coronel."
             />
-          )}
-        </div>
 
-        {/* TOOLTIP */}
-        {active && (
-          <div
-            style={{
-              position: "absolute",
-              ...tooltipPos,
-              background: "rgba(255,255,255,0.9)",
-              padding: "10px 14px",
-              borderRadius: "8px",
-              maxWidth: "240px",
-              pointerEvents: "none",
-              boxShadow: "0 3px 10px rgba(0,0,0,0.25)",
-              zIndex: 40,
-            }}
-            onMouseEnter={() => speak(active.descripcion)}
-            onMouseLeave={cancel}
-          >
-            <h3
-              style={{
-                margin: "0 0 4px",
-                color: "#c40000",
-                fontFamily: "Matona, serif",
-                fontSize: "0.95rem",
-              }}
-            >
-              {active.nombre}
-            </h3>
+            <p className="hero-author"></p>
 
-            {active.fechas && (
-              <div
-                style={{
-                  fontSize: "0.88rem",
-                  fontWeight: "bold",
-                  marginBottom: "4px",
-                  fontFamily: "Garamond, serif",
-                }}
-              >
-                {active.fechas}
-              </div>
-            )}
+            <div className="event-bar" aria-live="polite">
+              {[
+                ['📅', CONFIG.DATE],
+                ['⏰', CONFIG.TIME],
+                ['📍', CONFIG.VENUE],
+                ['🗺️', CONFIG.CITY]
+              ].map(([icon, text]) => (
+                <span key={icon} className="event-pill">
+                  <span>{icon}</span>
+                  {text}
+                </span>
+              ))}
+            </div>
 
-            <p
-              style={{
-                margin: 0,
-                fontSize: "0.86rem",
-                lineHeight: 1.3,
-                fontFamily: "Garamond, serif",
-              }}
-            >
-              {active.descripcion}
+                    <p className="lede">
+            Descarga gratis el Ebook a partir del 20 de Noviembre 2025.
+            </p>
+  
+            <div className="hero-cta">
+              <a className="badge" href="#descargas" title="Descargar eBook para iOS">
+                <img alt="Descargar eBook iOS" src="/ebook_ios_banner.png" />
+              </a>
+              <a className="badge" href="#descargas" title="Descargar eBook para Android">
+                <img alt="Descargar eBook Android" src="/ebook_android_banner.png" />
+              </a>
+            </div>
+          </div>
+
+          <div className="hero-media">
+            <figure className="frame">
+              <img
+                className="hero-img"
+                alt="Composición visual del libro"
+                src="/hero_patrocinio.jpg"
+              />
+            </figure>
+          </div>
+        </section>
+
+       {/* VISTA PREVIA (FlipHTML5)  
+<section id="preview" className="section">
+  <h2>vista previa del eBook</h2>
+  <div style={{ position:'relative', paddingTop:'max(60%, 324px)', width:'100%', height:0 }}>
+    <iframe
+      style={{ position:'absolute', border:'none', width:'100%', height:'100%', left:0, top:0 }}
+      src="https://online.fliphtml5.com/ArenaDigital/jfgs/"
+      title="Vista previa del eBook — FlipHTML5"
+      loading="lazy"
+      scrolling="no"
+      frameBorder={0}
+      allowFullScreen
+    />
+  </div>
+</section>
+*/}
+
+
+
+      
+
+        {/* PRESENTACIÓN – texto ancho, una sola columna */}
+        <section id="presentacion" className="section">
+          <div>
+            <h2>presentación</h2>
+            <p className="lede">
+              El libro <em>Patrocinio de San José. El imperio de una imagen</em> es una
+              investigación de historia del arte que cuenta con una edición de 150 ejemplares y un
+              Ebook, de distribución y descarga gratuita respectivamente, gracias al financiamiento
+              del Fondo del Patrimonio Cultural 2024 del Servicio Nacional del Patrimonio Cultural
+              de Chile. Será lanzado en el Museo Nacional de Bellas Artes, el jueves 20 de noviembre
+              de 2025 a las 17:00 horas, con un conversatorio con la autora, Natalia Portugueis, y
+              la Doctora en Historia del Arte Constanza Acuña.
             </p>
           </div>
-        )}
-      </div>
-    </section>
-  );
+        </section>
+
+     
+
+        
+
+{/* RESEÑA + ACERCA DE LA AUTORA (2 columnas en desktop, 1 en móvil) */}
+<section id="resena-autora" className="section">
+  <div className="grid cols-2">
+    {/* Columna izquierda: Reseña */}
+    <div>
+      <h2>reseña</h2>
+      <p className="lede">
+        <em>Patrocinio de San José. El imperio de una imagen</em> es una investigación
+        sobre la vida de la pintura Patrocinio de San José, realizada por Gaspar
+        Miguel de Berrío en 1744 en Potosí (Bolivia), desde que fue adquirida por el Museo
+        Nacional de Bellas Artes en 1965.
+        En el libro, la autora analiza la recepción y fortuna crítica de la pintura, tomando
+        su caso como ejemplo para hacer un recorrido por medio siglo de escritura y
+        exposiciones, que develan prácticas, omisiones y programas en la construcción de la
+        narrativa de la historia del arte chileno. Junto con este estudio, Portugueis ofrece
+        una completa identificación iconográfica de la pintura y un análisis iconológico con
+        dos alternativas de lectura de sus posibles significados.
+        La publicación en formato eBook posee un importante enfoque educativo y de
+        divulgación que busca acercar a las y los lectores a la obra y a sus capas de
+        significados, apoyándose con elementos animados e interactivos.
+      </p>
+    </div>
+
+    {/* Columna derecha: Autora */}
+    <aside className="card">
+      <h2>acerca de la autora</h2>
+      <p className="lede">
+        Natalia Portugueis es Licenciada en Arte con mención en Grabado y Magíster en
+        Teoría e Historia del Arte por la Universidad de Chile. Durante las últimas dos
+        décadas ha trabajado en el ámbito de la educación en museos, destacando la
+        Coordinación del área de Mediación y Educación del Museo Nacional de Bellas Artes
+        (2010–2017) y la Subdirección de Educación y Programas Públicos del Museo de
+        Bomberos de Santiago (2018 a la fecha).
+        En forma paralela al trabajo vinculado a los museos, desarrolla proyectos artísticos
+        independientes y de gestión en divulgación y educación en Derechos Humanos.
+      </p>
+    </aside>
+  </div>
+            
+
+</section>
+
+
+       
+
+        {/* REGISTRO CON GOOGLE FORM */}
+        <section id="registro" className="section">
+          <div className="grid cols-2">
+            <div>
+              <h2>registro al lanzamiento</h2>
+              <p className="lede">
+                Completa el formulario para confirmar tu asistencia.
+              </p>
+
+              <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+                <iframe
+                  src="https://docs.google.com/forms/d/e/1FAIpQLSchxaUg9AjWHibY7OniBQ5eQugSJNRz6Y1fm6sJWUUjzjyYig/viewform?embedded=true"
+                  width="100%"
+                  height={900}
+                  frameBorder={0}
+                  marginHeight={0}
+                  marginWidth={0}
+                >
+                  Cargando…
+                </iframe>
+              </div>
+
+              <div className="actions" style={{ marginTop: 16 }}>
+                <button
+                  className="btn btn-ghost"
+                  type="button"
+                  onClick={handleAddCalendar}
+                >
+                  Añadir al calendario
+                </button>
+              </div>
+
+            <p className="hint">Cupos limitados.</p>
+</div>
+
+<aside className="card">
+  <h3
+    style={{
+      fontFamily: 'Matona, Cinzel, serif',
+      margin: '0 0 8px',
+      color: 'var(--accent)'
+    }}
+  >
+    ¿dónde será?
+  </h3>
+  <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.7 }}>
+    <li>
+      <strong>Lugar:</strong> {CONFIG.VENUE}
+    </li>
+    <li>
+      <strong>Dirección:</strong> {CONFIG.ADDRESS}
+    </li>
+    <li>
+      <strong>Ciudad:</strong> {CONFIG.CITY}
+    </li>
+    <li>
+      <strong>Fecha:</strong> {CONFIG.DATE}
+    </li>
+    <li>
+      <strong>Hora:</strong> {CONFIG.TIME}
+    </li>
+  </ul>
+
+  <div
+    style={{
+      display: 'flex',
+      gap: 10,
+      flexWrap: 'wrap',
+      marginTop: 10
+    }}
+  >
+    <a
+      className="btn btn-ghost"
+      target="_blank"
+      rel="noopener"
+      href={CONFIG.MAP_URL}
+    >
+      Ver mapa
+    </a>
+    <a
+      className="btn btn-ghost"
+      target="_blank"
+      rel="noopener"
+      href={CONFIG.TICKETS_URL}
+    >
+      Más información
+    </a>
+  </div>
+</aside>
+</div>
+</section>
+</main>
+
+
+     <footer>
+  <div
+    className="container"
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      gap: 20,
+      flexWrap: 'wrap',
+      alignItems: 'center'
+    }}
+  >
+    {/* Logos (sube los archivos a /public/logos/ y ajusta los nombres) */}
+    <div
+      className="footer-logos"
+      style={{ display: 'flex', gap: 18, alignItems: 'center', flexWrap: 'wrap' }}
+      aria-label="Organizan y patrocinan"
+    >
+      <a href="https://www.patrimoniocultural.gob.cl/" target="_blank" rel="noopener">
+        <img
+          src="/serpat.png"
+          alt="Serpat"
+          style={{ height: 90, width: 'auto', display: 'block', opacity: 0.95 }}
+        />
+      </a>
+      <a href="https://walterwaymann.wixsite.com/walter-waymann" target="_blank" rel="noopener">
+        <img
+          src="Logo_WalterWaymann.png"
+          alt="Logo Walter Waymann"
+          style={{ height: 50, width: 'auto', display: 'block', opacity: 0.95 }}
+        />
+      </a>
+      <a href="https://www.instagram.com/estudio_pagana/" target="_blank" rel="noopener">
+        <img
+          src="/Logo_pagana-01.png"
+          alt="Logo Pagana"
+          style={{ height: 50, width: 'auto', display: 'block', opacity: 0.95 }}
+        />
+      </a>
+    </div>
+
+    <small>
+      &copy; <span>{year}</span> Patrocinio de San José. El imperio de una imagen.
+    </small>
+
+    <small>
+      {/* Texto opcional del footer, deja en blanco o agrega una nota breve */}
+    </small>
+  </div>
+</footer>
+
+    </>
+  )
 }
