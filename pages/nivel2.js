@@ -52,7 +52,7 @@ const PERSONAJES_NIVEL2 = [
     descripcion:
       "Querubines, representados como niños alados y como pequeñas cabezas aladas.",
     src: "/capas/querubines.png"
-},
+ },
  {
     id: "san_jose",
   nombre: "san josé",
@@ -61,7 +61,8 @@ const PERSONAJES_NIVEL2 = [
   src: "/capas/san_jose.png"
 },
 
-         {
+   
+   {
     id: "texto_filacteria_lateral",
     nombre: "annulo suo suvarravit me et decoravit me corona",
     descripcion:
