@@ -1,6 +1,6 @@
 import MultimediaLevel from "../components/MultimediaLevel";
 
-const PERSONAJES_NIVEL_CENTRAL = [
+const PERSONAJES_NIVEL4 = [
   {
     id: "trinidad",
     nombre: "santísima trinidad",
