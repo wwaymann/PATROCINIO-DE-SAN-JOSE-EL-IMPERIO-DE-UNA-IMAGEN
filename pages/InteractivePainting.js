@@ -581,7 +581,7 @@ export default function InteractivePainting() {
           letterSpacing: "0.06em",
         }}
       >
-        Patrocinio de san José Interactivo
+        patrocinio de san josé interactivo
       </h2>
 
       <div
