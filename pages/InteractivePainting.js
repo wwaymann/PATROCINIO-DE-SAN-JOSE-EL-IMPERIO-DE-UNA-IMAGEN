@@ -413,16 +413,30 @@ function useTooltipVoice() {
       "lema latino procedente del génesis (41,55) reinterpretado devocionalmente como «vayan a josé», destacando a san josé como intercesor privilegiado ante la trinidad.",
     src: "/capas/texto_tercer_nivel.png"
   },
-  
-];
+   {
+    id: "querubinesTrinidad",
+    nombre: "querubines trinidad",
+    descripcion:
+      "---.",
+    src: "/capas/querubinesTrinidad.png",
+  },
+
+   {
+    id: "querubinesMaria",
+    nombre: "querubines maria",
+    descripcion:
+      "---.",
+    src: "/capas/querubinesMaria.png",
+  },
+    
+    
+  ];
 
 /* -------------------------------------------------------------
    COMPONENTE PRINCIPAL
 ------------------------------------------------------------- */
 export default function InteractivePainting() {
   const { speak, cancel } = useTooltipVoice();
-
-  const [mute, setMute] = useState(false);  // 🔊 botón de sonido
 
   const [active, setActive] = useState(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
@@ -453,7 +467,7 @@ export default function InteractivePainting() {
   }, []);
 
   /* -------------------------------------------------------------
-     DETECCIÓN PIXEL PERFECT + SONIDO
+     DETECCIÓN PIXEL PERFECT
   ------------------------------------------------------------- */
   const handleMove = e => {
     if (!containerRef.current) return;
@@ -492,23 +506,10 @@ export default function InteractivePainting() {
       }
     }
 
-    // 🔊 voz solamente si no está muteado
-    if (!mute && found && found !== active) {
-      speak(found.descripcion);
-    }
-
-    // 🔇 cortar voz al salir
-    if ((!found && active) || mute) {
-      cancel();
-    }
-
     setActive(found);
   };
 
-  const handleLeave = () => {
-    cancel();
-    setActive(null);
-  };
+  const handleLeave = () => setActive(null);
 
   /* -------------------------------------------------------------
      ZOOM
@@ -580,7 +581,7 @@ export default function InteractivePainting() {
           letterSpacing: "0.06em",
         }}
       >
-        patrocinio de san josé interactivo
+        Patrocinio de san José Interactivo
       </h2>
 
       <div
@@ -661,6 +662,8 @@ export default function InteractivePainting() {
               boxShadow: "0 3px 10px rgba(0,0,0,0.25)",
               zIndex: 40,
             }}
+            onMouseEnter={() => speak(active.descripcion)}
+            onMouseLeave={cancel}
           >
             <h3
               style={{
@@ -672,6 +675,19 @@ export default function InteractivePainting() {
             >
               {active.nombre}
             </h3>
+
+            {active.fechas && (
+              <div
+                style={{
+                  fontSize: "0.88rem",
+                  fontWeight: "bold",
+                  marginBottom: "4px",
+                  fontFamily: "Garamond, serif",
+                }}
+              >
+                {active.fechas}
+              </div>
+            )}
 
             <p
               style={{
@@ -685,30 +701,6 @@ export default function InteractivePainting() {
             </p>
           </div>
         )}
-
-        {/* 🔊 BOTÓN DE SONIDO */}
-        <button
-          onClick={() => {
-            setMute(!mute);
-            cancel();
-          }}
-          style={{
-            position: "absolute",
-            bottom: "10px",
-            right: "10px",
-            background: "rgba(255,255,255,0.35)",
-            border: "1px solid rgba(255,255,255,0.6)",
-            backdropFilter: "blur(6px)",
-            padding: "8px 10px",
-            borderRadius: "8px",
-            cursor: "pointer",
-            zIndex: 999,
-            fontSize: "1.2rem"
-          }}
-        >
-          {mute ? "🔇" : "🔊"}
-        </button>
-
       </div>
     </section>
   );
