@@ -1,4 +1,53 @@
 import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useCallback } from 'react'
+
+function useTooltipVoice() {
+  const synthRef = useRef(null)
+  const voiceRef = useRef(null)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const synth = window.speechSynthesis
+    synthRef.current = synth
+
+    // cargar voces
+    const loadVoices = () => {
+      const voices = synth.getVoices()
+      // busca una voz en español
+      const esVoice =
+        voices.find((v) => v.lang.toLowerCase().startsWith('es')) || voices[0]
+      voiceRef.current = esVoice
+    }
+
+    loadVoices()
+    if (synth.onvoiceschanged !== undefined) {
+      synth.onvoiceschanged = loadVoices
+    }
+  }, [])
+
+  const speak = useCallback((text) => {
+    if (!synthRef.current || !text) return
+    // cortar cualquier lectura previa
+    synthRef.current.cancel()
+
+    const utterance = new SpeechSynthesisUtterance(text)
+    if (voiceRef.current) {
+      utterance.voice = voiceRef.current
+    }
+    utterance.rate = 1 // velocidad
+    utterance.pitch = 1 // tono
+    synthRef.current.speak(utterance)
+  }, [])
+
+  const cancel = useCallback(() => {
+    if (!synthRef.current) return
+    synthRef.current.cancel()
+  }, [])
+
+  return { speak, cancel }
+}
+
+
 
 export default function InteractivePainting() {
   const [active, setActive] = useState(null);
@@ -381,6 +430,33 @@ export default function InteractivePainting() {
     
     
   ];
+
+export default function InteractivePainting() {
+  const { speak, cancel } = useTooltipVoice()
+
+  return (
+    <div className="painting">
+      {layers.map((layer) => (
+        <button
+          key={layer.id}
+          className="hotspot"
+          // leer en voz alta al pasar el mouse
+          onMouseEnter={() => speak(layer.descripcion)}
+          onMouseLeave={cancel}
+          // accesible con teclado
+          onFocus={() => speak(layer.descripcion)}
+          onBlur={cancel}
+          aria-label={layer.descripcion}
+        >
+          {layer.nombre}
+          <span className="tooltip">
+            {layer.descripcion}
+          </span>
+        </button>
+      ))}
+    </div>
+  )
+}
   
   // -----------------------------------------------------------------------
   // Cargar cada PNG en canvas para detección pixel-perfect
