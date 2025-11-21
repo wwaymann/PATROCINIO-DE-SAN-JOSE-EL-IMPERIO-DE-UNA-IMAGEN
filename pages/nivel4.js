@@ -51,8 +51,10 @@ const PERSONAJES_NIVEL4 = [
     nombre: "sub umbra illius quam desideraveram sedi",
     descripcion:
       "Cantar de los Cantares 2:3 «Bajo la sombra del deseado me senté».",
-    src: "/capas/texto_primer nivel.png",
+    src: "/capas/texto_primer_nivel.png",
     }, 
+
+    
   {
     id: "texto_filacteria_lateral",
     nombre: "annulo suo suvarravit me et decoravit me corona",
