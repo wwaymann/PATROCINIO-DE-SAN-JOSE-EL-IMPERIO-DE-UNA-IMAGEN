@@ -2,13 +2,7 @@ import MultimediaLevel from "../components/MultimediaLevel";
 
 const PERSONAJES_NIVEL4 = [
    
-        {
-    id: "texto_cartela_inferior",
-    nombre: "sub umbra illius quam desideraveram sedi",
-    descripcion:
-      "Cantar de los Cantares 2:3 «Bajo la sombra del deseado me senté».",
-    src: "/capas/Nivel_central_01.png",
-    }, 
+  
     {
     id: "trinidad_padre",
     nombre: "dios padre",
