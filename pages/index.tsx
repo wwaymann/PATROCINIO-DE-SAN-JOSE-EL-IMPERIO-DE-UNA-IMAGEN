@@ -408,7 +408,7 @@ END:VCALENDAR`
             <p className="hero-author"></p>
 
          <div className="event-bar" aria-live="polite">
-               {/*    {[
+                {[
                 ['📅', CONFIG.DATE],
                 ['⏰', CONFIG.TIME],
                 ['📍', CONFIG.VENUE],
@@ -443,7 +443,7 @@ END:VCALENDAR`
                 src="/hero_patrocinio.jpg"
               />
             </figure>
-          </div>*/}
+          </div>
         </section>
 
        {/* VISTA PREVIA (FlipHTML5)  */}
