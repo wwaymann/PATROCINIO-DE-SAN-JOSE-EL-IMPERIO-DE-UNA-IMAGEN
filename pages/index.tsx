@@ -391,7 +391,7 @@ END:VCALENDAR`
         {/* HERO */}
         <section className="hero" aria-label="">
           <div>
-            <div className="kicker">Lanzamiento libro</div>
+            <div className="kicker">Ebook</div>
 
             {/* H1 oculto solo para SEO/accesibilidad */}
             <h1 className="sr-only">
@@ -407,7 +407,7 @@ END:VCALENDAR`
 
             <p className="hero-author"></p>
 
-            <div className="event-bar" aria-live="polite">
+        {/*      <div className="event-bar" aria-live="polite">
               {[
                 ['📅', CONFIG.DATE],
                 ['⏰', CONFIG.TIME],
@@ -443,7 +443,7 @@ END:VCALENDAR`
                 src="/hero_patrocinio.jpg"
               />
             </figure>
-          </div>
+          </div>*/}
         </section>
 
        {/* VISTA PREVIA (FlipHTML5)  */}
