@@ -409,7 +409,7 @@ END:VCALENDAR`
 
 <div style={{ position: 'relative', paddingTop: '56.25%' }}>
   <iframe
-    src="https://youtu.be/mRmlSOAWq3I"
+    src="https://www.youtube-nocookie.com/embed/mRmlSOAWq3I?autoplay=1&mute=1&loop=1&playlist=mRmlSOAWq3I"
     style={{
       position: 'absolute',
       top: 0,
