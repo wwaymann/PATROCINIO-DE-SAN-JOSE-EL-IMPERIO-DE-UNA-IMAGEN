@@ -586,7 +586,7 @@ END:VCALENDAR`
                 src="/Logo_pagana-01.png"
                 alt="Logo Pagana"
                 style={{
-                  height: 50,
+                  height: 100,
                   width: 'auto',
                   display: 'block',
                   opacity: 0.95
