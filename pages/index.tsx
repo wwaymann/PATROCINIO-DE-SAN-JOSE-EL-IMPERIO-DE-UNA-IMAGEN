@@ -431,7 +431,7 @@ END:VCALENDAR`
         
         {/* VISTA PREVIA (FlipHTML5) */}
         <section id="preview" className="section">
-          <h2>vista previa del eBook</h2>
+          <h2>ver ebook</h2>
           <div
             style={{
               position: 'relative',
