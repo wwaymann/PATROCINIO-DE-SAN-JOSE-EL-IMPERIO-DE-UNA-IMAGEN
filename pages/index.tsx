@@ -407,7 +407,8 @@ END:VCALENDAR`
 
             <p className="hero-author"></p>
 
-         <div className="event-bar" aria-live="polite">
+   {/*     
+   <div className="event-bar" aria-live="polite">
                 {[
                 ['📅', CONFIG.DATE],
                 ['⏰', CONFIG.TIME],
@@ -418,7 +419,10 @@ END:VCALENDAR`
                   <span>{icon}</span>
                   {text}
                 </span>
-              ))}
+              ))} 
+              
+              */}
+            
             </div>
 
                     <p className="lede">
@@ -448,7 +452,7 @@ END:VCALENDAR`
 
        {/* VISTA PREVIA (FlipHTML5)  */}
 <section id="preview" className="section">
-  <h2>vista previa del eBook</h2>
+  <h2>Ver ebook</h2>
   <div style={{ position:'relative', paddingTop:'max(60%, 324px)', width:'100%', height:0 }}>
     <iframe
       style={{ position:'absolute', border:'none', width:'100%', height:'100%', left:0, top:0 }}
