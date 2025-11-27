@@ -390,36 +390,45 @@ END:VCALENDAR`
 
       <main className="container">
         {/* HERO */}
-       <section className="hero" aria-label="">
-  <div>
-    <div className="kicker">Ebook</div>
+        <section className="hero" aria-label="">
+          <div>
+            <div className="kicker">Ebook</div>
 
-    {/* H1 oculto solo para SEO/accesibilidad */}
-    <h1 className="sr-only">
-      Patrocinio de San José — El imperio de una imagen
-    </h1>
+            {/* H1 oculto solo para SEO/accesibilidad */}
+            <h1 className="sr-only">
+              Patrocinio de San José — El imperio de una imagen
+            </h1>
 
-    {/* Video en lugar de la imagen de portada */}
-    <div style={{ position: 'relative', paddingTop: '56.25%' }}>
-      <iframe
-        src="https://www.youtube.com/watch?v=mRmlSOAWq3I"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          border: 'none'
-        }}
-        title="Video Patrocinio de San José"
-        allow="autoplay; fullscreen"
-        allowFullScreen
-      ></iframe>
-    </div>
-  </div>
-</section>
+            {/* Imagen de título, como en tu portada */}
+            <img
+              className="title-banner"
+              src="/banner-patrocinio-san-jose-1.jpg"
+              alt="Patrocinio de San José. El imperio de una imagen. Autora: Natalia Portugueis Coronel."
+            />
+          </div>
+
+<div style={{ position: 'relative', paddingTop: '56.25%' }}>
+  <iframe
+    src="https://www.youtube.com/embed/ID_DEL_VIDEO?autoplay=1&mute=1&loop=1&playlist=ID_DEL_VIDEO"
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      border: 'none'
+    }}
+    allow="autoplay; fullscreen"
+    allowFullScreen
+  ></iframe>
+</div>
+
+          
+        </section>
 
 
+
+        
         {/* VISTA PREVIA (FlipHTML5) */}
         <section id="preview" className="section">
           <h2>vista previa del eBook</h2>
