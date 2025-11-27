@@ -83,7 +83,11 @@ END:VCALENDAR`
           content="Lanzamiento libro Patrocinio de San José — El imperio de una imagen. , reseña, fecha y lugar, registro y descargas del eBook."
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link
           href="https://db.onlinewebfonts.com/c/3e50ef03ad2b5b310b83f47172d6dcd2?family=Matona"
           rel="stylesheet"
@@ -197,7 +201,6 @@ END:VCALENDAR`
           letter-spacing: 0.1em;
           text-transform: uppercase;
         }
-        /* h1 solo accesible (oculto), estilos casi irrelevantes visualmente */
         h1 {
           font-family: 'Matona', 'Cinzel', serif;
           font-size: clamp(38px, 6.5vw, 72px);
@@ -255,7 +258,7 @@ END:VCALENDAR`
           width: 6px;
           background: var(--accent);
         }
-     
+
         .frame {
           position: relative;
           border-radius: 14px;
@@ -267,7 +270,8 @@ END:VCALENDAR`
           content: '';
           position: absolute;
           inset: 0;
-          box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--accent), transparent 80%);
+          box-shadow: inset 0 0 0 2px
+            color-mix(in oklab, var(--accent), transparent 80%);
         }
         .hero-img {
           display: block;
@@ -354,7 +358,6 @@ END:VCALENDAR`
           opacity: 0.9;
         }
 
-        /* Imagen de título y h1 accesible oculto */
         .title-banner {
           display: block;
           max-width: 100%;
@@ -383,9 +386,7 @@ END:VCALENDAR`
         }
       `}</style>
 
-      <header>
-       
-      </header>
+      <header>{/* vacío por ahora */}</header>
 
       <main className="container">
         {/* HERO */}
@@ -404,148 +405,183 @@ END:VCALENDAR`
               src="/banner-patrocinio-san-jose-1.jpg"
               alt="Patrocinio de San José. El imperio de una imagen. Autora: Natalia Portugueis Coronel."
             />
+          </div>
+        </section>
 
+        {/* VISTA PREVIA (FlipHTML5) */}
+        <section id="preview" className="section">
+          <h2>vista previa del eBook</h2>
+          <div
+            style={{
+              position: 'relative',
+              paddingTop: 'max(60%, 324px)',
+              width: '100%',
+              height: 0
+            }}
+          >
+            <iframe
+              style={{
+                position: 'absolute',
+                border: 'none',
+                width: '100%',
+                height: '100%',
+                left: 0,
+                top: 0
+              }}
+              src="https://online.fliphtml5.com/ArenaDigital/jfgs/"
+              title="Vista previa del eBook — FlipHTML5"
+              loading="lazy"
+              scrolling="no"
+              frameBorder={0}
+              allowFullScreen
+            />
+          </div>
+        </section>
 
-       {/* VISTA PREVIA (FlipHTML5)  */}
-<section id="preview" className="section">
-  <h2>Ver ebook</h2>
-  <div style={{ position:'relative', paddingTop:'max(60%, 324px)', width:'100%', height:0 }}>
-    <iframe
-      style={{ position:'absolute', border:'none', width:'100%', height:'100%', left:0, top:0 }}
-      src="https://online.fliphtml5.com/ArenaDigital/jfgs/"
-      title="Vista previa del eBook — FlipHTML5"
-      loading="lazy"
-      scrolling="no"
-      frameBorder={0}
-      allowFullScreen
-    />
-  </div>
-</section>
-
-
-
-
-      
-
-        {/* PRESENTACIÓN – texto ancho, una sola columna */}
+        {/* PRESENTACIÓN */}
         <section id="presentacion" className="section">
           <div>
             <h2>presentación</h2>
             <p className="lede">
-              El libro <em>Patrocinio de San José. El imperio de una imagen</em> es una
-              investigación de historia del arte que cuenta con una edición de 150 ejemplares y un
-              Ebook, de distribución y descarga gratuita respectivamente, gracias al financiamiento
-              del Fondo del Patrimonio Cultural 2024 del Servicio Nacional del Patrimonio Cultural
-              de Chile. Será lanzado en el Museo Nacional de Bellas Artes, el jueves 20 de noviembre
-              de 2025 a las 17:00 horas, con un conversatorio con la autora, Natalia Portugueis, y
-              la Doctora en Historia del Arte Constanza Acuña.
+              El libro <em>Patrocinio de San José. El imperio de una imagen</em>{' '}
+              es una investigación de historia del arte que cuenta con una
+              edición de 150 ejemplares y un Ebook, de distribución y descarga
+              gratuita respectivamente, gracias al financiamiento del Fondo del
+              Patrimonio Cultural 2024 del Servicio Nacional del Patrimonio
+              Cultural de Chile. Será lanzado en el Museo Nacional de Bellas
+              Artes, el jueves 20 de noviembre de 2025 a las 17:00 horas, con un
+              conversatorio con la autora, Natalia Portugueis, y la Doctora en
+              Historia del Arte Constanza Acuña.
             </p>
           </div>
         </section>
 
-     
+        {/* RESEÑA + ACERCA DE LA AUTORA */}
+        <section id="resena-autora" className="section">
+          <div className="grid cols-2">
+            {/* Columna izquierda: Reseña */}
+            <div>
+              <h2>reseña</h2>
+              <p className="lede">
+                <em>Patrocinio de San José. El imperio de una imagen</em> es una
+                investigación sobre la vida de la pintura Patrocinio de San
+                José, realizada por Gaspar Miguel de Berrío en 1744 en Potosí
+                (Bolivia), desde que fue adquirida por el Museo Nacional de
+                Bellas Artes en 1965. En el libro, la autora analiza la
+                recepción y fortuna crítica de la pintura, tomando su caso como
+                ejemplo para hacer un recorrido por medio siglo de escritura y
+                exposiciones, que develan prácticas, omisiones y programas en la
+                construcción de la narrativa de la historia del arte chileno.
+                Junto con este estudio, Portugueis ofrece una completa
+                identificación iconográfica de la pintura y un análisis
+                iconológico con dos alternativas de lectura de sus posibles
+                significados. La publicación en formato eBook posee un
+                importante enfoque educativo y de divulgación que busca acercar
+                a las y los lectores a la obra y a sus capas de significados,
+                apoyándose con elementos animados e interactivos.
+              </p>
+            </div>
 
-        
+            {/* Columna derecha: Autora */}
+            <aside className="card">
+              <h2>acerca de la autora</h2>
+              <p className="lede">
+                Natalia Portugueis es Licenciada en Arte con mención en Grabado
+                y Magíster en Teoría e Historia del Arte por la Universidad de
+                Chile. Durante las últimas dos décadas ha trabajado en el ámbito
+                de la educación en museos, destacando la Coordinación del área
+                de Mediación y Educación del Museo Nacional de Bellas Artes
+                (2010–2017) y la Subdirección de Educación y Programas Públicos
+                del Museo de Bomberos de Santiago (2018 a la fecha). En forma
+                paralela al trabajo vinculado a los museos, desarrolla proyectos
+                artísticos independientes y de gestión en divulgación y
+                educación en Derechos Humanos.
+              </p>
+            </aside>
+          </div>
+        </section>
+      </main>
 
-{/* RESEÑA + ACERCA DE LA AUTORA (2 columnas en desktop, 1 en móvil) */}
-<section id="resena-autora" className="section">
-  <div className="grid cols-2">
-    {/* Columna izquierda: Reseña */}
-    <div>
-      <h2>reseña</h2>
-      <p className="lede">
-        <em>Patrocinio de San José. El imperio de una imagen</em> es una investigación
-        sobre la vida de la pintura Patrocinio de San José, realizada por Gaspar
-        Miguel de Berrío en 1744 en Potosí (Bolivia), desde que fue adquirida por el Museo
-        Nacional de Bellas Artes en 1965.
-        En el libro, la autora analiza la recepción y fortuna crítica de la pintura, tomando
-        su caso como ejemplo para hacer un recorrido por medio siglo de escritura y
-        exposiciones, que develan prácticas, omisiones y programas en la construcción de la
-        narrativa de la historia del arte chileno. Junto con este estudio, Portugueis ofrece
-        una completa identificación iconográfica de la pintura y un análisis iconológico con
-        dos alternativas de lectura de sus posibles significados.
-        La publicación en formato eBook posee un importante enfoque educativo y de
-        divulgación que busca acercar a las y los lectores a la obra y a sus capas de
-        significados, apoyándose con elementos animados e interactivos.
-      </p>
-    </div>
+      <footer>
+        <div
+          className="container"
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            gap: 20,
+            flexWrap: 'wrap',
+            alignItems: 'center'
+          }}
+        >
+          {/* Logos (sube los archivos a /public/logos/ y ajusta los nombres) */}
+          <div
+            className="footer-logos"
+            style={{
+              display: 'flex',
+              gap: 18,
+              alignItems: 'center',
+              flexWrap: 'wrap'
+            }}
+            aria-label="Organizan y patrocinan"
+          >
+            <a
+              href="https://www.patrimoniocultural.gob.cl/"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="/serpat.png"
+                alt="Serpat"
+                style={{
+                  height: 90,
+                  width: 'auto',
+                  display: 'block',
+                  opacity: 0.95
+                }}
+              />
+            </a>
+            <a
+              href="https://walterwaymann.wixsite.com/walter-waymann"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="Logo_WalterWaymann.png"
+                alt="Logo Walter Waymann"
+                style={{
+                  height: 50,
+                  width: 'auto',
+                  display: 'block',
+                  opacity: 0.95
+                }}
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/estudio_pagana/"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="/Logo_pagana-01.png"
+                alt="Logo Pagana"
+                style={{
+                  height: 50,
+                  width: 'auto',
+                  display: 'block',
+                  opacity: 0.95
+                }}
+              />
+            </a>
+          </div>
 
-    {/* Columna derecha: Autora */}
-    <aside className="card">
-      <h2>acerca de la autora</h2>
-      <p className="lede">
-        Natalia Portugueis es Licenciada en Arte con mención en Grabado y Magíster en
-        Teoría e Historia del Arte por la Universidad de Chile. Durante las últimas dos
-        décadas ha trabajado en el ámbito de la educación en museos, destacando la
-        Coordinación del área de Mediación y Educación del Museo Nacional de Bellas Artes
-        (2010–2017) y la Subdirección de Educación y Programas Públicos del Museo de
-        Bomberos de Santiago (2018 a la fecha).
-        En forma paralela al trabajo vinculado a los museos, desarrolla proyectos artísticos
-        independientes y de gestión en divulgación y educación en Derechos Humanos.
-      </p>
-    </aside>
-  </div>
-            
+          <small>
+            &copy; <span>{year}</span> Patrocinio de San José. El imperio de una
+            imagen.
+          </small>
 
-</section>
-
-
-       
-
-   
-</main>
-
-
-     <footer>
-  <div
-    className="container"
-    style={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      gap: 20,
-      flexWrap: 'wrap',
-      alignItems: 'center'
-    }}
-  >
-    {/* Logos (sube los archivos a /public/logos/ y ajusta los nombres) */}
-    <div
-      className="footer-logos"
-      style={{ display: 'flex', gap: 18, alignItems: 'center', flexWrap: 'wrap' }}
-      aria-label="Organizan y patrocinan"
-    >
-      <a href="https://www.patrimoniocultural.gob.cl/" target="_blank" rel="noopener">
-        <img
-          src="/serpat.png"
-          alt="Serpat"
-          style={{ height: 90, width: 'auto', display: 'block', opacity: 0.95 }}
-        />
-      </a>
-      <a href="https://walterwaymann.wixsite.com/walter-waymann" target="_blank" rel="noopener">
-        <img
-          src="Logo_WalterWaymann.png"
-          alt="Logo Walter Waymann"
-          style={{ height: 50, width: 'auto', display: 'block', opacity: 0.95 }}
-        />
-      </a>
-      <a href="https://www.instagram.com/estudio_pagana/" target="_blank" rel="noopener">
-        <img
-          src="/Logo_pagana-01.png"
-          alt="Logo Pagana"
-          style={{ height: 50, width: 'auto', display: 'block', opacity: 0.95 }}
-        />
-      </a>
-    </div>
-
-    <small>
-      &copy; <span>{year}</span> Patrocinio de San José. El imperio de una imagen.
-    </small>
-
-    <small>
-      {/* Texto opcional del footer, deja en blanco o agrega una nota breve */}
-    </small>
-  </div>
-</footer>
-
+          <small>{/* Texto opcional del footer */}</small>
+        </div>
+      </footer>
     </>
   )
 }
