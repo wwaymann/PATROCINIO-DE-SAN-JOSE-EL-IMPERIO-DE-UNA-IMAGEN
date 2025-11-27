@@ -407,8 +407,8 @@ END:VCALENDAR`
 
             <p className="hero-author"></p>
 
-        {/*      <div className="event-bar" aria-live="polite">
-              {[
+         <div className="event-bar" aria-live="polite">
+               {/*    {[
                 ['📅', CONFIG.DATE],
                 ['⏰', CONFIG.TIME],
                 ['📍', CONFIG.VENUE],
