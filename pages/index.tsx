@@ -405,26 +405,6 @@ END:VCALENDAR`
               alt="Patrocinio de San José. El imperio de una imagen. Autora: Natalia Portugueis Coronel."
             />
 
-            <p className="hero-author"></p>
-
-    
-   <div className="event-bar" aria-live="polite">
-                {[
-              
-              ].map(([icon, text]) => (
-                <span key={icon} className="event-pill">
-                  <span>{icon}</span>
-                  {text}
-                </span>
-              ))} 
-              
-           
-            
-            </div>
-
-        
-          </div>
-        </section>
 
        {/* VISTA PREVIA (FlipHTML5)  */}
 <section id="preview" className="section">
@@ -512,8 +492,7 @@ END:VCALENDAR`
 
        
 
-    
-</section>
+   
 </main>
 
 
