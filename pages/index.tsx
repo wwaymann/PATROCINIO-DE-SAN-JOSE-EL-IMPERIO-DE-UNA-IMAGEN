@@ -409,7 +409,7 @@ END:VCALENDAR`
 
 <div style={{ position: 'relative', paddingTop: '56.25%' }}>
   <iframe
-    src="https://www.youtube.com/embed/ID_DEL_VIDEO?autoplay=1&mute=1&loop=1&playlist=ID_DEL_VIDEO"
+    src="https://youtu.be/mRmlSOAWq3I"
     style={{
       position: 'absolute',
       top: 0,
