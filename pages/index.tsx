@@ -407,13 +407,10 @@ END:VCALENDAR`
 
             <p className="hero-author"></p>
 
-   {/*     
+    
    <div className="event-bar" aria-live="polite">
                 {[
-                ['📅', CONFIG.DATE],
-                ['⏰', CONFIG.TIME],
-                ['📍', CONFIG.VENUE],
-                ['🗺️', CONFIG.CITY]
+              
               ].map(([icon, text]) => (
                 <span key={icon} className="event-pill">
                   <span>{icon}</span>
@@ -421,7 +418,7 @@ END:VCALENDAR`
                 </span>
               ))} 
               
-              */}
+           
             
             </div>
 
