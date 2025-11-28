@@ -1,8 +1,35 @@
 {
   "rewrites": [
     {
+      "source": "/embed/nivel1",
+      "destination": "/nivel1"
+    },
+    {
+      "source": "/embed/nivel2",
+      "destination": "/nivel2"
+    },
+    {
+      "source": "/embed/nivel3",
+      "destination": "/nivel3"
+    },
+    {
+      "source": "/embed/nivel4",
+      "destination": "/nivel4"
+    }
+  ],
+  "headers": [
+    {
       "source": "/(.*)",
-      "destination": "/"
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "ALLOWALL"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors *;"
+        }
+      ]
     }
   ]
 }
