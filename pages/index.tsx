@@ -426,6 +426,28 @@ END:VCALENDAR`
           
         </section>
 
+{/* VISTA PREVIA (Heyzine)  */}
+<section id="preview" className="section">
+  <h2>Ver ebook</h2>
+
+  <div style={{ position: 'relative', paddingTop: 'max(40%, 300px)', width: '100%', height: 0 }}>
+    <iframe
+      allowFullScreen
+      allow="clipboard-write"
+      scrolling="no"
+      className="fp-iframe"
+      src="https://heyzine.com/flip-book/bae6eed35a.html"
+      style={{
+        border: '1px solid lightgray',
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        left: 0,
+        top: 0
+      }}
+    />
+  </div>
+</section>
 
 
         
