@@ -430,7 +430,7 @@ END:VCALENDAR`
 <section id="preview" className="section">
   <h2>ver ebook</h2>
 
-  <div style={{ position: 'relative', paddingTop: 'max(40%, 300px)', width: '100%', height: 0 }}>
+  <div style={{ position: 'relative', paddingTop: 'max(40%, 600px)', width: '100%', height: 0 }}>
     <iframe
       allowFullScreen
       allow="clipboard-write"
@@ -440,7 +440,7 @@ END:VCALENDAR`
       style={{
         border: '1px solid lightgray',
         width: '100%',
-        height: '200%',
+        height: '100%',
         position: 'absolute',
         left: 0,
         top: 0
