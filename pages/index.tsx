@@ -429,21 +429,21 @@ END:VCALENDAR`
 
 
         
-        {/* VISTA PREVIA (FlipHTML5) */}
-        <section id="preview" className="section">
-          <h2>ver ebook</h2>
-          <div
-            style={{
-              position: 'relative',
-              paddingTop: 'max(60%, 324px)',
-              width: '100%',
-              height: 0
-            }}
-          >
-            <iframe allowfullscreen="allowfullscreen" allow="clipboard-write" scrolling="no" class="fp-iframe" src="https://heyzine.com/flip-book/bae6eed35a.html" style="border: 1px solid lightgray; width: 100%; height: 400px;"></iframe>
-
-          </div>
-        </section>
+       {/* VISTA PREVIA (FlipHTML5)  */}
+<section id="preview" className="section">
+  <h2>Ver ebook</h2>
+  <div style={{ position:'relative', paddingTop:'max(60%, 324px)', width:'100%', height:0 }}>
+    <iframe
+      style={{ position:'absolute', border:'none', width:'100%', height:'100%', left:0, top:0 }}
+      src="https://online.fliphtml5.com/ArenaDigital/jfgs/"
+      title="Vista previa del eBook — FlipHTML5"
+      loading="lazy"
+      scrolling="no"
+      frameBorder={0}
+      allowFullScreen
+    />
+  </div>
+</section>
 
 
 
