@@ -456,9 +456,14 @@ END:VCALENDAR`
               frameBorder={0}
               allowFullScreen
             />
+
+            <iframe allowfullscreen="allowfullscreen" allow="clipboard-write" scrolling="no" class="fp-iframe" src="https://heyzine.com/flip-book/bae6eed35a.html" style="border: 1px solid lightgray; width: 100%; height: 400px;"></iframe>
           </div>
         </section>
 
+
+
+        
         {/* PRESENTACIÓN */}
         <section id="presentacion" className="section">
           <div>
