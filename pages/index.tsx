@@ -440,7 +440,7 @@ END:VCALENDAR`
       style={{
         border: '1px solid lightgray',
         width: '100%',
-        height: '100%',
+        height: '200%',
         position: 'absolute',
         left: 0,
         top: 0
