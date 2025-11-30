@@ -428,7 +428,7 @@ END:VCALENDAR`
 
 {/* VISTA PREVIA (Heyzine)  */}
 <section id="preview" className="section">
-  <h2>Ver ebook</h2>
+  <h2>ver ebook</h2>
 
   <div style={{ position: 'relative', paddingTop: 'max(40%, 300px)', width: '100%', height: 0 }}>
     <iframe
@@ -451,21 +451,7 @@ END:VCALENDAR`
 
 
         
-       {/* VISTA PREVIA (FlipHTML5)  */}
-<section id="preview" className="section">
-  <h2>Ver ebook</h2>
-  <div style={{ position:'relative', paddingTop:'max(60%, 324px)', width:'100%', height:0 }}>
-    <iframe
-      style={{ position:'absolute', border:'none', width:'100%', height:'100%', left:0, top:0 }}
-      src="https://online.fliphtml5.com/ArenaDigital/jfgs/"
-      title="Vista previa del eBook — FlipHTML5"
-      loading="lazy"
-      scrolling="no"
-      frameBorder={0}
-      allowFullScreen
-    />
-  </div>
-</section>
+     
 
 
 
