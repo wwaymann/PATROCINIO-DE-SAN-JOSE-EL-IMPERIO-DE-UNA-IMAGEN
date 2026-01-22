@@ -427,7 +427,7 @@ END:VCALENDAR`
 </div>
 
           {/* Banner descarga Kindle */}
-<div style={{ marginTop: '18px', textAlign: 'center' }}>
+<div style={{ marginTop: '18px', textAlign: 'left' }}>
   <a
     href="https://www.amazon.com/dp/B0GHDPDG7W?ref=yb_qv_ov_kndl_dp_rw"
     target="_blank"
