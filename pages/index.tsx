@@ -429,14 +429,14 @@ END:VCALENDAR`
           {/* Banner descarga Kindle */}
 <div style={{ marginTop: '18px', textAlign: 'center' }}>
   <a
-    href="https://www.amazon.com/kindle-dbs/fd/kcp"
+    href="https://www.amazon.com/dp/B0GHDPDG7W?ref=yb_qv_ov_kndl_dp_rw"
     target="_blank"
     rel="noopener noreferrer"
     style={{ display: 'inline-block' }}
   >
     <img
-      src="/banner-kindle.png"
-      alt="Descargar app Kindle"
+      src="/amazon-logo.png"
+      alt="Descargar e-Book Kindle"
       style={{
         width: '100%',
         maxWidth: '420px',
