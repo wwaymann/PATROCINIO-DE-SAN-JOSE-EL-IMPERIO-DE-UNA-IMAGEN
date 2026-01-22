@@ -405,11 +405,7 @@ END:VCALENDAR`
               src="/banner-patrocinio-san-jose-1.jpg"
               alt="Patrocinio de San José. El imperio de una imagen. Autora: Natalia Portugueis Coronel."
 
-               {/* Imagen de Amazon */}
-            <img
-              className="title-banner"
-              src="/amazon-logo.png"
-              alt="Amazon"
+          
 
             />
           </div>
