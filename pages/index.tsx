@@ -439,15 +439,15 @@ END:VCALENDAR`
       alt="Descargar e-Book Kindle"
       style={{
         width: '100%',
-        maxWidth: '420px',
+        maxWidth: '320px',
         height: 'auto',
         display: 'block',
         margin: '0 auto'
       }}
     />
   </a>
-  <p style={{ fontSize: '0.9rem', opacity: 0.7, marginTop: '6px' }}>
-    App Kindle gratuita para leer el eBook
+  <p style={{ fontSize: '1.2rem', opacity: 0.8, marginTop: '3px' }}>
+    Descargar e-Book Kindle
   </p>
 </div>
 
