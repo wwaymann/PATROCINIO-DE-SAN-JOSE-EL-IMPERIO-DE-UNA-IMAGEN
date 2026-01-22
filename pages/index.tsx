@@ -439,14 +439,14 @@ END:VCALENDAR`
       alt="Descargar e-Book Kindle"
       style={{
         width: '100%',
-        maxWidth: '320px',
+        maxWidth: '160px',
         height: 'auto',
         display: 'block',
         margin: '0 auto'
       }}
     />
   </a>
-  <p style={{ fontSize: '1.2rem', opacity: 0.8, marginTop: '3px' }}>
+  <p style={{ fontSize: '1.2rem', opacity: 0.9, marginTop: '3px' }}>
     Descargar e-Book Kindle
   </p>
 </div>
