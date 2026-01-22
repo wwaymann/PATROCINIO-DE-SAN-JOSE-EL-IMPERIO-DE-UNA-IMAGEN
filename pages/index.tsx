@@ -426,6 +426,31 @@ END:VCALENDAR`
   ></iframe>
 </div>
 
+          {/* Banner descarga Kindle */}
+<div style={{ marginTop: '18px', textAlign: 'center' }}>
+  <a
+    href="https://www.amazon.com/kindle-dbs/fd/kcp"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{ display: 'inline-block' }}
+  >
+    <img
+      src="/banner-kindle.png"
+      alt="Descargar app Kindle"
+      style={{
+        width: '100%',
+        maxWidth: '420px',
+        height: 'auto',
+        display: 'block',
+        margin: '0 auto'
+      }}
+    />
+  </a>
+  <p style={{ fontSize: '0.9rem', opacity: 0.7, marginTop: '6px' }}>
+    App Kindle gratuita para leer el eBook
+  </p>
+</div>
+
           
         </section>
 
