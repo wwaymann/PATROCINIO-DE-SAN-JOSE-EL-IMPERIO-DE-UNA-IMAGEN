@@ -429,7 +429,7 @@ END:VCALENDAR`
 {/* Descarga directa eBook (EPUB) */}
 <div style={{ marginTop: '18px', textAlign: 'left' }}>
   <a
-    href="/epub/Patrocinio San José. El imperio de una imagen.epub"
+    href="/Epub/Patrocinio San Josè. El imperio de una imagen.epub"
     download
     style={{ display: 'inline-block' }}
   >
