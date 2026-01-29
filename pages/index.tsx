@@ -449,7 +449,8 @@ END:VCALENDAR`
   </p>
 </div>
 
-
+</section>
+         
 {/* VISTA PREVIA (Heyzine)  */}
 <section id="preview" className="section">
   <h2>ver ebook</h2>
