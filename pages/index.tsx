@@ -435,7 +435,7 @@ END:VCALENDAR`
     style={{ display: 'inline-block' }}
   >
     <img
-      src="/amazon-logo.png"
+      src="/Boton Epub.png"
       alt="Descargar e-Book Kindle"
       style={{
         width: '100%',
