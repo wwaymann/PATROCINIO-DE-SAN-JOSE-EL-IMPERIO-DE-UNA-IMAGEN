@@ -426,37 +426,29 @@ END:VCALENDAR`
   ></iframe>
 </div>
 
-          {/* Banner descarga Kindle */}
+{/* Descarga directa eBook (EPUB) */}
 <div style={{ marginTop: '18px', textAlign: 'left' }}>
   <a
-  //  href="https://www.amazon.com/dp/B0GHDPDG7W?ref=yb_qv_ov_kndl_dp_rw"
-
-    <img
-      src="/Epub/Patrocinio San Josè. El imperio de una imagen.epub"
-      
-    target="_blank"
-    rel="noopener noreferrer"
+    href="/epub/Patrocinio San José. El imperio de una imagen.epub"
+    download
     style={{ display: 'inline-block' }}
   >
     <img
       src="/Boton Epub.png"
-      alt="Descargar e-Book Kindle"
+      alt="Descargar eBook en formato EPUB"
       style={{
         width: '100%',
         maxWidth: '160px',
         height: 'auto',
-        display: 'block',
-        margin: '0 auto'
+        display: 'block'
       }}
     />
   </a>
-  <p style={{ fontSize: '1.2rem', opacity: 0.9, marginTop: '3px' }}>
-    Descargar e-Book Kindle
+  <p style={{ fontSize: '1.2rem', opacity: 0.9, marginTop: '6px' }}>
+    Descargar eBook (EPUB)
   </p>
 </div>
 
-          
-        </section>
 
 {/* VISTA PREVIA (Heyzine)  */}
 <section id="preview" className="section">
