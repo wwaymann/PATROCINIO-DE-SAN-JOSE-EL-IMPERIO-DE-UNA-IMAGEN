@@ -429,7 +429,11 @@ END:VCALENDAR`
           {/* Banner descarga Kindle */}
 <div style={{ marginTop: '18px', textAlign: 'left' }}>
   <a
-    href="https://www.amazon.com/dp/B0GHDPDG7W?ref=yb_qv_ov_kndl_dp_rw"
+  //  href="https://www.amazon.com/dp/B0GHDPDG7W?ref=yb_qv_ov_kndl_dp_rw"
+
+    <img
+      src="/Epub/Patrocinio San Josè. El imperio de una imagen.epub"
+      
     target="_blank"
     rel="noopener noreferrer"
     style={{ display: 'inline-block' }}
