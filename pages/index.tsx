@@ -1,624 +1,197 @@
-import Head from 'next/head'
-import { useEffect } from 'react'
+import Head from "next/head";
+import { useEffect } from "react";
+import { bindLandingInteractions } from "../components/landing-interactions";
 
-const CONFIG = {
-  DATE: '20 Noviembre.',
-  TIME: '17:00 h.',
-  VENUE: 'Museo Nacional de Bellas Artes.',
-  ADDRESS: 'José Miguel de la Barra 650.',
-  CITY: 'Santiago, Chile.',
-  MAP_URL: 'https://maps.app.goo.gl/XEuH5wU11vUN1NhCA',
-  TICKETS_URL: '#',
-  IOS_URL: '#',
-  ANDROID_URL: '#',
-  FORM_ENDPOINT: ''
-}
-
-export default function Home() {
-  // Tema claro/oscuro (aunque ahora no hay botón, lo dejo preparado)
-  useEffect(() => {
-    const root = document.documentElement
-    if (!root.getAttribute('data-theme')) {
-      root.setAttribute('data-theme', 'light')
-    }
-    const saved =
-      typeof window !== 'undefined' ? localStorage.getItem('psj_theme') : null
-    if (saved) root.setAttribute('data-theme', saved)
-
-    const btn = document.getElementById('themeToggle')
-    const onClick = () => {
-      const current =
-        root.getAttribute('data-theme') === 'light' ? 'dark' : 'light'
-      root.setAttribute('data-theme', current)
-      localStorage.setItem('psj_theme', current)
-    }
-    if (btn) btn.addEventListener('click', onClick)
-    return () => {
-      if (btn) btn.removeEventListener('click', onClick)
-    }
-  }, [])
-
-  const handleAddCalendar = () => {
-    const title = 'Lanzamiento — Patrocinio de San José'
-    const desc =
-      ' del libro: Patrocinio de San José — El imperio de una imagen'
-    const dt = new Date()
-    const dtStart = dt.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
-    const dtEnd =
-      new Date(dt.getTime() + 2 * 60 * 60 * 1000)
-        .toISOString()
-        .replace(/[-:]/g, '')
-        .split('.')[0] + 'Z'
-
-    const ics = `BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-DTSTART:${dtStart}
-DTEND:${dtEnd}
-SUMMARY:${title}
-DESCRIPTION:${desc}
-LOCATION:${CONFIG.VENUE}, ${CONFIG.ADDRESS}, ${CONFIG.CITY}
-END:VEVENT
-END:VCALENDAR`
-
-    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = 'lanzamiento-san-jose.ics'
-    a.click()
-    URL.revokeObjectURL(url)
-  }
-
-  const year = new Date().getFullYear()
+export default function Landing() {
+  useEffect(bindLandingInteractions, []);
 
   return (
     <>
       <Head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Patrocinio de San José — El imperio de una imagen</title>
-        <meta
-          name="description"
-          content="Lanzamiento libro Patrocinio de San José — El imperio de una imagen. , reseña, fecha y lugar, registro y descargas del eBook."
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://db.onlinewebfonts.com/c/3e50ef03ad2b5b310b83f47172d6dcd2?family=Matona"
-          rel="stylesheet"
-        />
-        {/* EB Garamond para texto, como en la maqueta */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
-          rel="stylesheet"
-        />
+        <meta name="theme-color" content="#211718" />
+        <meta name="description" content="Patrocinio de San José. El imperio de una imagen, investigación de Natalia Portugueis Coronel sobre la pintura de Gaspar Miguel de Berrío. Lee el libro en línea o descarga el EPUB gratuito." />
+        <meta property="og:title" content="Patrocinio de San José · El imperio de una imagen" />
+        <meta property="og:description" content="Una investigación de Natalia Portugueis Coronel. Lee el libro en línea o descarga el EPUB gratuito." />
+        <meta property="og:image" content="https://www.patrociniodesanjose.cl/banner-patrocinio-san-jose-1.jpg" />
+        <meta property="og:url" content="https://www.patrociniodesanjose.cl/" />
+        <title>Patrocinio de San José · El imperio de una imagen</title>
+        <link rel="stylesheet" href="/patrocinio/fonts.css" />
+        <link rel="stylesheet" href="/patrocinio/site.css" />
+        <link rel="canonical" href="https://www.patrociniodesanjose.cl/" />
       </Head>
+      <a className="skip" href="#contenido">Ir al contenido</a>
+      <header className="header" id="inicio">
+        <div className="wrap header-inner">
+          <a className="wordmark" href="#inicio">Patrocinio de San José</a>
+          <nav aria-label="Navegación principal">
+            <a href="#presentacion">El libro</a>
+            <a href="#autora">La autora</a>
+            <a href="#contacto">Contacto</a>
+            <a href="#preview" className="nav-reader">Leer el eBook</a>
+          </nav>
+        </div>
+      </header>
 
-      <style jsx global>{`
-        :root {
-          --bg: #ffffff;
-          --text: #19110e;
-          --muted: #403533;
-          --accent: #e04310;
-          --orange: #e04310;
-          --terracotta: #b96b3a;
-          --burnt: #742f12;
-          --rust: #af4a1d;
-          --card-1: #f9f4ef;
-          --card-2: #fdfaf7;
-          --ring: rgba(224, 67, 16, 0.35);
-        }
-        :root[data-theme='light'] {
-          --bg: #ffffff;
-          --text: #19110e;
-          --muted: #403533;
-          --accent: #e04310;
-          --orange: #e04310;
-          --terracotta: #b96b3a;
-          --burnt: #742f12;
-          --rust: #af4a1d;
-          --card-1: #f9f4ef;
-          --card-2: #fdfaf7;
-          --ring: rgba(224, 67, 16, 0.35);
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-        html,
-        body {
-          margin: 0;
-          background: var(--bg);
-          color: var(--text);
-          font-family: 'EB Garamond', serif;
-        }
-        a {
-          color: var(--accent);
-          text-decoration: none;
-        }
-        a:hover {
-          text-decoration: underline;
-        }
-        .container {
-          max-width: 1120px;
-          margin: 0 auto;
-          padding: 0 20px;
-        }
-
-        header {
-          position: sticky;
-          top: 0;
-          z-index: 40;
-          background: linear-gradient(
-            180deg,
-            color-mix(in oklab, var(--bg), transparent 10%),
-            color-mix(in oklab, var(--bg), transparent 30%)
-          );
-          backdrop-filter: saturate(140%) blur(8px);
-          border-bottom: 1px solid var(--ring);
-        }
-        .nav {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 12px 0;
-        }
-        .brand {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-        }
-        .brand-logo {
-          width: 36px;
-          height: 36px;
-          border: 2px solid var(--accent);
-          border-radius: 12px;
-        }
-        .brand-title {
-          font-family: 'Matona', 'Cinzel', serif;
-          letter-spacing: 0.06em;
-          font-weight: 500;
-          color: var(--accent);
-        }
-
-        .hero {
-          position: relative;
-          display: grid;
-          grid-template-columns: 1.1fr 0.9fr;
-          gap: 28px;
-          align-items: center;
-          padding: 64px 0 40px;
-          border-bottom: 1px solid var(--ring);
-        }
-        .kicker {
-          color: var(--orange);
-          font-weight: 600;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-        }
-        h1 {
-          font-family: 'Matona', 'Cinzel', serif;
-          font-size: clamp(38px, 6.5vw, 72px);
-          line-height: 1.02;
-          margin: 10px 0;
-          color: var(--accent);
-          font-weight: 400;
-          text-transform: none;
-          letter-spacing: 0.08em;
-        }
-        h1 span {
-          display: block;
-          margin-top: 18px;
-          font-family: 'EB Garamond', serif;
-          font-style: italic;
-          font-size: 0.58em;
-          letter-spacing: 0.02em;
-          color: var(--text);
-          text-transform: none;
-        }
-        .hero-author {
-          margin-top: 24px;
-          font-family: 'EB Garamond', serif;
-          font-size: 1.05rem;
-          letter-spacing: 0.04em;
-        }
-        .hero-cta {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 14px;
-          margin-top: 18px;
-        }
-        .badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 12px;
-          padding: 10px 14px;
-          border-radius: 14px;
-          background: var(--card-2);
-          border: 1px solid var(--ring);
-        }
-        .badge img {
-          height: 48px;
-          display: block;
-        }
-        .hero-media {
-          position: relative;
-        }
-        .hero::before {
-          content: '';
-          position: absolute;
-          left: -32px;
-          top: 12%;
-          bottom: 18%;
-          width: 6px;
-          background: var(--accent);
-        }
-
-        .frame {
-          position: relative;
-          border-radius: 14px;
-          overflow: hidden;
-          border: 1px solid var(--ring);
-          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
-        }
-        .frame::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          box-shadow: inset 0 0 0 2px
-            color-mix(in oklab, var(--accent), transparent 80%);
-        }
-        .hero-img {
-          display: block;
-          width: 100%;
-          height: auto;
-        }
-
-        .event-bar {
-          display: flex;
-          gap: 18px;
-          flex-wrap: wrap;
-          align-items: center;
-          background: linear-gradient(
-            90deg,
-            color-mix(in oklab, var(--accent), transparent 85%),
-            transparent
-          );
-          border: 1px solid var(--ring);
-          border-radius: 14px;
-          padding: 12px 16px;
-          margin-top: 14px;
-        }
-        .event-pill {
-          display: flex;
-          gap: 8px;
-          align-items: center;
-          padding: 6px 10px;
-          border-radius: 999px;
-          background: var(--card-1);
-          border: 1px solid var(--ring);
-          font-weight: 600;
-        }
-
-        .section {
-          padding: 60px 0;
-        }
-        .section h2 {
-          font-family: 'Matona', 'Cinzel', serif;
-          color: var(--accent);
-          font-size: clamp(28px, 4vw, 40px);
-          margin: 0 0 10px;
-        }
-        .lede {
-          font-size: 22px;
-          opacity: 0.95;
-        }
-        .grid {
-          display: grid;
-          gap: 26px;
-        }
-        .grid.cols-2 {
-          grid-template-columns: 1fr 1fr;
-        }
-        .card {
-          background: linear-gradient(180deg, var(--card-1), var(--card-2));
-          border: 1px solid var(--ring);
-          border-radius: 16px;
-          padding: 22px;
-        }
-
-        .download {
-          display: grid;
-          gap: 18px;
-        }
-        .download a {
-          display: block;
-        }
-        .download .note {
-          opacity: 0.8;
-        }
-
-        .actions {
-          display: flex;
-          gap: 10px;
-          align-items: center;
-        }
-        .hint {
-          opacity: 0.75;
-        }
-
-        footer {
-          padding: 36px 0;
-          border-top: 1px solid var(--ring);
-          opacity: 0.9;
-        }
-
-        .title-banner {
-          display: block;
-          max-width: 100%;
-          height: auto;
-          margin-top: 16px;
-        }
-        .sr-only {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          padding: 0;
-          margin: -1px;
-          overflow: hidden;
-          clip: rect(0, 0, 0, 0);
-          white-space: nowrap;
-          border: 0;
-        }
-
-        @media (max-width: 920px) {
-          .hero {
-            grid-template-columns: 1fr;
-          }
-          .grid.cols-2 {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
-
-      <header>{/* vacío por ahora */}</header>
-
-      <main className="container">
-        {/* HERO */}
-        <section className="hero" aria-label="">
-          <div>
-            <div className="kicker">Ebook</div>
-
-            {/* H1 oculto solo para SEO/accesibilidad */}
-            <h1 className="sr-only">
-              Patrocinio de San José — El imperio de una imagen
-            </h1>
-
-           {/* Imagen de título, como en tu portada */}
-            <img
-              className="title-banner"
-              src="/banner-patrocinio-san-jose-1.jpg"
-              alt="Patrocinio de San José. El imperio de una imagen. Autora: Natalia Portugueis Coronel."
-
-          
-
-            />
-          </div>
-
-<div style={{ position: 'relative', paddingTop: '56.25%' }}>
-  <iframe
-    src="https://www.youtube-nocookie.com/embed/mRmlSOAWq3I?autoplay=1&mute=1&loop=1&playlist=mRmlSOAWq3I"
-    style={{
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      border: 'none'
-    }}
-    allow="autoplay; fullscreen"
-    allowFullScreen
-  ></iframe>
-</div>
-
-{/* Descarga directa eBook (EPUB) */}
-<div style={{ marginTop: '18px', textAlign: 'left' }}>
-  <a
-    href="/Epub/Patrocinio San Josè. El imperio de una imagen.epub"
-    download
-    style={{ display: 'inline-block' }}
-  >
-    <img
-      src="/Boton Epub.png"
-      alt="Descargar eBook en formato EPUB"
-      style={{
-        width: '100%',
-        maxWidth: '160px',
-        height: 'auto',
-        display: 'block'
-      }}
-    />
-  </a>
-  <p style={{ fontSize: '1.2rem', opacity: 0.9, marginTop: '6px' }}>
-    Descargar eBook (EPUB)
-  </p>
-</div>
-
-</section>
-         
-{/* VISTA PREVIA (Heyzine)  */}
-<section id="preview" className="section">
-  <h2>ver ebook</h2>
-
-  <div style={{ position: 'relative', paddingTop: 'max(40%, 600px)', width: '100%', height: 0 }}>
-    <iframe
-      allowFullScreen
-      allow="clipboard-write"
-      scrolling="no"
-      className="fp-iframe"
-      src="https://heyzine.com/flip-book/bae6eed35a.html"
-      style={{
-        border: '1px solid lightgray',
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
-        left: 0,
-        top: 0
-      }}
-    />
-  </div>
-</section>
-
-
-        
-     
-
-
-
-        
-        {/* PRESENTACIÓN */}
-        <section id="presentacion" className="section">
-          <div>
-            <h2>presentación</h2>
-            <p className="lede">
-              El libro <em>Patrocinio de San José. El imperio de una imagen</em>{' '}
-              es una investigación de historia del arte que cuenta con una edición de 150 ejemplares y un eBook, de distribución y acceso gratuito respectivamente, gracias al financiamiento del Fondo del Patrimonio Cultural, convocatoria 2024, del Servicio Nacional del Patrimonio Cultural de Chile. Fue lanzado en el Museo Nacional de Bellas Artes, el jueves 20 de noviembre de 2025 a las 17:00 horas, con un conversatorio con la autora, Natalia Portugueis, y la Doctora en Historia del Arte Constanza Acuña.
-
-            </p>
+      <main id="contenido">
+        <section className="hero" aria-labelledby="titulo">
+          <div className="wrap hero-inner">
+            <div className="hero-copy">
+              <p className="label">Investigación en historia del arte</p>
+              <h1 id="titulo">Patrocinio de<br />San José</h1>
+              <p className="subtitle">El imperio de una imagen</p>
+              <p className="author-credit">Natalia Portugueis Coronel</p>
+              <div className="actions">
+                <a href="#preview" className="button solid">Leer en línea</a>
+                <a href="/Epub/Patrocinio%20San%20Jose%CC%80.%20El%20imperio%20de%20una%20imagen.epub" download className="button outline">Descargar EPUB</a>
+              </div>
+              <p className="availability">Edición digital de acceso gratuito</p>
+            </div>
+            <figure className="painting">
+              <a className="painting-link" href="/patrocinio/assets/obra.webp" data-open-art aria-label="Ampliar la pintura Patrocinio de San José">
+                <img src="/patrocinio/assets/obra-pequena.webp" alt="Pintura barroca con San José al centro, rodeado por figuras celestiales y terrenales bajo su manto." loading="eager" />
+                <span className="art-control" aria-hidden="true">Ampliar obra <span>+</span></span>
+              </a>
+              <figcaption><cite>Patrocinio de San José</cite> · Gaspar Miguel de Berrío, 1744<br /> Colección Museo Nacional de Bellas Artes</figcaption>
+            </figure>
           </div>
         </section>
 
-        {/* RESEÑA + ACERCA DE LA AUTORA */}
-        <section id="resena-autora" className="section">
-          <div className="grid cols-2">
-            {/* Columna izquierda: Reseña */}
-            <div>
-              <h2>reseña</h2>
-              <p className="lede">
-                <em>Patrocinio de San José. El imperio de una imagen</em> es una
-                investigación sobre la vida de la pintura Patrocinio de San
-                José, realizada por Gaspar Miguel de Berrío en 1744 en Potosí
-                (Bolivia), desde que fue adquirida por el Museo Nacional de
-                Bellas Artes en 1965. En el libro, la autora analiza la
-                recepción y fortuna crítica de la pintura, tomando su caso como
-                ejemplo para hacer un recorrido por medio siglo de escritura y
-                exposiciones, que develan prácticas, omisiones y programas en la
-                construcción de la narrativa de la historia del arte chileno.
-                Junto con este estudio, Portugueis ofrece una completa
-                identificación iconográfica de la pintura y un análisis
-                iconológico con dos alternativas de lectura de sus posibles
-                significados. La publicación en formato eBook posee un
-                importante enfoque educativo y de divulgación que busca acercar
-                a las y los lectores a la obra y a sus capas de significados,
-                apoyándose con elementos animados e interactivos.
-              </p>
-            </div>
+        <div className="work-strip">
+          <dl className="wrap work-facts">
+            <div><dt>Lugar de creación</dt><dd>Potosí, Bolivia</dd></div>
+            <div><dt>Año de la obra</dt><dd>1744</dd></div>
+            <div><dt>En la colección del MNBA desde</dt><dd>1965</dd></div>
+          </dl>
+        </div>
 
-            {/* Columna derecha: Autora */}
-            <aside className="card">
-              <h2>acerca de la autora</h2>
-              <p className="lede">
-                Natalia Portugueis es Licenciada en Arte con mención en Grabado
-                y Magíster en Teoría e Historia del Arte por la Universidad de
-                Chile. Durante las últimas dos décadas ha trabajado en el ámbito
-                de la educación en museos, destacando la Coordinación del área
-                de Mediación y Educación del Museo Nacional de Bellas Artes
-                (2010–2017) y la Subdirección de Educación y Programas Públicos
-                del Museo de Bomberos de Santiago (2018 a la fecha). En forma
-                paralela al trabajo vinculado a los museos, desarrolla proyectos
-                artísticos independientes y de gestión en divulgación y
-                educación en Derechos Humanos.
-              </p>
-            </aside>
+        <section className="paper" id="presentacion" aria-labelledby="libro">
+          <div className="wrap editorial">
+            <div>
+              <p className="label">Presentación</p>
+              <h2 id="libro">La historia de una pintura</h2>
+            </div>
+            <div className="body-copy">
+              <p><em>Patrocinio de San José. El imperio de una imagen</em> es una investigación de historia del arte publicada en una tirada de 150 ejemplares de distribución gratuita y en una edición digital de libre acceso. El proyecto contó con el financiamiento del Fondo del Patrimonio Cultural, convocatoria 2024, del Servicio Nacional del Patrimonio Cultural de Chile.</p>
+              <div className="launch">
+                <h3>Lanzamiento en el Museo Nacional de Bellas Artes</h3>
+                <p><time dateTime="2025-11-20T17:00:00-03:00">Jueves 20 de noviembre de 2025, 17:00 horas</time></p>
+                <p>Conversatorio con Natalia Portugueis y Constanza Acuña, doctora en Historia del Arte.</p>
+                <a className="text-link" href="https://www.mnba.gob.cl/noticias/patrocinio-de-san-jose-el-imperio-de-una-imagen">Ver publicación del museo</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="reading" id="preview" aria-labelledby="lector">
+          <div className="wrap">
+            <div className="section-heading">
+              <div>
+                <p className="label">Edición digital</p>
+                <h2 id="lector">Leer el eBook</h2>
+              </div>
+              <div className="actions">
+                <a className="button outline" href="https://heyzine.com/flip-book/bae6eed35a.html" target="_blank" rel="noopener noreferrer">Abrir en otra pestaña</a>
+                <a className="button solid" href="/Epub/Patrocinio%20San%20Jose%CC%80.%20El%20imperio%20de%20una%20imagen.epub" download>Descargar EPUB</a>
+              </div>
+            </div>
+            <iframe className="reader" src="https://heyzine.com/flip-book/bae6eed35a.html" title="Visor interactivo del eBook Patrocinio de San José" allow="clipboard-write; fullscreen" allowFullScreen loading="lazy" referrerPolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </section>
+
+        <section className="paper" id="resena-autora" aria-labelledby="resena">
+          <div className="wrap editorial">
+            <div>
+              <p className="label">Reseña</p>
+              <h2 id="resena">Medio siglo de lecturas</h2>
+            </div>
+            <div className="body-copy">
+              <p>La investigación sigue la trayectoria de la pintura que Gaspar Miguel de Berrío realizó en Potosí en 1744, a partir de su adquisición por el Museo Nacional de Bellas Artes en 1965. Al revisar cómo se recibió, estudió y exhibió la obra durante medio siglo, Portugueis examina las prácticas, omisiones y programas que dieron forma al relato de la historia del arte chileno.</p>
+              <p>El libro identifica las figuras y motivos de la pintura y propone dos interpretaciones de sus posibles significados. La edición digital incorpora animaciones y recursos interactivos con un propósito educativo y de divulgación, para acercar a las y los lectores a la obra y a sus distintas capas de significado.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="video-section" aria-labelledby="video">
+          <div className="wrap video-layout">
+            <div>
+              <p className="label">El libro en video</p>
+              <h2 id="video">Presentación audiovisual</h2>
+              <a className="text-link" href="https://www.youtube.com/watch?v=mRmlSOAWq3I" target="_blank" rel="noopener noreferrer">Ver en YouTube</a>
+            </div>
+            <iframe className="video" src="https://www.youtube-nocookie.com/embed/mRmlSOAWq3I" title="Video de Patrocinio de San José. El imperio de una imagen" allow="encrypted-media; picture-in-picture; fullscreen" allowFullScreen loading="lazy" referrerPolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </section>
+
+        <section className="paper" id="autora" aria-labelledby="nombre">
+          <div className="wrap editorial">
+            <div>
+              <p className="label">La autora</p>
+              <h2 id="nombre">Natalia Portugueis Coronel</h2>
+            </div>
+            <div className="body-copy">
+              <p>Licenciada en Arte con mención en Grabado y magíster en Teoría e Historia del Arte por la Universidad de Chile, Natalia Portugueis ha dedicado las últimas dos décadas a la educación en museos.</p>
+              <p>Entre 2010 y 2017 coordinó el área de Mediación y Educación del Museo Nacional de Bellas Artes. Desde 2018 se desempeña en la Subdirección de Educación y Programas Públicos del Museo de Bomberos de Santiago. En paralelo desarrolla proyectos artísticos independientes y trabaja en la gestión de iniciativas de divulgación y educación en derechos humanos.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="paper contact" id="contacto" aria-labelledby="contacto-titulo">
+          <div className="wrap editorial">
+            <div className="contact-intro">
+              <h2 id="contacto-titulo">Contacto</h2>
+              <p>Escribe a Natalia Portugueis Coronel sobre el libro.</p>
+              <a className="text-link" id="contacto-correo" href="mailto:nataliaportugueis@gmail.com">nataliaportugueis@gmail.com</a>
+            </div>
+            <form className="contact-form" aria-labelledby="contacto-titulo" aria-describedby="contacto-ayuda" hidden>
+              <div className="contact-fields">
+                <label>Nombre
+                  <input name="nombre" autoComplete="name" maxLength={100} required />
+                </label>
+                <label>Tu correo electrónico
+                  <input name="correo" type="email" autoComplete="email" maxLength={254} required />
+                </label>
+              </div>
+              <label>Asunto
+                <input name="asunto" maxLength={120} required />
+              </label>
+              <label>Mensaje
+                <textarea name="mensaje" rows={6} maxLength={1500} required></textarea>
+              </label>
+              <p id="contacto-ayuda">Se abrirá un borrador en tu aplicación de correo para que puedas revisarlo y enviarlo.</p>
+              <button type="submit" className="button solid">Abrir borrador de correo</button>
+              <p className="contact-status" role="status"></p>
+            </form>
           </div>
         </section>
       </main>
 
-      <footer>
-        <div
-          className="container"
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            gap: 20,
-            flexWrap: 'wrap',
-            alignItems: 'center'
-          }}
-        >
-          {/* Logos (sube los archivos a /public/logos/ y ajusta los nombres) */}
-          <div
-            className="footer-logos"
-            style={{
-              display: 'flex',
-              gap: 18,
-              alignItems: 'center',
-              flexWrap: 'wrap'
-            }}
-            aria-label="Organizan y patrocinan"
-          >
-            <a
-              href="https://www.patrimoniocultural.gob.cl/"
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                src="/serpat.png"
-                alt="Serpat"
-                style={{
-                  height: 90,
-                  width: 'auto',
-                  display: 'block',
-                  opacity: 0.95
-                }}
-              />
-            </a>
-            <a
-              href="https://walterwaymann.wixsite.com/walter-waymann"
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                src="Logo_WalterWaymann.png"
-                alt="Logo Walter Waymann"
-                style={{
-                  height: 50,
-                  width: 'auto',
-                  display: 'block',
-                  opacity: 0.95
-                }}
-              />
-            </a>
-            <a
-              href="https://www.instagram.com/estudio_pagana/"
-              target="_blank"
-              rel="noopener"
-            >
-              <img
-                src="/Logo_pagana-01.png"
-                alt="Logo Pagana"
-                style={{
-                  height: 100,
-                  width: 'auto',
-                  display: 'block',
-                  opacity: 0.95
-                }}
-              />
-            </a>
+      <footer className="footer">
+        <div className="wrap">
+          <h2>Créditos</h2>
+          <div className="credits">
+            <a href="https://www.patrimoniocultural.gob.cl/" target="_blank" rel="noopener noreferrer"><img src="/serpat.png" alt="Servicio Nacional del Patrimonio Cultural" width="942" height="432" loading="lazy" /></a>
+            <a href="https://walterwaymann.wixsite.com/walter-waymann" target="_blank" rel="noopener noreferrer"><img src="/Logo_WalterWaymann.png" alt="Walter Waymann" width="2006" height="543" loading="lazy" /></a>
+            <a href="https://www.instagram.com/estudio_pagana/" target="_blank" rel="noopener noreferrer"><img src="/Logo_pagana-01.png" alt="Estudio Pagana" width="3548" height="2250" loading="lazy" /></a>
           </div>
-
-          <small>
-            &copy; <span>{year}</span> Patrocinio de San José. El imperio de una
-            imagen.
-          </small>
-
-          <small>{/* Texto opcional del footer */}</small>
+          <div className="footer-end">
+            <small>© 2026 Patrocinio de San José. El imperio de una imagen.</small>
+          </div>
         </div>
       </footer>
+
+      <dialog className="art-dialog" aria-labelledby="arte-titulo">
+        <form method="dialog" className="dialog-heading">
+          <h2 id="arte-titulo">Patrocinio de San José</h2>
+          <div className="dialog-actions">
+            <button type="button" data-zoom aria-pressed="false">Ampliar</button>
+            <button autoFocus>Cerrar</button>
+          </div>
+        </form>
+        <div className="art-scroll" tabIndex={0} aria-label="Imagen ampliable. Usa las teclas de dirección para desplazarte cuando esté ampliada.">
+          <img data-art-image alt="Pintura Patrocinio de San José, de Gaspar Miguel de Berrío" />
+        </div>
+        <p>Gaspar Miguel de Berrío · Potosí, 1744 · Colección Museo Nacional de Bellas Artes</p>
+      </dialog>
     </>
-  )
+  );
 }
